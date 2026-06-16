@@ -576,7 +576,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
     <div class="step-page" id="step1c">
       <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px;flex-wrap:wrap">
         <div class="step-heading" style="margin-bottom:0">Build your metric</div>
-        <div style="font-size:13px;color:var(--mid)">Define fairness criteria for future AI evaluation.</div>
+        <div style="font-size:13px;color:var(--mid)">Define evaluation criteria for future AI review.</div>
       </div>
 
       <!-- Top-level tabs: Scaffolding vs Recorded concern -->
@@ -608,7 +608,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
               <div class="bm-panel-num">2</div>
               <div class="bm-panel-title" style="margin-bottom:0">What metric to compute</div>
             </div>
-            <div class="bm-panel-desc">Choose a metric from the library to measure fairness between the cohorts you defined.</div>
+            <div class="bm-panel-desc">Choose a metric from the library to compare the cohorts you defined.</div>
             <select class="db-select" id="bm-metric-dropdown-sel" onchange="bmOnMetricDropdownChange()" style="width:100%;margin-bottom:8px">
               <option value="">Choose a metric</option>
             </select>
@@ -918,7 +918,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 
           <div style="display:grid;grid-template-columns:1fr 2fr;gap:16px;align-items:start">
             <div>
-              <div class="grp-sel-label">Fairness threshold <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--soft)">(optional)</span></div>
+              <div class="grp-sel-label">Acceptable gap threshold <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--soft)">(optional)</span></div>
               <div style="font-size:11px;color:var(--soft);margin-bottom:6px">Max acceptable gap in percentage points.</div>
               <div style="display:flex;align-items:center;gap:6px">
                 <input type="number" id="s3-threshold" class="field" min="0" max="100" step="0.1" style="max-width:100px" placeholder="e.g. 10">
@@ -2768,7 +2768,7 @@ const METRIC_SCAFFOLDING = {
   accuracy_difference:{icon:'🎯',tagline:'How often is the AI correct for each group?',when:'Use for a simple overall picture of whether the AI performs equally well across groups.',watchOut:''},
   recall_difference:{icon:'🔍',tagline:'Of people who did reoffend, how many did the AI catch?',when:'Use to check whether the AI misses actual risk in some groups (under-flagging). Low recall means many real risks are labelled Low Risk.',watchOut:'Low recall in one group may indicate under-surveillance for that group. But it may also reflect genuine differences in risk distribution.'},
   precision_difference:{icon:'✅',tagline:'Of people labelled High Risk, how many actually reoffended?',when:'Use to check how reliable the High Risk label is. Low precision means many people are wrongly flagged.',watchOut:'Precision and recall are in tension: improving one usually worsens the other. Always use both together.'},
-  fpr_difference:{icon:'⚠️',tagline:'Of people who did NOT reoffend, how many were wrongly flagged High Risk?',when:'Use to detect false accusations. A higher FPR in one group means that group faces more wrongful High Risk labels.',watchOut:'The ProPublica investigation found Black defendants had nearly double the FPR of White defendants in COMPAS. This is the key fairness metric for this dataset.'},
+  fpr_difference:{icon:'⚠️',tagline:'Of people who did NOT reoffend, how many were wrongly flagged High Risk?',when:'Use to detect false accusations. A higher FPR in one group means that group faces more wrongful High Risk labels.',watchOut:'The ProPublica investigation found Black defendants had nearly double the FPR of White defendants in COMPAS. This is the key error-rate metric for this dataset.'},
   fnr_difference:{icon:'🚨',tagline:'Of people who DID reoffend, how many were cleared as Low Risk?',when:'Use to detect under-flagging. The AI misses actual risk cases more often for one group.',watchOut:'It is mathematically impossible to equalise FPR and FNR simultaneously when base rates differ across groups. A lower FNR for one group tends to come at the cost of a higher FPR for another.'},
   f1_difference:{icon:'⚖️',tagline:'A single score balancing how many risks are caught and how reliable predictions are.',when:'Use for an overall summary of the AI\'s balance between recall and precision. Useful for a quick group comparison.',watchOut:'F1 hides the direction of errors. Low F1 could mean too many false positives, too many false negatives, or both. Always check FPR and FNR separately.'}
 };
