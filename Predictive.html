@@ -253,6 +253,13 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 .bm-thresh-pass{font-size:12px;font-weight:600;color:#166534;background:#F0FDF4;border:1px solid #A0CCB8;border-radius:6px;padding:6px 10px;margin-top:6px}
 .bm-thresh-fail{font-size:12px;font-weight:600;color:var(--red);background:#FEF2F2;border:1px solid #FECACA;border-radius:6px;padding:6px 10px;margin-top:6px}
 .bm-warn-low-n{font-size:11px;color:var(--amber);margin-top:4px}
+.bm-result-compact{margin-top:10px;padding:10px 12px;background:#fff;border:1px solid #C4C2F0;border-radius:8px;color:var(--text)}
+.bm-result-kicker{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin-bottom:6px}
+.bm-result-values{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.bm-result-chip{padding:6px 8px;background:#FAFAF8;border:1px solid var(--border);border-radius:6px;font-size:12px;color:var(--mid)}
+.bm-result-chip strong{color:var(--text)}
+.bm-result-summary{font-size:12px;color:var(--mid);line-height:1.55}
+.bm-result-status{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700;margin-left:6px}
 /* Save row */
 .bm-save-row{display:flex;align-items:center;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
 /* Saved cards */
@@ -307,7 +314,8 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 .db-ov-metric-val.good{color:#166534}
 .db-ov-metric-val.warn{color:var(--amber)}
 .db-ov-metric-val.bad{color:var(--red)}
-.db-ov-metric-plain{font-size:11px;color:var(--mid);line-height:1.4;margin-bottom:4px}
+.db-ov-metric-plain{font-size:11px;color:var(--mid);line-height:1.4;margin-bottom:8px}
+.db-ov-toggle{font-size:11px;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .db-ov-detail{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--mid);text-align:left;line-height:1.6}
 .db-ov-card.active .db-ov-detail{display:block}
 
@@ -637,6 +645,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
               <div style="margin-top:10px">
                 <span id="bm-criterion-threshold-tag" style="display:none;align-items:center;padding:3px 10px;background:var(--accent);color:#fff;border-radius:20px;font-size:11px;font-weight:700"></span>
               </div>
+              <div id="bm-dataset-result" class="bm-result-compact" style="display:none"></div>
             </div>
             <div id="bm-criterion-placeholder" style="padding:12px 0 4px;font-size:12px;color:var(--soft)">
               Complete steps 1 and 2 to see your criterion here.
@@ -1661,6 +1670,7 @@ function renderMetricsSummary(){
     if(isLib&&m.criterionText){
       let extra='';
       if(m.thresholdNotes) extra+=`<div style="font-size:11px;color:var(--mid);margin-top:6px;padding-top:6px;border-top:1px solid #C4C2F0"><strong>Notes:</strong> ${escHtml(m.thresholdNotes)}</div>`;
+      if(m.result) extra+=`<div style="margin-top:8px">${bmRenderDatasetResultHtml(m.result)}</div>`;
       details=`<div style="margin-top:10px;padding:10px 12px;background:#EEEEFA;border:1px solid #C4C2F0;border-radius:8px;font-size:12px;color:var(--text);line-height:1.7">${m.criterionText}${extra}</div>`;
     }
 
@@ -1782,8 +1792,8 @@ function dbRenderOverview(){
     return `<div class="db-ov-card${active?' active':''}" onclick="dbToggleOvCard('${m.id}')">
       <div class="db-ov-metric-name">${m.name}</div>
       <div class="db-ov-metric-val ${cls}">${pct}</div>
-      <div class="db-ov-metric-plain">${m.def}</div>
-      <div class="db-ov-detail">${m.detail}</div>
+      <div class="db-ov-toggle">${active?'click to collapse':'click for description'}</div>
+      <div class="db-ov-detail"><div class="db-ov-metric-plain">${m.def}</div>${m.detail}</div>
     </div>`;
   }).join('');
 }
@@ -2243,6 +2253,67 @@ function bmComputeIntersectResult(cohorts, metricId){
 }
 
 
+function bmGuidedMetricFraction(stat, metricId){
+  switch(metricId){
+    case 'accuracy_difference':  return {count:stat.tp+stat.tn, denominator:stat.n};
+    case 'recall_difference':    return {count:stat.tp, denominator:stat.tp+stat.fn};
+    case 'fpr_difference':       return {count:stat.fp, denominator:stat.fp+stat.tn};
+    case 'precision_difference': return {count:stat.tp, denominator:stat.tp+stat.fp};
+    case 'fnr_difference':       return {count:stat.fn, denominator:stat.tp+stat.fn};
+    default:                     return {count:null, denominator:null};
+  }
+}
+
+function bmBuildDatasetResult(cohorts, metric, thresholdValue){
+  if(!metric||!cohorts||cohorts.length<2) return null;
+  const stats=bmComputeIntersectResult(cohorts, metric.id);
+  const valid=stats.filter(s=>s.rate!==null&&!isNaN(s.rate));
+  const result={
+    metricId:metric.id,
+    metricName:metric.name,
+    better:metric.better||'neutral',
+    rowCount:ROWS.length,
+    stats,
+    gap:null,
+    high:null,
+    low:null,
+    threshold:thresholdValue||null,
+    thresholdStatus:null
+  };
+  if(valid.length>=2){
+    const sorted=[...valid].sort((a,b)=>a.rate-b.rate);
+    result.low=sorted[0];
+    result.high=sorted[sorted.length-1];
+    result.gap=result.high.rate-result.low.rate;
+    const t=parseFloat(thresholdValue);
+    if(!isNaN(t)&&thresholdValue!=='') result.thresholdStatus=(result.gap*100)<=t?'pass':'fail';
+  }
+  return result;
+}
+
+function bmRenderDatasetResultHtml(result){
+  if(!result) return '';
+  const fmtRate=r=>r===null||isNaN(r)?'N/A':`${(r*100).toFixed(1)}%`;
+  const cohortLetters='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const values=result.stats.map((s,i)=>{
+    const frac=bmGuidedMetricFraction(s,result.metricId);
+    const fracText=frac.denominator?` (${frac.count}/${frac.denominator})`:'';
+    const label=`Cohort ${cohortLetters[i]||i+1}`;
+    return `<div class="bm-result-chip"><strong>${label}</strong> ${escHtml(s.group)}: ${fmtRate(s.rate)}${fracText}</div>`;
+  }).join('');
+  return `<div class="bm-result-kicker">Applying this metric to the full dataset (${result.rowCount}) results:</div><div class="bm-result-values">${values}</div>`;
+}
+
+function bmUpdateDatasetResult(cohorts, metric, thresholdValue){
+  const el=document.getElementById('bm-dataset-result');if(!el)return null;
+  const result=bmBuildDatasetResult(cohorts, metric, thresholdValue);
+  if(!result){el.style.display='none';el.innerHTML='';return null;}
+  el.style.display='block';
+  el.innerHTML=bmRenderDatasetResultHtml(result);
+  return result;
+}
+
+
 function bmSetTab(tab){ bmTab=tab; } // simplified - tabs moved to top level
 function bmRenderMetricList(){
   const el=document.getElementById('bm-metric-list');if(!el)return;
@@ -2315,12 +2386,13 @@ function bmUpdateCriterion(){
 
   const readyCohorts=bmCohorts.filter(c=>c.conditions.some(x=>x.feat&&x.val));
   const m=BM_METRICS.find(x=>x.id===bmMetricId);
+  bmThreshold=(document.getElementById('bm-threshold')?.value||'').trim();
   const tVal=parseFloat(bmThreshold);
   const hasThreshold=!isNaN(tVal)&&bmThreshold!=='';
   const notes=(document.getElementById('bm-threshold-notes')?.value||'').trim();
 
   if(!m&&readyCohorts.length<2){
-    boxEl.style.display='none'; placeholderEl.style.display='block'; return;
+    boxEl.style.display='none'; placeholderEl.style.display='block'; bmUpdateDatasetResult([],null,''); return;
   }
   boxEl.style.display='block'; placeholderEl.style.display='none';
 
@@ -2329,12 +2401,16 @@ function bmUpdateCriterion(){
   if(readyCohorts.length>=2&&m){
     const metricName=m.name;
     const inlineDef=BM_METRIC_INLINE[m.id]||m.plain.replace(/\.$/,'').toLowerCase();
-    const cohortEnglish=readyCohorts.map(c=>bmCohortToEnglish(c));
+    const cohortLetters='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const cohortEnglish=readyCohorts.map((c,i)=>{
+      const label=`Cohort ${cohortLetters[i]||i+1}`;
+      return `<strong>${label}</strong> (${escHtml(bmCohortToEnglish(c))})`;
+    });
     const n=cohortEnglish.length;
 
     // Build the comparison phrase
-    // 2 cohorts: "X against Y"
-    // 3+ cohorts: "X, Y, and Z"
+    // 2 cohorts: "Cohort A (...) against Cohort B (...)"
+    // 3+ cohorts: "Cohort A (...), Cohort B (...), and Cohort C (...)"
     let comparisonPhrase='';
     if(n===2){
       comparisonPhrase=`${cohortEnglish[0]} against ${cohortEnglish[1]}`;
@@ -2343,7 +2419,7 @@ function bmUpdateCriterion(){
     }
 
     // Cohort name labels for the threshold consequence sentence
-    const cohortNames=readyCohorts.map(c=>`<strong>${escHtml(c.name)}</strong>`);
+    const cohortNames=readyCohorts.map((c,i)=>`<strong>Cohort ${cohortLetters[i]||i+1}</strong>`);
     const namesPhrase=n===2
       ?`${cohortNames[0]} and ${cohortNames[1]}`
       :cohortNames.slice(0,-1).join(', ')+', and '+cohortNames[n-1];
@@ -2382,6 +2458,7 @@ function bmUpdateCriterion(){
     else tagEl.style.display='none';
   }
 
+  bmUpdateDatasetResult(readyCohorts,m,bmThreshold);
   bmUpdatePreview();
 }
 
@@ -2442,14 +2519,16 @@ function bmSave(){
   const saveGroups=readyCohorts.map(c=>bmGetCohortLabel(c));
   const criterionEl=document.getElementById('bm-criterion-text');
   const criterionText=criterionEl?criterionEl.innerHTML:'';
+  bmThreshold=(document.getElementById('bm-threshold')?.value||'').trim();
   const thresholdNotes=(document.getElementById('bm-threshold-notes')?.value||'').trim();
+  const datasetResult=bmBuildDatasetResult(readyCohorts,m,bmThreshold);
   bmSavedMetrics.push({
     id:bmNextId++, type:'lib', mode:'intersect',
     feature:'Intersectional', groups:saveGroups,
     metricId:bmMetricId, metricName:m.name,
     threshold:bmThreshold||null,
     thresholdNotes:thresholdNotes||null,
-    result:{stats:null,gap:null},
+    result:datasetResult,
     criterionText, ownText:null,
     cohorts:readyCohorts.map(c=>({...c,conditions:[...c.conditions]}))
   });
@@ -2463,6 +2542,7 @@ function bmSave(){
   const cbox=document.getElementById('bm-criterion-box');if(cbox)cbox.style.display='none';
   const cp=document.getElementById('bm-criterion-placeholder');if(cp)cp.style.display='block';
   const tag=document.getElementById('bm-criterion-threshold-tag');if(tag)tag.style.display='none';
+  const datasetResultEl=document.getElementById('bm-dataset-result');if(datasetResultEl){datasetResultEl.style.display='none';datasetResultEl.innerHTML='';}
 
   bmAddCohort(); bmAddCohort(); // reset to 2 blank cohorts
   bmRenderCohorts();
@@ -2515,6 +2595,7 @@ function bmRenderSaved(){
     if(m.criterionText){
       let extra='';
       if(m.thresholdNotes) extra+=`<div style="font-size:11px;color:var(--mid);margin-top:6px;padding-top:6px;border-top:1px solid #C4C2F0"><strong>Notes:</strong> ${escHtml(m.thresholdNotes)}</div>`;
+      if(m.result) extra+=`<div style="margin-top:8px">${bmRenderDatasetResultHtml(m.result)}</div>`;
       resultHtml=`<div class="bm-saved-result" style="padding:8px 10px;background:#EEEEFA;border:1px solid #C4C2F0;border-radius:6px;line-height:1.6">${m.criterionText}${extra}</div>`;
     }
     if(m.type==='own'){
