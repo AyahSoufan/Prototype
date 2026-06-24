@@ -23,9 +23,16 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .entry-info-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--soft);margin-bottom:5px}
 .entry-info-text{font-size:13px;color:var(--mid);line-height:1.7}
 .entry-info-text strong{color:var(--text);font-weight:500}
+.entry-steps{margin:10px 0 0 18px;line-height:1.8}
+.entry-steps li{padding-left:2px;margin-bottom:6px}
+.entry-input-wrap{margin:18px 0}
+.entry-input-label{font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px}
+.entry-input-helper{font-size:11px;color:var(--soft);margin-top:5px;line-height:1.5}
+.entry-error{display:none;margin-top:8px;padding:8px 10px;background:var(--rlight);border:1px solid #FECACA;border-radius:var(--r);font-size:12px;color:var(--red)}
 .entry-divider{border:none;border-top:1px solid var(--border);margin:16px 0}
 .btn-begin{width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer}
 .btn-begin:hover{opacity:.88}
+.btn-begin:disabled{opacity:.45;cursor:not-allowed}
 #app{display:none;min-height:100vh;flex-direction:column}
 #app.show{display:flex}
 .topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 28px;height:48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20}
@@ -466,18 +473,17 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 
 <!-- ENTRY -->
 <div id="entry">
-  <div class="entry-title">Auditing task</div>
-  <div class="entry-heading">Auditing an AI Risk Prediction System</div>
+  <div class="entry-title">AI review task</div>
+  <div class="entry-heading">Welcome to the AI Review Task</div>
   <div class="entry-card">
     <div class="entry-card-body">
       <div class="entry-info-section">
-        <div class="entry-info-label">About the Dataset</div>
-        <div class="entry-info-text">This dataset contains information about people who were arrested in <strong>Broward County, Florida (USA)</strong>. Each record includes information that was available at the time an AI system generated a risk prediction.<br><br>The dataset also contains information about whether the person was later charged with another crime within two years.</div>
+        <div class="entry-info-text">In this study, you will examine a dataset and an AI system and tell us what you think should be checked, measured, or reviewed to determine whether the AI is behaving appropriately.<br><br>You do not need any technical or AI expertise to take part. We are interested in your judgement and observations.</div>
       </div>
       <hr class="entry-divider">
       <div class="entry-info-section">
-        <div class="entry-info-label">About the AI System</div>
-        <div class="entry-info-text"><strong>Model: COMPAS Risk Assessment Tool</strong><br><br>COMPAS is an AI-supported risk assessment system used in parts of the United States criminal justice system. It predicts whether a person is likely to be charged with another crime in the future.<br><br>For this task, the AI prediction has been simplified into two categories:
+        <div class="entry-info-label">What is the AI system doing?</div>
+        <div class="entry-info-text">The AI system in this study is called <strong>COMPAS</strong>, a risk assessment tool that has been used in parts of the United States criminal justice system.<br><br>The system predicts whether a person is likely to be charged with another crime within the next two years.<br><br>For each person, the AI produces one of two predictions:
           <ul style="margin:10px 0 0 18px;line-height:1.9">
             <li><strong>High Risk</strong> &ndash; the AI predicts the person is more likely to be charged with another crime within two years.</li>
             <li><strong>Low Risk</strong> &ndash; the AI predicts the person is less likely to be charged with another crime within two years.</li>
@@ -485,8 +491,42 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
         </div>
       </div>
       <hr class="entry-divider">
-      <div class="entry-info-text" style="font-size:12px;color:var(--mid);margin-bottom:18px">You will work with a row sample drawn from the full dataset, constructed to reflect some patterns found in the original research.</div>
-      <button class="btn-begin" onclick="startAudit()">Begin audit &rarr;</button>
+      <div class="entry-info-section">
+        <div class="entry-info-label">What data is the AI using?</div>
+        <div class="entry-info-text">The dataset contains information about people who were arrested in <strong>Broward County, Florida (USA)</strong>.<br><br>Each record contains information that was available when the AI generated its prediction, such as demographic information and criminal history information.<br><br>The dataset also includes the actual outcome, allowing us to compare what the AI predicted with what later happened.<br><br>For this study, you will work with a sample of records drawn from the original dataset.</div>
+      </div>
+      <hr class="entry-divider">
+      <div class="entry-info-section">
+        <div class="entry-info-label">What is your task?</div>
+        <div class="entry-info-text">
+          Your role is to act as an <strong>AI reviewer</strong>.<br><br>
+          Imagine that you have been asked:<br><br>
+          <em>"How should we check whether this AI system is working fairly, accurately, and appropriately?"</em><br><br>
+          To answer this question, you will:
+          <ul class="entry-steps">
+            <li><strong>Step 1: Observe the Data</strong><br>Look through the dataset and examine the information available about individuals and the AI predictions.</li>
+            <li><strong>Step 2: Explore Performance</strong><br>Review information about the AI's performance and examine how results differ across different groups.</li>
+            <li><strong>Step 3: Suggest What Should Be Checked</strong><br>This is the main task. After reviewing the data and performance information, tell us what you think should be measured, monitored, or investigated.</li>
+            <li><strong>Step 4: Review Your Contributions</strong><br>The summary page will show all metrics and concerns that you have created.</li>
+          </ul>
+          You can contribute in two ways:<br><br>
+          <strong>Create a Metric</strong><br>A metric is something measurable that could be used to evaluate the AI.<br><br>
+          <strong>Record a Concern</strong><br>You can also describe any issue, risk, bias, or concern that you believe deserves further investigation.<br><br>
+          There are no right or wrong answers. We are interested in understanding what people think should be reviewed when evaluating an AI system.
+        </div>
+      </div>
+      <hr class="entry-divider">
+      <div class="entry-info-section">
+        <div class="entry-info-label">Before you begin</div>
+        <div class="entry-info-text">Please enter your Prolific ID below.<br><br>When you are finished with the audit, click <strong>Finish Auditing</strong>.<br><br>This ensures that your responses and activity are saved correctly and will automatically return you to Qualtrics to complete the final questionnaire.<br><br>Please do not close your browser window before clicking <strong>Finish Auditing</strong>.</div>
+      </div>
+      <div class="entry-input-wrap">
+        <label class="entry-input-label" for="prolific-id-input">Prolific ID <span style="color:var(--red)">*</span></label>
+        <input type="text" id="prolific-id-input" class="field" required autocomplete="off" placeholder="Enter your Prolific ID" oninput="updateProlificIdReady()">
+        <div class="entry-input-helper">Please enter the same Prolific ID you used to access this study.</div>
+        <div class="entry-error" id="prolific-id-error">Please enter your Prolific ID before beginning the audit.</div>
+      </div>
+      <button class="btn-begin" id="begin-audit-btn" onclick="startAudit()">Begin audit &rarr;</button>
     </div>
   </div>
 </div>
@@ -585,6 +625,21 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px;flex-wrap:wrap">
         <div class="step-heading" style="margin-bottom:0">Build your metric</div>
         <div style="font-size:13px;color:var(--mid)">Define evaluation criteria for future AI review.</div>
+      </div>
+      <div class="card" style="padding:14px 16px;margin-bottom:18px">
+        <div style="font-size:13px;color:var(--mid);line-height:1.7">
+          After observing the data and exploring the system's performance and metrics, your main task is to identify aspects of the AI system that you believe should be evaluated, monitored, or reviewed.<br><br>
+          You can contribute by creating metrics and recording concerns related to any part of the system, including:
+          <ul style="margin:8px 0 0 18px;line-height:1.8">
+            <li>The dataset</li>
+            <li>The AI model</li>
+            <li>The AI outputs or decisions</li>
+            <li>Fairness, bias, representation, or performance issues</li>
+            <li>Any other aspect that you believe should be assessed during an AI audit</li>
+          </ul>
+          <br>
+          There are no right or wrong answers. We are interested in understanding what you think should be measured, evaluated, or reviewed. Please add as many metrics and concerns as you consider relevant.
+        </div>
       </div>
 
       <!-- Top-level tabs: Scaffolding vs Recorded concern -->
@@ -1003,7 +1058,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 
       <div class="nav-row">
         <button class="btn-outline" onclick="goStep('1c')">&#8592; Back to Build your metric</button>
-        <button class="btn-primary" style="background:var(--green)" onclick="finishSession()">Finish audit &#10003;</button>
+        <button class="btn-primary" style="background:var(--green)" onclick="finishSession()">Finish Auditing &#10003;</button>
       </div>
     </div>
 
@@ -1478,28 +1533,145 @@ const MODAL_GROUPS = FEATURE_GROUPS.map(g => [
 let selectedFeatureIds = new Set(ALL_FEATURES.filter(f=>f.defaultOn||f.locked).map(f=>f.id));
 let activeFilters={}, flaggedRows=new Set(), sessionStartTime=null;
 let events=[], currentEventId=null, nextEventId=1, nextMetricId=1;
+let prolificId = '';
+let auditLogs = [];
+let currentPageName = 'Landing';
+
+// Prolific ID handling: participants must enter this before the audit starts.
+function getProlificIdInputValue(){
+  return (document.getElementById('prolific-id-input')?.value||'').trim();
+}
+function updateProlificIdReady(){
+  prolificId = getProlificIdInputValue();
+  const err=document.getElementById('prolific-id-error');
+  if(err&&prolificId) err.style.display='none';
+}
+function showProlificIdError(){
+  const err=document.getElementById('prolific-id-error');
+  const input=document.getElementById('prolific-id-input');
+  if(err) err.style.display='block';
+  if(input) input.focus();
+}
+
+// Logging: every event includes Prolific ID, timestamp, page/step, event type, action, and details.
+function logEvent(eventType, action, details={}){
+  const event={
+    prolificId: prolificId || getProlificIdInputValue() || null,
+    timestamp: new Date().toISOString(),
+    page: currentPageName,
+    eventType,
+    action,
+    details
+  };
+  auditLogs.push(event);
+  try{
+    sessionStorage.setItem('trace_audit_logs_current', JSON.stringify(auditLogs));
+  }catch(e){}
+  return event;
+}
+function getStepName(n){
+  const map={1:'Step 1: Observe the data','1b':'Step 2: Explore performance and metrics','1c':'Step 3: Build your metric',4:'Step 4: Metrics summary'};
+  return map[n]||`Step ${n}`;
+}
+
+// Data export/storage for GitHub Pages: add your Apps Script, Firebase, Supabase, Google Forms, or custom API URL here.
+const AUDIT_EXPORT_ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbx-pGQuZsKFqeVGXOOR5nsf7RBzbROilu-YN8sCt_xHmKLVo7OEQbXbvTM1Y1lnTtad/exec';
+const AUDIT_EXPORT_REQUEST_MODE = 'no-cors'; // Change to 'no-cors' for many Google Apps Script / Google Forms endpoints.
+const QUALTRICS_REDIRECT_URL = 'QUALTRICS_REDIRECT_URL_HERE';
+
+function buildAuditExportPayload(exportReason='manual'){
+  const allLegacyMetrics=events.flatMap(ev=>(ev.metrics||[]).map(metric=>({eventId:ev.id,eventName:ev.name,...metric})));
+  return {
+    exportReason,
+    prolificId,
+    exportedAt:new Date().toISOString(),
+    sessionStartedAt:sessionStartTime?new Date(sessionStartTime).toISOString():null,
+    sessionDurationSeconds:sessionStartTime?Math.round((Date.now()-sessionStartTime)/1000):0,
+    page:currentPageName,
+    savedMetrics:bmSavedMetrics||[],
+    savedConcerns:(bmSavedMetrics||[]).filter(m=>m.type==='own'),
+    legacyEvents:events,
+    legacyMetrics:allLegacyMetrics,
+    flaggedRowIndexes:Array.from(flaggedRows||[]),
+    activeFilters,
+    logs:auditLogs
+  };
+}
+
+// Data export/storage: keeps a local browser backup and optionally posts the full payload to the external endpoint.
+async function exportAuditData(exportReason='finish'){
+  const key=`trace_audit_submission_${prolificId||'unknown'}_${Date.now()}`;
+  const endpointConfigured=!!AUDIT_EXPORT_ENDPOINT_URL&&AUDIT_EXPORT_ENDPOINT_URL!=='EXTERNAL_ENDPOINT_URL_HERE';
+  if(endpointConfigured) logEvent('export_attempt','send_payload_to_external_endpoint',{endpointConfigured:true, localStorageKey:key});
+  else logEvent('export_skipped','external_endpoint_not_configured',{localStorageKey:key});
+
+  const payload=buildAuditExportPayload(exportReason);
+  try{localStorage.setItem(key, JSON.stringify(payload));}catch(e){}
+
+  if(!endpointConfigured){
+    return {ok:false, skipped:true, localStorageKey:key};
+  }
+
+  try{
+    await fetch(AUDIT_EXPORT_ENDPOINT_URL,{
+      method:'POST',
+      mode:AUDIT_EXPORT_REQUEST_MODE,
+      headers:AUDIT_EXPORT_REQUEST_MODE==='no-cors'?{}:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload),
+      keepalive:true
+    });
+    logEvent('export_success','external_endpoint_post_completed',{localStorageKey:key});
+    return {ok:true, localStorageKey:key};
+  }catch(error){
+    logEvent('export_error','external_endpoint_post_failed',{message:error.message, localStorageKey:key});
+    return {ok:false, error, localStorageKey:key};
+  }
+}
+
+// Qualtrics redirect: replace QUALTRICS_REDIRECT_URL_HERE with the real study completion link.
+function redirectToQualtrics(){
+  if(!QUALTRICS_REDIRECT_URL||QUALTRICS_REDIRECT_URL==='QUALTRICS_REDIRECT_URL_HERE'){
+    alert('The Qualtrics redirect URL has not been configured yet. Replace QUALTRICS_REDIRECT_URL_HERE in the code before deployment.');
+    return;
+  }
+  window.location.href=QUALTRICS_REDIRECT_URL;
+}
 
 // ════════════════════════════════════════════════════════════════
 // NAVIGATION
 // ════════════════════════════════════════════════════════════════
 function goEntry(){
+  if(currentPageName!=='Landing') logEvent('navigation','exit_to_landing',{from:currentPageName});
+  currentPageName='Landing';
   document.getElementById('entry').style.display='flex';
   document.getElementById('app').style.display='none';
 }
 function startAudit(){
+  prolificId=getProlificIdInputValue();
+  if(!prolificId){
+    currentPageName='Landing';
+    logEvent('validation_error','start_without_prolific_id',{field:'prolific_id'});
+    showProlificIdError();
+    return;
+  }
+  auditLogs=[];
+  sessionStartTime=Date.now();
+  logEvent('start','start_task',{prolificId});
   document.getElementById('entry').style.display='none';
   document.getElementById('app').style.display='flex';
   flaggedRows=new Set(); activeFilters={}; events=[]; currentEventId=null;
-  nextEventId=1; nextMetricId=1; sessionStartTime=null;
+  nextEventId=1; nextMetricId=1;
   s3ActiveTab='library'; s3SelectedMetricId=null;
   // Reset dashboard state
   dbActiveMetric=''; dbCheckedFeatures=new Set();
   dbSubgroupSel={}; dbOpenPanels=new Set(); dbTiles=[]; dbNextTileId=1;
   dbOvActiveCard='';
-  bmReset(); sessionStartTime=null;
+  bmReset();
   initStep1(); goStep(1);
 }
 function goStep(n){
+  const nextPageName=getStepName(n);
+  const fromPageName=currentPageName;
   document.querySelectorAll('.step-page').forEach(p=>p.classList.remove('show'));
   const pageId = n==='1b' ? 'step1b' : n==='1c' ? 'step1c' : 'step'+n;
   const el = document.getElementById(pageId);
@@ -1525,12 +1697,15 @@ function goStep(n){
   if(n==='1b') initStep1b();
   if(n==='1c') initStep1c();
   if(n===4){ if(!sessionStartTime) sessionStartTime=Date.now(); initMetricsSummary(); }
+  currentPageName=nextPageName;
+  logEvent(n===4?'summary_view':'navigation','go_to_step',{from:fromPageName,to:nextPageName,step:n});
 }
 
 // ── Metric dropdown (library tab) ──
 function bmOnMetricDropdownChange(){
   const sel=document.getElementById('bm-metric-dropdown-sel');
   bmMetricId=sel?.value||'';
+  logEvent('metric_option_change','guided_metric_selected',{metricId:bmMetricId,metricName:BM_METRICS.find(m=>m.id===bmMetricId)?.name||null});
   bmUpdateCriterion(); bmUpdatePreview(); bmUpdateSaveBtn();
 }
 
@@ -1538,11 +1713,13 @@ function bmOnMetricDropdownChange(){
 let bmTopTab = 'scaff'; // 'scaff' | 'recorded'
 
 function bmSetTopTab(tab){
+  const previous=bmTopTab;
   bmTopTab=tab;
   document.getElementById('bm-top-tab-scaff')?.classList.toggle('active',tab==='scaff');
   document.getElementById('bm-top-tab-recorded')?.classList.toggle('active',tab==='recorded');
   document.getElementById('bm-scaff-panel').style.display=tab==='scaff'?'block':'none';
   document.getElementById('bm-recorded-panel').style.display=tab==='recorded'?'block':'none';
+  if(previous!==tab) logEvent('tab_change','step3_tab_clicked',{from:previous,to:tab});
 }
 
 // ── Recorded concern readiness ──
@@ -1561,7 +1738,11 @@ function bmUpdateOwnReady(){
 
 // ── Save recorded concern ──
 function bmSaveOwn(){
-  const btn=document.getElementById('bm-own-save-btn');if(btn?.disabled)return;
+  const btn=document.getElementById('bm-own-save-btn');
+  if(btn?.disabled){
+    logEvent('validation_error','save_recorded_concern_blocked',{reason:'required_fields_missing'});
+    return;
+  }
   const ownName=(document.getElementById('bm-own-name')?.value||'').trim();
   const ownWhat=(document.getElementById('bm-own-what')?.value||'').trim();
   const ownCat=(document.getElementById('bm-own-category')?.value||'').trim();
@@ -1571,8 +1752,9 @@ function bmSaveOwn(){
   const txt=(document.getElementById('bm-own-text')?.value||'').trim();
   if(!ownName||!txt) return;
 
-  bmSavedMetrics.push({
+  const savedConcern={
     id:bmNextId++, type:'own', mode:'recorded',
+    prolificId,
     feature:null, groups:[],
     metricId:null, metricName:'Recorded concern',
     threshold:null, thresholdNotes:null,
@@ -1580,7 +1762,9 @@ function bmSaveOwn(){
     ownText:txt, ownName, ownWhat, ownCategory:ownCat,
     ownSeverity:ownSev, ownLikelihood:ownLik, ownWho,
     cohorts:null
-  });
+  };
+  bmSavedMetrics.push(savedConcern);
+  logEvent('save','save_recorded_concern',{savedConcern});
 
   // Clear own fields
   ['bm-own-name','bm-own-what','bm-own-category','bm-own-severity','bm-own-likelihood','bm-own-who','bm-own-text'].forEach(id=>{
@@ -1797,10 +1981,15 @@ function dbRenderOverview(){
     </div>`;
   }).join('');
 }
-function dbToggleOvCard(id){dbOvActiveCard=dbOvActiveCard===id?'':id;dbRenderOverview();}
+function dbToggleOvCard(id){
+  dbOvActiveCard=dbOvActiveCard===id?'':id;
+  logEvent('click','performance_overview_card_clicked',{cardId:id,activeCard:dbOvActiveCard});
+  dbRenderOverview();
+}
 
 function dbOnMetricChange(){
   dbActiveMetric=document.getElementById('db-metric-select')?.value||'';
+  logEvent('metric_option_change','performance_metric_selected',{metricId:dbActiveMetric,metric:DB_METRICS[dbActiveMetric]||null});
   const def=document.getElementById('db-metric-desc');
   if(def){if(dbActiveMetric&&DB_METRICS[dbActiveMetric]){def.textContent=DB_METRICS[dbActiveMetric].plain;def.style.color='';def.style.fontWeight='';}else{def.textContent='Select a metric to see what it measures.';def.style.color='#DC2626';def.style.fontWeight='700';}}
   dbRenderTiles();
@@ -1847,10 +2036,12 @@ function dbToggleFeat(col, nowChecked){
     dbOpenPanels.delete(col);
     dbTiles=dbTiles.filter(t=>t.col!==col);
   }
+  logEvent('metric_option_change','performance_feature_toggled',{feature:col,checked:nowChecked,selectedFeatures:Array.from(dbCheckedFeatures)});
   dbRenderSidebar(); dbRenderTiles();
 }
 function dbTogglePanel(col){
   if(dbOpenPanels.has(col)) dbOpenPanels.delete(col); else dbOpenPanels.add(col);
+  logEvent('click','performance_feature_panel_toggled',{feature:col,open:dbOpenPanels.has(col)});
   dbRenderSidebar();
 }
 function dbToggleSg(col, val, checked){
@@ -1859,6 +2050,7 @@ function dbToggleSg(col, val, checked){
   if(checked) s.add(val); else s.delete(val);
   const groups=dbGetActiveGroups(col);
   dbTiles=dbTiles.map(t=>t.col===col?{...t,subgroups:groups}:t);
+  logEvent('filter','performance_subgroup_toggled',{feature:col,value:val,checked,activeGroups:groups});
   dbRenderSidebar(); dbRenderTiles();
 }
 function dbGetActiveGroups(col){
@@ -2186,35 +2378,43 @@ function bmRenderCohorts(){
 function bmAddCohort(){
   const names=['A','B','C','D','E','F'];
   const name=`Cohort ${names[bmCohorts.length]||bmNextCohortId}`;
-  bmCohorts.push({id:bmNextCohortId++, name, conditions:[{feat:'',val:''}]});
+  const cohort={id:bmNextCohortId++, name, conditions:[{feat:'',val:''}]};
+  bmCohorts.push(cohort);
+  logEvent('metric_option_change','add_cohort',{cohortId:cohort.id,cohortName:cohort.name});
   bmRenderCohorts(); bmUpdatePreview(); bmUpdateSaveBtn();
 }
 function bmRemoveCohort(id){
+  logEvent('metric_option_change','remove_cohort',{cohortId:id});
   bmCohorts=bmCohorts.filter(c=>c.id!==id);
   bmRenderCohorts(); bmUpdateResult(); bmUpdatePreview(); bmUpdateSaveBtn();
 }
 function bmRenameCohort(id,name){
   const c=bmCohorts.find(x=>x.id===id);if(c) c.name=name;
+  logEvent('metric_option_change','rename_cohort',{cohortId:id,name});
   bmUpdatePreview();
 }
 function bmAddCond(cohortId){
   const c=bmCohorts.find(x=>x.id===cohortId);if(!c)return;
   c.conditions.push({feat:'',val:''});
+  logEvent('metric_option_change','add_cohort_condition',{cohortId});
   bmRenderCohorts();
 }
 function bmRemoveCond(cohortId,ci){
   const c=bmCohorts.find(x=>x.id===cohortId);if(!c)return;
+  logEvent('metric_option_change','remove_cohort_condition',{cohortId,conditionIndex:ci,condition:c.conditions[ci]||null});
   c.conditions.splice(ci,1);
   bmRenderCohorts(); bmUpdateResult(); bmUpdatePreview(); bmUpdateSaveBtn();
 }
 function bmSetCondFeat(cohortId,ci,feat){
   const c=bmCohorts.find(x=>x.id===cohortId);if(!c)return;
   c.conditions[ci]={feat,val:''};
+  logEvent('metric_option_change','set_cohort_condition_feature',{cohortId,conditionIndex:ci,feature:feat});
   bmRenderCohorts(); bmUpdateResult(); bmUpdatePreview(); bmUpdateSaveBtn();
 }
 function bmSetCondVal(cohortId,ci,val){
   const c=bmCohorts.find(x=>x.id===cohortId);if(!c)return;
   c.conditions[ci].val=val;
+  logEvent('metric_option_change','set_cohort_condition_value',{cohortId,conditionIndex:ci,value:val,condition:c.conditions[ci]});
   bmRenderCohorts(); bmUpdateResult(); bmUpdatePreview(); bmUpdateSaveBtn();
 }
 function bmUpdateCohortWarn(){
@@ -2513,7 +2713,11 @@ function bmUpdateSaveBtn(){
 
 // ── Save (scaffolding / lib metrics only) ──
 function bmSave(){
-  const btn=document.getElementById('bm-save-btn');if(btn?.disabled)return;
+  const btn=document.getElementById('bm-save-btn');
+  if(btn?.disabled){
+    logEvent('validation_error','save_guided_metric_blocked',{reason:'required_fields_missing'});
+    return;
+  }
   const m=BM_METRICS.find(x=>x.id===bmMetricId);if(!m)return;
   const readyCohorts=bmCohorts.filter(c=>c.conditions.some(x=>x.feat&&x.val));
   const saveGroups=readyCohorts.map(c=>bmGetCohortLabel(c));
@@ -2522,8 +2726,9 @@ function bmSave(){
   bmThreshold=(document.getElementById('bm-threshold')?.value||'').trim();
   const thresholdNotes=(document.getElementById('bm-threshold-notes')?.value||'').trim();
   const datasetResult=bmBuildDatasetResult(readyCohorts,m,bmThreshold);
-  bmSavedMetrics.push({
+  const savedMetric={
     id:bmNextId++, type:'lib', mode:'intersect',
+    prolificId,
     feature:'Intersectional', groups:saveGroups,
     metricId:bmMetricId, metricName:m.name,
     threshold:bmThreshold||null,
@@ -2531,7 +2736,9 @@ function bmSave(){
     result:datasetResult,
     criterionText, ownText:null,
     cohorts:readyCohorts.map(c=>({...c,conditions:[...c.conditions]}))
-  });
+  };
+  bmSavedMetrics.push(savedMetric);
+  logEvent('save','save_guided_metric',{savedMetric});
 
   // Clear scaffolding fields only
   bmMetricId=''; bmThreshold=''; bmCohorts=[]; bmMode='intersect';
@@ -2567,11 +2774,14 @@ function bmAddAnother(){
   const thrNotes=document.getElementById('bm-threshold-notes');if(thrNotes)thrNotes.value='';
   const msel=document.getElementById('bm-metric-dropdown-sel');if(msel)msel.value='';
   const def=document.getElementById('bm-lib-metric-def');if(def){def.style.display='none';}
+  logEvent('metric_option_change','add_another_metric_clicked',{});
   initStep1c();
 }
 
 function bmRemoveSaved(id){
+  const removed=bmSavedMetrics.find(m=>m.id===id)||null;
   bmSavedMetrics=bmSavedMetrics.filter(m=>m.id!==id);
+  logEvent('remove','remove_saved_metric_or_concern',{id,removed});
   bmRenderSaved();
 }
 
@@ -2654,6 +2864,7 @@ function renderColSelectorList(){
 }
 function toggleFeature(id,checked){
   if(checked) selectedFeatureIds.add(id); else selectedFeatureIds.delete(id);
+  logEvent('data_view_change','toggle_dataset_column',{featureId:id,checked});
   applyFeatureSelection();
   // Scroll the table into view so user sees the change
   const tableWrap=document.querySelector('.data-table-wrap');
@@ -2722,11 +2933,12 @@ function openColFilter(col,thEl,e){
 }
 function applyColFilter(col,val){
   activeFilters[col]=val;
+  logEvent('filter','apply_dataset_filter',{column:col,value:val,activeFilters:{...activeFilters}});
   const popup=document.getElementById('col-filter-popup'); if(popup) popup.style.display='none';
   activeFilterCol=null; renderTableHead(); rebuildFilterBar(); renderTable();
 }
-function clearColFilter(col){activeFilters[col]='All';renderTableHead();rebuildFilterBar();renderTable();}
-function clearAllFilters(){Object.keys(activeFilters).forEach(k=>activeFilters[k]='All');const p=document.getElementById('col-filter-popup');if(p)p.style.display='none';activeFilterCol=null;renderTableHead();rebuildFilterBar();renderTable();}
+function clearColFilter(col){activeFilters[col]='All';logEvent('filter','clear_dataset_filter',{column:col,activeFilters:{...activeFilters}});renderTableHead();rebuildFilterBar();renderTable();}
+function clearAllFilters(){Object.keys(activeFilters).forEach(k=>activeFilters[k]='All');logEvent('filter','clear_all_dataset_filters',{});const p=document.getElementById('col-filter-popup');if(p)p.style.display='none';activeFilterCol=null;renderTableHead();rebuildFilterBar();renderTable();}
 document.addEventListener('click',()=>{const p=document.getElementById('col-filter-popup');if(p&&p.style.display!=='none'){p.style.display='none';activeFilterCol=null;activeModalFilterCol=null;}});
 
 function renderTable(){
@@ -2754,6 +2966,7 @@ function renderTable(){
 function toggleFlag(idx,e){
   e.stopPropagation();
   if(flaggedRows.has(idx)) flaggedRows.delete(idx); else flaggedRows.add(idx);
+  logEvent('data_view_change','toggle_flagged_row',{rowIndex:idx,flagged:flaggedRows.has(idx),row:ROWS[idx]||null});
   renderTable(); updateS3FlaggedPanel();
 }
 
@@ -2829,12 +3042,14 @@ function goToStep3FromStep2(){
   const g=id=>document.getElementById(id)?.value.trim()||'';
   const name=g('h-name')||'Untitled event';
   const ev=getCurrentEvent();
-  const data={name,what:g('h-what'),category:g('h-category'),severity:g('h-severity'),likelihood:g('h-likelihood'),aiAction:g('h-ai-action'),who:g('h-who'),why:g('h-why')};
+  const data={prolificId,name,what:g('h-what'),category:g('h-category'),severity:g('h-severity'),likelihood:g('h-likelihood'),aiAction:g('h-ai-action'),who:g('h-who'),why:g('h-why')};
   if(ev&&ev.metrics.length===0){Object.assign(ev,data);}
   else{const ne={id:nextEventId++,...data,metrics:[]};events.push(ne);currentEventId=ne.id;}
+  logEvent('save','legacy_event_created_or_updated',{eventId:currentEventId,data});
   goStep(3);
 }
 function startNewEvent(){
+  logEvent('navigation','legacy_start_new_event_clicked',{from:currentPageName});
   clearStep2Fields(); currentEventId=null; goStep(2);
 }
 function getCurrentEvent(){return events.find(e=>e.id===currentEventId)||null;}
@@ -2871,6 +3086,7 @@ function toggleCfx(){
 
 function onAttrChange(){
   const attr=document.getElementById('s3-demog-attr')?.value;
+  logEvent('metric_option_change','legacy_metric_attribute_selected',{attribute:attr});
   const panel=document.getElementById('s3-group-panel');
   const rr=document.getElementById('s3-run-result');
   if(rr){rr.style.display='none';rr.innerHTML='';}
@@ -2889,12 +3105,14 @@ function applySuggestion(a,b){
   if(ga)ga.value=a; if(gb)gb.value=b;
   const attr=document.getElementById('s3-demog-attr')?.value;
   updateGroupCounts(attr);
+  logEvent('metric_option_change','legacy_metric_group_suggestion_applied',{attribute:attr,groupA:a,groupB:b});
   const rr=document.getElementById('s3-run-result');if(rr){rr.style.display='none';rr.innerHTML='';}
 }
 
 function onGroupChange(){
   const attr=document.getElementById('s3-demog-attr')?.value;
   updateGroupCounts(attr);
+  logEvent('metric_option_change','legacy_metric_groups_changed',{attribute:attr,groupA:document.getElementById('s3-group-a')?.value||'',groupB:document.getElementById('s3-group-b')?.value||''});
   const rr=document.getElementById('s3-run-result');if(rr){rr.style.display='none';rr.innerHTML='';}
 }
 
@@ -2933,11 +3151,13 @@ function initStep3(){
 }
 
 function setS3Tab(tab){
+  const previous=s3ActiveTab;
   s3ActiveTab=tab;
   document.getElementById('s3-library-panel').style.display=tab==='library'?'block':'none';
   document.getElementById('s3-custom-panel').style.display=tab==='custom'?'block':'none';
   document.getElementById('tab-library').classList.toggle('active',tab==='library');
   document.getElementById('tab-custom').classList.toggle('active',tab==='custom');
+  if(previous!==tab) logEvent('tab_change','legacy_step3_tab_clicked',{from:previous,to:tab});
 }
 
 function updateS3Banner(){
@@ -2966,6 +3186,7 @@ function populateMetricDropdown(){
 }
 
 function onMetricDropdownChange(id){
+  logEvent('metric_option_change','legacy_metric_selected',{metricId:id,metricName:METRIC_LIBRARY.find(m=>m.id===id)?.name||null});
   const infoEl=document.getElementById('s3-metric-info');
   const rr=document.getElementById('s3-run-result');
   if(rr){rr.style.display='none';rr.innerHTML='';}
@@ -2997,7 +3218,7 @@ function runMetricOnly(){
   const gb=document.getElementById('s3-group-b')?.value;
   const threshold=document.getElementById('s3-threshold')?.value||'';
   const rr=document.getElementById('s3-run-result');
-  const showErr=msg=>{if(rr){rr.style.display='block';rr.innerHTML=`<div class="warn-box">${escHtml(msg)}</div>`;}};
+  const showErr=msg=>{logEvent('validation_error','legacy_run_metric_blocked',{message:msg,metricId,demogAttr,groupA:ga,groupB:gb});if(rr){rr.style.display='block';rr.innerHTML=`<div class="warn-box">${escHtml(msg)}</div>`;}};
   if(!metricId){showErr('Please select a metric in Step 1.');return;}
   const metric=METRIC_LIBRARY.find(m=>m.id===metricId); if(!metric)return;
   if(!metric.isComputable){
@@ -3008,14 +3229,15 @@ function runMetricOnly(){
   if(!ga||!gb){showErr('Please select both Group A and Group B in Step 2.');return;}
   if(ga===gb){showErr('Group A and Group B must be different.');return;}
   const result=computeMetric(metric.computeId, demogAttr, ga, gb);
+  logEvent('metric_option_change','legacy_run_metric_analysis',{metricId,metricName:metric.name,demographicAttr:demogAttr,groupA:ga,groupB:gb,threshold,result});
   if(rr){rr.style.display='block';rr.innerHTML=renderMetricResult(result, threshold, metric.computeId);}
 }
 
 function saveMetric(){
   const ev=getCurrentEvent();
-  if(!ev){alert('Please complete Step 2 to create an event first.');return;}
+  if(!ev){logEvent('validation_error','legacy_save_metric_blocked',{reason:'no_event'});alert('Please complete Step 2 to create an event first.');return;}
   const metricId=document.getElementById('s3-metric-dropdown')?.value;
-  if(!metricId){alert('Please select a metric.');return;}
+  if(!metricId){logEvent('validation_error','legacy_save_metric_blocked',{reason:'missing_metric'});alert('Please select a metric.');return;}
   const metric=METRIC_LIBRARY.find(m=>m.id===metricId); if(!metric)return;
   const demogAttr=document.getElementById('s3-demog-attr')?.value||'';
   const ga=document.getElementById('s3-group-a')?.value||'';
@@ -3024,10 +3246,12 @@ function saveMetric(){
   const notes=document.getElementById('s3-notes')?.value.trim()||'';
   let computedResult=null;
   if(metric.isComputable&&demogAttr&&ga&&gb&&ga!==gb) computedResult=computeMetric(metric.computeId,demogAttr,ga,gb);
-  ev.metrics.push({id:nextMetricId++,type:metric.isComputable?'library_computable':'library_conceptual',
+  const savedMetric={id:nextMetricId++,prolificId,type:metric.isComputable?'library_computable':'library_conceptual',
     metricLibId:metric.id,metricName:metric.name,metricFamily:metric.family,metricDef:metric.definition,
     metricSource:metric.source,computeId:metric.computeId,demographicAttr:demogAttr||null,
-    groupA:ga||null,groupB:gb||null,threshold:threshold||null,notes:notes||null,computedResult});
+    groupA:ga||null,groupB:gb||null,threshold:threshold||null,notes:notes||null,computedResult};
+  ev.metrics.push(savedMetric);
+  logEvent('save','legacy_save_metric',{eventId:ev.id,savedMetric});
   // Reset form
   document.getElementById('s3-metric-dropdown').value='';
   const infoEl=document.getElementById('s3-metric-info');if(infoEl){infoEl.style.display='none';infoEl.innerHTML='';}
@@ -3072,8 +3296,10 @@ function checkCustomAdd(){
 function addCustomMetric(){
   const t=document.getElementById('s3-custom-text')?.value.trim(); if(!t) return;
   const c=document.getElementById('s3-conf-val')?.value||'';
-  const ev=getCurrentEvent(); if(!ev){alert('Please complete Step 2 to create an event first.');return;}
-  ev.metrics.push({id:nextMetricId++,type:'custom',metricName:'Custom observation',metricFamily:'',metricDef:'',narrative:t,confidence:c,computedResult:null});
+  const ev=getCurrentEvent(); if(!ev){logEvent('validation_error','legacy_save_custom_observation_blocked',{reason:'no_event'});alert('Please complete Step 2 to create an event first.');return;}
+  const savedConcern={id:nextMetricId++,prolificId,type:'custom',metricName:'Custom observation',metricFamily:'',metricDef:'',narrative:t,confidence:c,computedResult:null};
+  ev.metrics.push(savedConcern);
+  logEvent('save','legacy_save_custom_observation',{eventId:ev.id,savedConcern});
   updateS3Banner();
   // Clear form fields
   const ct=document.getElementById('s3-custom-text');if(ct)ct.value='';
@@ -3195,12 +3421,16 @@ function renderMetricItem4(m, i){
 }
 
 function removeEvent(id){
+  const removed=events.find(e=>e.id===id)||null;
   events=events.filter(e=>e.id!==id);
   if(currentEventId===id) currentEventId=events.length?events[events.length-1].id:null;
+  logEvent('remove','remove_legacy_event',{id,removed});
   renderCriteriaList(); renderSummary();
 }
 function removeMetric(id){
+  const removed=events.flatMap(e=>e.metrics||[]).find(m=>m.id===id)||null;
   events.forEach(e=>{e.metrics=e.metrics.filter(m=>m.id!==id);});
+  logEvent('remove','remove_legacy_metric_or_concern',{id,removed});
   renderCriteriaList(); renderSummary();
 }
 function renderSummary(){
@@ -3219,13 +3449,18 @@ function renderSummary(){
     </div>
     ${ran.length?`<div style="margin-top:10px;font-size:12px;color:var(--mid)">${ran.length} metric${ran.length!==1?'s':''} computed from live data.</div>`:''}`;
 }
-function finishSession(){
+async function finishSession(){
   const e=sessionStartTime?Math.round((Date.now()-sessionStartTime)/1000):0;
   const t=Math.floor(e/60)>0?`${Math.floor(e/60)} min ${e%60} sec`:`${e%60} sec`;
-  const allM=events.flatMap(ev=>ev.metrics);
-  if(confirm(`Session complete.\n\nTime: ${t}\nEvents: ${events.length} · Metrics: ${allM.length}\n\nReturn to start?`)){
-    sessionStartTime=null;events=[];currentEventId=null;nextEventId=1;nextMetricId=1;flaggedRows=new Set();goEntry();
-  }
+  const savedCount=(bmSavedMetrics||[]).length;
+  const allLegacyMetrics=events.flatMap(ev=>ev.metrics);
+  logEvent('finish','finish_clicked',{duration:t,savedMetrics:savedCount,legacyEvents:events.length,legacyMetrics:allLegacyMetrics.length});
+  const finishButtons=document.querySelectorAll('button[onclick="finishSession()"]');
+  finishButtons.forEach(btn=>{btn.disabled=true;btn.textContent='Saving...';});
+  await exportAuditData('finish');
+  logEvent('redirect','qualtrics_redirect_started',{urlConfigured:QUALTRICS_REDIRECT_URL!=='QUALTRICS_REDIRECT_URL_HERE'});
+  redirectToQualtrics();
+  finishButtons.forEach(btn=>{btn.disabled=false;btn.textContent='Finish Auditing ✓';});
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -3236,12 +3471,14 @@ let modalFilters={}, activeModalFilterCol=null;
 function openDatasetModal(){
   modalFilters={};
   activeModalFilterCol=null;
+  logEvent('data_view_change','open_full_dataset_modal',{});
   renderModalFilterBar(); renderModalTable();
   document.getElementById('dataset-modal').style.display='block';
   document.body.style.overflow='hidden';
 }
 function closeDatasetModal(e){
   if(e&&e.target!==document.getElementById('dataset-modal')&&e.type==='click') return;
+  logEvent('data_view_change','close_full_dataset_modal',{trigger:e?.type||'button'});
   document.getElementById('dataset-modal').style.display='none';
   document.body.style.overflow='';
 }
@@ -3292,11 +3529,12 @@ function openModalColFilter(col,thEl,e){
 }
 function applyModalColFilter(col,val){
   modalFilters[col]=val;
+  logEvent('filter','apply_full_dataset_filter',{column:col,value:val,modalFilters:{...modalFilters}});
   const popup=document.getElementById('col-filter-popup'); if(popup) popup.style.display='none';
   activeModalFilterCol=null; renderModalFilterBar(); renderModalTable();
 }
-function clearModalColFilter(col){modalFilters[col]='All';renderModalFilterBar();renderModalTable();}
-function clearAllModalFilters(){Object.keys(modalFilters).forEach(k=>modalFilters[k]='All');const p=document.getElementById('col-filter-popup');if(p)p.style.display='none';activeModalFilterCol=null;renderModalFilterBar();renderModalTable();}
+function clearModalColFilter(col){modalFilters[col]='All';logEvent('filter','clear_full_dataset_filter',{column:col,modalFilters:{...modalFilters}});renderModalFilterBar();renderModalTable();}
+function clearAllModalFilters(){Object.keys(modalFilters).forEach(k=>modalFilters[k]='All');logEvent('filter','clear_all_full_dataset_filters',{});const p=document.getElementById('col-filter-popup');if(p)p.style.display='none';activeModalFilterCol=null;renderModalFilterBar();renderModalTable();}
 function renderModalTable(){
   const visibleCols=getModalColumns();
   const allRows=getModalFilteredRows();
@@ -3319,6 +3557,26 @@ function renderModalTable(){
     return `<tr>${cells}</tr>`;
   }).join('');
 }
+
+// Logging setup for form controls that do not have dedicated click/change handlers above.
+function attachAuditInteractionLogging(){
+  const bindChange=(id,action,detailBuilder)=> {
+    const el=document.getElementById(id);
+    if(!el) return;
+    el.addEventListener('change',()=>logEvent('metric_option_change',action,detailBuilder?detailBuilder(el):{id,value:el.value}));
+  };
+  bindChange('bm-threshold','guided_metric_threshold_changed',el=>({threshold:el.value}));
+  bindChange('bm-threshold-notes','guided_metric_threshold_notes_changed',el=>({notes:el.value}));
+  ['bm-own-name','bm-own-what','bm-own-category','bm-own-severity','bm-own-likelihood','bm-own-who','bm-own-text'].forEach(id=>{
+    bindChange(id,'recorded_concern_field_changed',el=>({field:id,value:el.value}));
+  });
+  bindChange('s3-threshold','legacy_metric_threshold_changed',el=>({threshold:el.value}));
+  bindChange('s3-notes','legacy_metric_notes_changed',el=>({notes:el.value}));
+  bindChange('s3-custom-text','legacy_custom_observation_changed',el=>({text:el.value}));
+}
+
+attachAuditInteractionLogging();
+updateProlificIdReady();
 </script>
 </body>
 </html>
