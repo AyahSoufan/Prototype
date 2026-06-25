@@ -1558,7 +1558,7 @@ function getStepName(n){
 const AUDIT_EXPORT_ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbx-pGQuZsKFqeVGXOOR5nsf7RBzbROilu-YN8sCt_xHmKLVo7OEQbXbvTM1Y1lnTtad/exec';
 
 const AUDIT_EXPORT_REQUEST_MODE = 'no-cors'; // Change to 'no-cors' for many Google Apps Script / Google Forms endpoints.
-const QUALTRICS_REDIRECT_URL = 'https://strathsci.qualtrics.com/jfe/form/SV_1NtJ4d6fQfVCQse';
+const QUALTRICS_REDIRECT_URL = 'https://strathsci.qualtrics.com/jfe/form/SV_86qoyIcxKqeErIO';
 
 function buildAuditExportPayload(exportReason='manual'){
   const allLegacyMetrics=events.flatMap(ev=>(ev.metrics||[]).map(metric=>({eventId:ev.id,eventName:ev.name,...metric})));
