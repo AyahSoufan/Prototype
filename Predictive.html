@@ -1580,6 +1580,7 @@ function getStepName(n){
 
 // Data export/storage for GitHub Pages: add your Apps Script, Firebase, Supabase, Google Forms, or custom API URL here.
 const AUDIT_EXPORT_ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbx-pGQuZsKFqeVGXOOR5nsf7RBzbROilu-YN8sCt_xHmKLVo7OEQbXbvTM1Y1lnTtad/exec';
+
 const AUDIT_EXPORT_REQUEST_MODE = 'no-cors'; // Change to 'no-cors' for many Google Apps Script / Google Forms endpoints.
 const QUALTRICS_REDIRECT_URL = 'https://strathsci.qualtrics.com/jfe/form/SV_1NtJ4d6fQfVCQse';
 
@@ -1617,11 +1618,16 @@ async function exportAuditData(exportReason='finish'){
   }
 
   try{
+    const formBody = new URLSearchParams();
+    formBody.set('payload', JSON.stringify(payload));
+    formBody.set('prolificId', prolificId||'');
+    formBody.set('exportReason', exportReason);
+
     await fetch(AUDIT_EXPORT_ENDPOINT_URL,{
       method:'POST',
       mode:AUDIT_EXPORT_REQUEST_MODE,
-      headers:AUDIT_EXPORT_REQUEST_MODE==='no-cors'?{}:{'Content-Type':'application/json'},
-      body:JSON.stringify(payload)
+      headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
+      body:formBody.toString()
     });
     logEvent('export_success','external_endpoint_post_completed',{localStorageKey:key});
     return {ok:true, localStorageKey:key};
