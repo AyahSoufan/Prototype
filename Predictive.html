@@ -473,12 +473,12 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 
 <!-- ENTRY -->
 <div id="entry">
-  <div class="entry-title">AI review task</div>
-  <div class="entry-heading">Welcome to the AI Review Task</div>
+  <div class="entry-title">AI Auditing task</div>
+  <div class="entry-heading">AI Risk Prediction System</div>
   <div class="entry-card">
     <div class="entry-card-body">
       <div class="entry-info-section">
-        <div class="entry-info-text">In this study, you will examine a dataset and an AI system and tell us what you think should be checked, measured, or reviewed to determine whether the AI is behaving appropriately.<br><br>You do not need any technical or AI expertise to take part. We are interested in your judgement and observations.</div>
+        <div class="entry-info-text">In this study, you will examine a dataset and an AI system and tell us what you think should be checked, measured, reviewed, or audited to determine whether the AI is behaving appropriately.<br><br>You do not need any technical or AI expertise to take part. We are interested in your judgement and observations.</div>
       </div>
       <hr class="entry-divider">
       <div class="entry-info-section">
@@ -499,9 +499,13 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       <div class="entry-info-section">
         <div class="entry-info-label">What is your task?</div>
         <div class="entry-info-text">
-          Your role is to act as an <strong>AI reviewer</strong>.<br><br>
-          Imagine that you have been asked:<br><br>
-          <em>"How should we check whether this AI system is working fairly, accurately, and appropriately?"</em><br><br>
+          <strong>Your role</strong> 
+          Imagine that you have been asked to review an AI system before it is used in the real world. 
+          <br>Your job is to decide:<br>
+          Is there anything that looks unusual?<br>
+            Are there any groups that should be compared?<br>
+            Are there any outcomes that should be measured?<br>
+            Are there any concerns that deserve further investigation?<br><br>
           To answer this question, you will:
           <ul class="entry-steps">
             <li><strong>Step 1: Observe the Data</strong><br>Look through the dataset and examine the information available about individuals and the AI predictions.</li>
@@ -1617,8 +1621,7 @@ async function exportAuditData(exportReason='finish'){
       method:'POST',
       mode:AUDIT_EXPORT_REQUEST_MODE,
       headers:AUDIT_EXPORT_REQUEST_MODE==='no-cors'?{}:{'Content-Type':'application/json'},
-      body:JSON.stringify(payload),
-      keepalive:true
+      body:JSON.stringify(payload)
     });
     logEvent('export_success','external_endpoint_post_completed',{localStorageKey:key});
     return {ok:true, localStorageKey:key};
@@ -1628,13 +1631,26 @@ async function exportAuditData(exportReason='finish'){
   }
 }
 
-// Qualtrics redirect: replace QUALTRICS_REDIRECT_URL_HERE with the real study completion link.
+// Qualtrics redirect: sends Prolific ID to Qualtrics as URL query parameters.
+function getQualtricsRedirectUrl(){
+  const id=prolificId||getProlificIdInputValue()||'';
+  try{
+    const url=new URL(QUALTRICS_REDIRECT_URL);
+    url.searchParams.set('PROLIFIC_PID', id);
+    url.searchParams.set('prolificId', id);
+    url.searchParams.set('auditCompleted', '1');
+    return url.toString();
+  }catch(e){
+    const joiner=QUALTRICS_REDIRECT_URL.includes('?')?'&':'?';
+    return QUALTRICS_REDIRECT_URL+joiner+'PROLIFIC_PID='+encodeURIComponent(id)+'&prolificId='+encodeURIComponent(id)+'&auditCompleted=1';
+  }
+}
 function redirectToQualtrics(){
   if(!QUALTRICS_REDIRECT_URL||QUALTRICS_REDIRECT_URL==='QUALTRICS_REDIRECT_URL_HERE'){
     alert('The Qualtrics redirect URL has not been configured yet. Replace QUALTRICS_REDIRECT_URL_HERE in the code before deployment.');
     return;
   }
-  window.location.href=QUALTRICS_REDIRECT_URL;
+  window.location.href=getQualtricsRedirectUrl();
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -3457,8 +3473,8 @@ async function finishSession(){
   logEvent('finish','finish_clicked',{duration:t,savedMetrics:savedCount,legacyEvents:events.length,legacyMetrics:allLegacyMetrics.length});
   const finishButtons=document.querySelectorAll('button[onclick="finishSession()"]');
   finishButtons.forEach(btn=>{btn.disabled=true;btn.textContent='Saving...';});
+  logEvent('redirect','qualtrics_redirect_started',{url:getQualtricsRedirectUrl(),urlConfigured:QUALTRICS_REDIRECT_URL!=='QUALTRICS_REDIRECT_URL_HERE'});
   await exportAuditData('finish');
-  logEvent('redirect','qualtrics_redirect_started',{urlConfigured:QUALTRICS_REDIRECT_URL!=='QUALTRICS_REDIRECT_URL_HERE'});
   redirectToQualtrics();
   finishButtons.forEach(btn=>{btn.disabled=false;btn.textContent='Finish Auditing ✓';});
 }
