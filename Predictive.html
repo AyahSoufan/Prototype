@@ -478,8 +478,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
   <div class="entry-card">
     <div class="entry-card-body">
       <div class="entry-info-section">
-        <div class="entry-info-text">In this study, you will examine a dataset and an AI system and tell us what you think should be checked, measured, reviewed, or audited to determine whether the AI is behaving appropriately.<br>
-          <!-- <br>You do not need any technical or AI expertise to take part. We are interested in your judgement and observations.</div> -->
+        <div class="entry-info-text">In this study, you will examine a dataset and an AI system and tell us what you think should be checked, measured, reviewed, or audited to determine whether the AI is behaving appropriately.</div>
       </div>
       <hr class="entry-divider">
       <div class="entry-info-section">
@@ -1679,30 +1678,45 @@ function goEntry(){
   if(currentPageName!=='Landing') logEvent('navigation','exit_to_landing',{from:currentPageName});
   currentPageName='Landing';
   document.getElementById('entry').style.display='flex';
+  document.getElementById('app').classList.remove('show');
   document.getElementById('app').style.display='none';
 }
 function startAudit(){
-  prolificId=getProlificIdInputValue();
-  if(!prolificId){
+  try{
+    prolificId=getProlificIdInputValue();
+    if(!prolificId){
+      currentPageName='Landing';
+      logEvent('validation_error','start_without_prolific_id',{field:'prolific_id'});
+      showProlificIdError();
+      return;
+    }
+    auditLogs=[];
+    sessionStartTime=Date.now();
+    logEvent('start','start_task',{prolificId});
+    document.getElementById('entry').style.display='none';
+    document.getElementById('app').classList.add('show');
+    document.getElementById('app').style.display='flex';
+    flaggedRows=new Set(); activeFilters={}; events=[]; currentEventId=null;
+    nextEventId=1; nextMetricId=1;
+    s3ActiveTab='library'; s3SelectedMetricId=null;
+    // Reset dashboard state
+    dbActiveMetric=''; dbCheckedFeatures=new Set();
+    dbSubgroupSel={}; dbOpenPanels=new Set(); dbTiles=[]; dbNextTileId=1;
+    dbOvActiveCard='';
+    bmReset();
+    initStep1(); goStep(1);
+  }catch(error){
+    console.error(error);
     currentPageName='Landing';
-    logEvent('validation_error','start_without_prolific_id',{field:'prolific_id'});
-    showProlificIdError();
-    return;
+    document.getElementById('entry').style.display='flex';
+    document.getElementById('app').classList.remove('show');
+    document.getElementById('app').style.display='none';
+    const err=document.getElementById('prolific-id-error');
+    if(err){
+      err.style.display='block';
+      err.textContent='Something went wrong while starting the audit: '+(error&&error.message?error.message:String(error));
+    }
   }
-  auditLogs=[];
-  sessionStartTime=Date.now();
-  logEvent('start','start_task',{prolificId});
-  document.getElementById('entry').style.display='none';
-  document.getElementById('app').style.display='flex';
-  flaggedRows=new Set(); activeFilters={}; events=[]; currentEventId=null;
-  nextEventId=1; nextMetricId=1;
-  s3ActiveTab='library'; s3SelectedMetricId=null;
-  // Reset dashboard state
-  dbActiveMetric=''; dbCheckedFeatures=new Set();
-  dbSubgroupSel={}; dbOpenPanels=new Set(); dbTiles=[]; dbNextTileId=1;
-  dbOvActiveCard='';
-  bmReset();
-  initStep1(); goStep(1);
 }
 function goStep(n){
   const nextPageName=getStepName(n);
