@@ -478,7 +478,8 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
   <div class="entry-card">
     <div class="entry-card-body">
       <div class="entry-info-section">
-        <div class="entry-info-text">In this study, you will examine a dataset and an AI system and tell us what you think should be checked, measured, reviewed, or audited to determine whether the AI is behaving appropriately.<br><br>You do not need any technical or AI expertise to take part. We are interested in your judgement and observations.</div>
+        <div class="entry-info-text">In this study, you will examine a dataset and an AI system and tell us what you think should be checked, measured, reviewed, or audited to determine whether the AI is behaving appropriately.<br>
+          <!-- <br>You do not need any technical or AI expertise to take part. We are interested in your judgement and observations.</div> -->
       </div>
       <hr class="entry-divider">
       <div class="entry-info-section">
@@ -494,30 +495,6 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       <div class="entry-info-section">
         <div class="entry-info-label">What data is the AI using?</div>
         <div class="entry-info-text">The dataset contains information about people who were arrested in <strong>Broward County, Florida (USA)</strong>.<br><br>Each record contains information that was available when the AI generated its prediction, such as demographic information and criminal history information.<br><br>The dataset also includes the actual outcome, allowing us to compare what the AI predicted with what later happened.<br><br>For this study, you will work with a sample of records drawn from the original dataset.</div>
-      </div>
-      <hr class="entry-divider">
-      <div class="entry-info-section">
-        <div class="entry-info-label">What is your task?</div>
-        <div class="entry-info-text">
-          <strong>Your role</strong> 
-          Imagine that you have been asked to review an AI system before it is used in the real world. 
-          <br>Your job is to decide:<br>
-          Is there anything that looks unusual?<br>
-            Are there any groups that should be compared?<br>
-            Are there any outcomes that should be measured?<br>
-            Are there any concerns that deserve further investigation?<br><br>
-          To answer this question, you will:
-          <ul class="entry-steps">
-            <li><strong>Step 1: Observe the Data</strong><br>Look through the dataset and examine the information available about individuals and the AI predictions.</li>
-            <li><strong>Step 2: Explore Performance</strong><br>Review information about the AI's performance and examine how results differ across different groups.</li>
-            <li><strong>Step 3: Suggest What Should Be Checked</strong><br>This is the main task. After reviewing the data and performance information, tell us what you think should be measured, monitored, or investigated.</li>
-            <li><strong>Step 4: Review Your Contributions</strong><br>The summary page will show all metrics and concerns that you have created.</li>
-          </ul>
-          You can contribute in two ways:<br><br>
-          <strong>Create a Metric</strong><br>A metric is something measurable that could be used to evaluate the AI.<br><br>
-          <strong>Record a Concern</strong><br>You can also describe any issue, risk, bias, or concern that you believe deserves further investigation.<br><br>
-          There are no right or wrong answers. We are interested in understanding what people think should be reviewed when evaluating an AI system.
-        </div>
       </div>
       <hr class="entry-divider">
       <div class="entry-info-section">
@@ -1603,6 +1580,52 @@ function buildAuditExportPayload(exportReason='manual'){
   };
 }
 
+// Data export/storage: hidden form POST avoids CORS issues when sending from GitHub Pages to Google Apps Script.
+function postAuditPayloadWithHiddenForm(payload, exportReason){
+  return new Promise(resolve=>{
+    const iframeName='audit-export-frame-'+Date.now();
+    const iframe=document.createElement('iframe');
+    iframe.name=iframeName;
+    iframe.style.display='none';
+
+    const form=document.createElement('form');
+    form.method='POST';
+    form.action=AUDIT_EXPORT_ENDPOINT_URL;
+    form.target=iframeName;
+    form.style.display='none';
+
+    const addField=(name,value)=>{
+      const input=document.createElement('input');
+      input.type='hidden';
+      input.name=name;
+      input.value=value;
+      form.appendChild(input);
+    };
+
+    addField('payload', JSON.stringify(payload));
+    addField('prolificId', prolificId||'');
+    addField('exportReason', exportReason);
+
+    let settled=false;
+    const finish=()=>{
+      if(settled) return;
+      settled=true;
+      setTimeout(()=>{
+        try{form.remove();iframe.remove();}catch(e){}
+      },250);
+      resolve();
+    };
+
+    iframe.addEventListener('load', finish);
+    document.body.appendChild(iframe);
+    document.body.appendChild(form);
+    form.submit();
+
+    // Apps Script responses can be opaque/redirected, so use a timeout as a practical completion signal.
+    setTimeout(finish, 3000);
+  });
+}
+
 // Data export/storage: keeps a local browser backup and optionally posts the full payload to the external endpoint.
 async function exportAuditData(exportReason='finish'){
   const key=`trace_audit_submission_${prolificId||'unknown'}_${Date.now()}`;
@@ -1618,17 +1641,7 @@ async function exportAuditData(exportReason='finish'){
   }
 
   try{
-    const formBody = new URLSearchParams();
-    formBody.set('payload', JSON.stringify(payload));
-    formBody.set('prolificId', prolificId||'');
-    formBody.set('exportReason', exportReason);
-
-    await fetch(AUDIT_EXPORT_ENDPOINT_URL,{
-      method:'POST',
-      mode:AUDIT_EXPORT_REQUEST_MODE,
-      headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
-      body:formBody.toString()
-    });
+    await postAuditPayloadWithHiddenForm(payload, exportReason);
     logEvent('export_success','external_endpoint_post_completed',{localStorageKey:key});
     return {ok:true, localStorageKey:key};
   }catch(error){
