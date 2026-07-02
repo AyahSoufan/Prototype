@@ -9,27 +9,27 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#F5F4F0;--surface:#FFF;--text:#18170E;--mid:#6B6860;--soft:#A8A59C;--border:#DDDBD3;--accent:#2C2AB3;--alight:#EEEEFA;--red:#B91C1C;--rlight:#FEF2F2;--green:#166534;--glight:#F0FDF4;--amber:#92400E;--amlight:#FFFBEB;--r:6px;--rl:10px}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-height:100vh}
-#entry{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px}
+#entry{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 24px}
 .entry-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--soft);margin-bottom:8px;text-align:center}
-.entry-heading{font-size:26px;font-weight:600;margin-bottom:6px;text-align:center}
+.entry-heading{font-size:23px;font-weight:600;margin-bottom:10px;text-align:center}
 .entry-sub{font-size:13px;color:var(--mid);margin-bottom:32px;text-align:center;max-width:560px}
-.entry-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rl);padding:0;max-width:620px;width:100%;overflow:hidden}
+.entry-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rl);padding:0;max-width:880px;width:100%;overflow:hidden}
 .entry-card-header{padding:20px 24px 16px;border-bottom:1px solid var(--border)}
 .entry-type{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--soft);margin-bottom:6px}
 .entry-task-name{font-size:18px;font-weight:600;color:var(--text);margin-bottom:2px}
 .entry-pill{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;background:#EEF2FF;color:#3730A3;margin-top:6px}
-.entry-card-body{padding:20px 24px}
-.entry-info-section{margin-bottom:16px}
-.entry-info-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--soft);margin-bottom:5px}
-.entry-info-text{font-size:13px;color:var(--mid);line-height:1.7}
+.entry-card-body{padding:16px 20px}
+.entry-info-section{margin-bottom:10px}
+.entry-info-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text);margin-bottom:4px}
+.entry-info-text{font-size:13px;color:var(--mid);line-height:1.45}
 .entry-info-text strong{color:var(--text);font-weight:500}
 .entry-steps{margin:10px 0 0 18px;line-height:1.8}
 .entry-steps li{padding-left:2px;margin-bottom:6px}
-.entry-input-wrap{margin:18px 0}
+.entry-input-wrap{margin:12px 0}
 .entry-input-label{font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px}
 .entry-input-helper{font-size:11px;color:var(--soft);margin-top:5px;line-height:1.5}
 .entry-error{display:none;margin-top:8px;padding:8px 10px;background:var(--rlight);border:1px solid #FECACA;border-radius:var(--r);font-size:12px;color:var(--red)}
-.entry-divider{border:none;border-top:1px solid var(--border);margin:16px 0}
+.entry-divider{border:none;border-top:1px solid var(--border);margin:10px 0}
 .btn-begin{width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer}
 .btn-begin:hover{opacity:.88}
 .btn-begin:disabled{opacity:.45;cursor:not-allowed}
@@ -268,7 +268,8 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 .bm-result-summary{font-size:12px;color:var(--mid);line-height:1.55}
 .bm-result-status{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700;margin-left:6px}
 /* Save row */
-.bm-save-row{display:flex;align-items:center;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.bm-save-row{display:flex;align-items:center;gap:12px;margin-top:12px;padding-top:0;border-top:none}
+.bm-save-row .btn-primary{background:var(--green)}
 /* Saved cards */
 .bm-saved-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .bm-saved-card-body{flex:1;min-width:0}
@@ -291,6 +292,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 .bm-cohort-head{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
 .bm-cohort-name-input{font-size:12px;font-weight:700;font-family:'Inter',sans-serif;border:1px solid var(--border);border-radius:4px;padding:4px 8px;color:var(--text);background:#fff;width:90px}
 .bm-cohort-name-input:focus{outline:none;border-color:var(--accent)}
+.bm-cohort-name-label{font-size:13px;font-weight:800;color:var(--text);display:inline-flex;align-items:center;line-height:1.3}
 .bm-cohort-remove{font-size:11px;color:var(--soft);border:none;background:none;cursor:pointer;font-family:'Inter',sans-serif;padding:2px 4px;flex-shrink:0;margin-left:auto}
 .bm-cohort-remove:hover{color:var(--red)}
 .bm-cohort-match{font-size:11px;font-weight:600;color:#166534;flex-shrink:0}
@@ -310,21 +312,6 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 .db-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;gap:16px}
 .db-section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--soft);margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .db-badge-info{font-size:10px;font-weight:600;text-transform:none;letter-spacing:0;background:var(--alight);color:var(--accent);padding:2px 8px;border-radius:20px;border:1px solid #C4C2F0}
-
-/* Overview strip */
-.db-overview-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
-.db-ov-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.05);cursor:pointer;transition:box-shadow .15s,border-color .15s;position:relative}
-.db-ov-card:hover{box-shadow:0 3px 12px rgba(0,0,0,.1);border-color:#C4C2F0}
-.db-ov-card.active{border-color:var(--accent);box-shadow:0 0 0 2px #EEEEFA,0 3px 12px rgba(0,0,0,.08)}
-.db-ov-metric-name{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--soft);margin-bottom:6px}
-.db-ov-metric-val{font-size:28px;font-weight:700;color:var(--text);line-height:1;margin-bottom:4px}
-.db-ov-metric-val.good{color:#166534}
-.db-ov-metric-val.warn{color:var(--amber)}
-.db-ov-metric-val.bad{color:var(--red)}
-.db-ov-metric-plain{font-size:11px;color:var(--mid);line-height:1.4;margin-bottom:8px}
-.db-ov-toggle{font-size:11px;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
-.db-ov-detail{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--mid);text-align:left;line-height:1.6}
-.db-ov-card.active .db-ov-detail{display:block}
 
 /* Control bar */
 .db-ctrl-bar{display:flex;align-items:center;gap:20px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 18px;margin-bottom:16px;flex-wrap:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.05)}
@@ -473,18 +460,17 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 
 <!-- ENTRY -->
 <div id="entry">
-  <div class="entry-title">AI Auditing task</div>
-  <div class="entry-heading">AI Risk Prediction System</div>
+  <div class="entry-heading">Welcome to the AI Evaluation/Auditing Task</div>
   <div class="entry-card">
     <div class="entry-card-body">
       <div class="entry-info-section">
-        <div class="entry-info-text">In this study, you will examine a dataset and an AI system and tell us what you think should be checked, measured, reviewed, or audited to determine whether the AI is behaving appropriately.</div>
+        <div class="entry-info-text">Thank you for taking part in this study. Please read the following information carefully before you begin.</div>
       </div>
       <hr class="entry-divider">
       <div class="entry-info-section">
-        <div class="entry-info-label">What is the AI system doing?</div>
-        <div class="entry-info-text">The AI system in this study is called <strong>COMPAS</strong>, a risk assessment tool that has been used in parts of the United States criminal justice system.<br><br>The system predicts whether a person is likely to be charged with another crime within the next two years.<br><br>For each person, the AI produces one of two predictions:
-          <ul style="margin:10px 0 0 18px;line-height:1.9">
+        <div class="entry-info-label">Information about the AI system you are about to evaluate/audit</div>
+        <div class="entry-info-text">The AI system in this study is a risk assessment tool that has been used in parts of the United States criminal justice system.<br>The system predicts whether a person is likely to be charged with another crime within the next two years.<br>For each person, the AI produces one of two predictions:
+          <ul style="margin:6px 0 0 18px;line-height:1.55">
             <li><strong>High Risk</strong> &ndash; the AI predicts the person is more likely to be charged with another crime within two years.</li>
             <li><strong>Low Risk</strong> &ndash; the AI predicts the person is less likely to be charged with another crime within two years.</li>
           </ul>
@@ -492,19 +478,25 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       </div>
       <hr class="entry-divider">
       <div class="entry-info-section">
-        <div class="entry-info-label">What data is the AI using?</div>
-        <div class="entry-info-text">The dataset contains information about people who were arrested in <strong>Broward County, Florida (USA)</strong>.<br><br>Each record contains information that was available when the AI generated its prediction, such as demographic information and criminal history information.<br><br>The dataset also includes the actual outcome, allowing us to compare what the AI predicted with what later happened.<br><br>For this study, you will work with a sample of records drawn from the original dataset.</div>
+        <div class="entry-info-label">What data is the AI system using?</div>
+        <div class="entry-info-text">The dataset contains information about people who were arrested in <strong>Florida (USA)</strong>.<br>Each record contains information that was available when the AI generated its prediction, such as demographic information and criminal history information.<br>The dataset also includes the actual outcome, allowing us to compare what the AI predicted with what later happened.<br><br>For this study, you will work with a sample of records drawn from the original dataset.</div>
       </div>
       <hr class="entry-divider">
       <div class="entry-info-section">
         <div class="entry-info-label">Before you begin</div>
-        <div class="entry-info-text">Please enter your Prolific ID below.<br><br>When you are finished with the audit, click <strong>Finish Auditing</strong>.<br><br>This ensures that your responses and activity are saved correctly and will automatically return you to Qualtrics to complete the final questionnaire.<br><br>Please do not close your browser window before clicking <strong>Finish Auditing</strong>.</div>
+        <div class="entry-info-text">Your Prolific ID has been transferred from the questionnaire and is shown below. If it is missing, please enter it manually.
+          </div>
       </div>
       <div class="entry-input-wrap">
         <label class="entry-input-label" for="prolific-id-input">Prolific ID <span style="color:var(--red)">*</span></label>
         <input type="text" id="prolific-id-input" class="field" required autocomplete="off" placeholder="Enter your Prolific ID" oninput="updateProlificIdReady()">
-        <div class="entry-input-helper">Please enter the same Prolific ID you used to access this study.</div>
         <div class="entry-error" id="prolific-id-error">Please enter your Prolific ID before beginning the audit.</div>
+      </div>
+       <hr class="entry-divider">
+      <div class="entry-info-section">
+        <div class="entry-info-text">
+          <strong>Important:</strong> When you have completed the task, click <strong>Finish Auditing</strong>.<br>This will save your responses and automatically return you to the post-task questionnaire, where you will complete the final part of this study.
+          </div>
       </div>
       <button class="btn-begin" id="begin-audit-btn" onclick="startAudit()">Begin audit &rarr;</button>
     </div>
@@ -527,38 +519,52 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 
     <!-- STEP 1 -->
     <div class="step-page show" id="step1">
-      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap">
         <div class="step-heading" style="margin-bottom:0">Observe the data</div>
-        <div style="font-size:13px;color:var(--mid)">Browse the dataset. Use filters to explore the data and check for any concern.</div>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <div class="section-label" style="color:var(--text)">Instructions</div>
+        <ul class="step-desc" style="max-width:980px;margin:0 0 0 18px;line-height:1.6">
+          <li>Explore the records used by the AI system.</li>
+          <li>Each record contains information about a person, such as demographic information, criminal history information, the AI prediction, and the actual outcome.</li>
+          <li>Use the <strong>column filters</strong> to narrow the records and explore specific groups or characteristics from different perspectives.</li>
+          <li>Once you have finished browsing and exploring the data, click Next to continue to the Performance &amp; metrics step.</li>
+        </ul>
       </div>
       <div id="filter-bar" style="display:none;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px;font-size:12px"></div>
       <div class="table-summary" id="table-summary"></div>
       <div class="data-table-wrap"><table class="dtable"><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div>
       <div class="nav-row">
         <button class="btn-outline" onclick="goEntry()">&#8592; Back to main</button>
-        <button class="btn-primary" onclick="goStep('1b')">Next: Explore performance &amp; metrics &rarr;</button>
+        <button class="btn-primary" onclick="goStep('1b')">Next</button>
       </div>
     </div>
 
     <!-- STEP 1b: EXPLORE PERFORMANCE & METRICS DASHBOARD -->
     <div class="step-page" id="step1b">
 
-      <!-- Dashboard header: title + desc on same line -->
-      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap">
         <div class="step-heading" style="margin-bottom:0">Explore performance &amp; metrics</div>
-        <div style="font-size:13px;color:var(--mid)">Select features, subgroups and metrics to understand how the AI performs.</div>
       </div>
 
-      <!-- ① OVERALL MODEL PERFORMANCE STRIP -->
-      <div class="db-section-label" style="color:var(--text);font-size:11px">OVERALL MODEL PERFORMANCE: FULL DATASET</div>
-      <div class="db-overview-strip" id="db-overview-strip"></div>
+      <div class="card" style="margin-bottom:14px">
+        <div class="section-label" style="color:var(--text)">Instructions</div>
+        <ul class="step-desc" style="max-width:980px;margin:0 0 10px 18px;line-height:1.6">
+          <li>This step is to help you explore the AI system's performance and understand the types of information that can be measured before creating your own evaluation/auditing metrics.</li>
+          <li>Select a metric to learn what it measures (A).</li>
+          <li>Select a feature and/or sub-features to view visualisations showing how the AI system performs across different groups or characteristics (B).</li>
+          <li>Use the visualisations to identify patterns, differences, or behaviours that you think are important.</li>
+          <li>Once you have finished exploring, click Next to continue to Build your metric step.</li>
+        </ul>
+        <div class="step-desc" style="max-width:980px;margin-bottom:0">The AI system has made predictions for all records in the dataset. Because we also have the actual outcomes, we can calculate a range of evaluation metrics to compare the AI predictions with what later happened.</div>
+      </div>
 
-      <!-- ② METRIC SELECTOR BAR (no chart-type toggle) -->
+      <div class="step-heading" style="font-size:16px;margin-bottom:8px">Select a metric to see what it measures (A). Then Select a feature and/or sub-features to see the visualisation (B). You can select more than one feature.</div>
       <div class="db-ctrl-bar">
         <div class="db-ctrl-group">
           <span class="db-ctrl-label" style="white-space:nowrap;font-weight:700;color:var(--text);font-size:14px">A. Metric</span>
           <select class="db-select" id="db-metric-select" onchange="dbOnMetricChange()">
-            <option value="" style="color:#DC2626">Choose a metric</option>
+            <option value="">Choose a metric</option>
             <option value="accuracy_difference">Accuracy</option>
             <option value="recall_difference">True Positive Rate (Recall)</option>
             <option value="fpr_difference">False Positive Rate</option>
@@ -568,8 +574,8 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
           </select>
         </div>
         <div class="db-ctrl-group" style="flex:1">
-          <span class="db-ctrl-label" style="white-space:nowrap">Metric:</span>
-          <div class="db-metric-desc" id="db-metric-desc" style="color:#DC2626;font-weight:700">Select a metric to see what it measures.</div>
+          <span class="db-ctrl-label" style="white-space:nowrap;color:var(--text)">Metric Definition:</span>
+          <div class="db-metric-desc" id="db-metric-desc">Select a metric to see what it measures.</div>
         </div>
       </div>
 
@@ -579,7 +585,6 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
         <!-- LEFT SIDEBAR: flat checkbox list + subgroup tree -->
         <div class="db-sidebar">
           <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px">B. Features</div>
-          <div style="font-size:12px;color:#DC2626;font-weight:600;margin-bottom:10px;line-height:1.5">Select a feature and/or sub-features to see metric results.</div>
           <div id="db-feature-list"></div>
         </div>
 
@@ -596,30 +601,25 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 
       <div class="nav-row" style="margin-top:16px">
         <button class="btn-outline" onclick="goStep(1)">&#8592; Back</button>
-        <button class="btn-primary" onclick="goStep('1c')">Next: Build your metric &rarr;</button>
+        <button class="btn-primary" onclick="goStep('1c')">Next</button>
       </div>
     </div>
 
     <!-- STEP 1c: BUILD YOUR METRIC -->
     <div class="step-page" id="step1c">
-      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap">
         <div class="step-heading" style="margin-bottom:0">Build your metric</div>
-        <div style="font-size:13px;color:var(--mid)">Define evaluation criteria for future AI review.</div>
       </div>
-      <div class="card" style="padding:14px 16px;margin-bottom:18px">
-        <div style="font-size:13px;color:var(--mid);line-height:1.7">
-          After observing the data and exploring the system's performance and metrics, your main task is to identify aspects of the AI system that you believe should be evaluated, monitored, or reviewed.<br><br>
-          You can contribute by creating metrics and recording concerns related to any part of the system, including:
-          <ul style="margin:8px 0 0 18px;line-height:1.8">
-            <li>The dataset</li>
-            <li>The AI model</li>
-            <li>The AI outputs or decisions</li>
-            <li>Fairness, bias, representation, or performance issues</li>
-            <li>Any other aspect that you believe should be assessed during an AI audit</li>
-          </ul>
-          <br>
-          There are no right or wrong answers. We are interested in understanding what you think should be measured, evaluated, or reviewed. Please add as many metrics and concerns as you consider relevant.
-        </div>
+      <div class="card" style="margin-bottom:14px">
+        <div class="section-label" style="color:var(--text)">Instructions</div>
+        <!-- <div class="step-desc" style="max-width:980px;margin-bottom:8px">This is the main task of the study.</div> -->
+        <div class="step-desc" style="max-width:980px;margin-bottom:8px">On this step, you will create AI evaluation/auditing measures (metrics) and record any concerns you identify while reviewing the AI system.</div>
+        <div class="step-desc" style="max-width:980px;margin-bottom:6px">There are <strong>two tabs</strong>:</div>
+        <ul class="step-desc" style="max-width:980px;margin:0 0 8px 18px;line-height:1.55">
+          <li><strong>Guided Metrics:</strong> Use this tab to create one or more AI evaluation metrics. The guided workflow will help you decide <strong>what should be measured</strong>, <strong>which cohorts should be compared</strong>, and <strong>how the metric should be interpreted</strong>. You can also add a threshold.</li>
+          <li><strong>Recorded Concerns:</strong> Use this tab to record observations or concerns in your own words. These may relate to the AI system's behaviour, potential biases, fairness, risks, errors, the dataset, or any other issues that you believe deserve further investigation.</li>
+        </ul>
+        <div class="step-desc" style="max-width:980px;margin-bottom:0">After creating a metric, please click <strong>Save Metric</strong>. Your metric will not be saved automatically. You can create and save as many metrics as you wish. When you have finished creating metrics and recording your concerns, click <strong>Next</strong> to view a summary of your recorded metrics.</div>
       </div>
 
       <!-- Top-level tabs: Scaffolding vs Recorded concern -->
@@ -632,29 +632,29 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       <div id="bm-scaff-panel">
         <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:20px">
 
-          <!-- Sub-step 1: Cohorts -->
+          <!-- Sub-step 1: Metric -->
           <div class="bm-panel">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
               <div class="bm-panel-num">1</div>
-              <div class="bm-panel-title" style="margin-bottom:0">Which cohorts to compare</div>
+              <div class="bm-panel-title" style="margin-bottom:0">What metric to compute</div>
             </div>
-            <div class="bm-panel-desc">Add two or more cohorts, each defined by combinations of features (AND logic). e.g. Race = African-American AND Age Group = 25 to 45.</div>
+            <div class="bm-panel-desc">Choose a metric from the library to compare the cohorts you define.</div>
+            <select class="db-select" id="bm-metric-dropdown-sel" onchange="bmOnMetricDropdownChange()" style="width:100%;margin-bottom:8px">
+              <option value="">Choose a metric</option>
+            </select>
+          </div>
+
+          <!-- Sub-step 2: Cohorts -->
+          <div class="bm-panel">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+              <div class="bm-panel-num">2</div>
+              <div class="bm-panel-title" style="margin-bottom:0">Which cohorts do you want to check?</div>
+            </div>
+            <div class="bm-panel-desc">Start with Cohort A, then add more cohorts if you want to compare sets of records. Each cohort is defined using feature/value filters from the Observe Data columns.</div>
             <div id="bm-cohort-list"></div>
             <button class="bm-add-cohort-btn" onclick="bmAddCohort()">+ Add cohort</button>
             <div id="bm-cohort-warn" style="display:none;margin-top:6px;font-size:11px;color:var(--amber)"></div>
             <div id="bm-group-warn" style="display:none;margin-top:6px;font-size:11px;color:var(--amber)"></div>
-          </div>
-
-          <!-- Sub-step 2: Metric -->
-          <div class="bm-panel">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
-              <div class="bm-panel-num">2</div>
-              <div class="bm-panel-title" style="margin-bottom:0">What metric to compute</div>
-            </div>
-            <div class="bm-panel-desc">Choose a metric from the library to compare the cohorts you defined.</div>
-            <select class="db-select" id="bm-metric-dropdown-sel" onchange="bmOnMetricDropdownChange()" style="width:100%;margin-bottom:8px">
-              <option value="">Choose a metric</option>
-            </select>
           </div>
 
           <!-- Sub-step 3: How to compare -->
@@ -682,24 +682,11 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
               </div>
               <div id="bm-dataset-result" class="bm-result-compact" style="display:none"></div>
             </div>
-            <div id="bm-criterion-placeholder" style="padding:12px 0 4px;font-size:12px;color:var(--soft)">
-              Complete steps 1 and 2 to see your criterion here.
+            <div id="bm-criterion-placeholder" style="display:none"></div>
+            <div class="bm-save-row">
+              <button class="btn-primary" id="bm-save-btn" onclick="bmSave()" style="opacity:.4;cursor:not-allowed" disabled>Save metric</button>
             </div>
           </div>
-        </div>
-
-        <!-- Saved metrics (scaffolding) -->
-        <div id="bm-saved-section" style="display:none;margin-bottom:14px">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-            <div class="bm-sub-label" style="margin-bottom:0">Saved metrics <span id="bm-saved-count" class="bm-count-badge">0</span></div>
-            <button class="btn-outline" style="font-size:11px;padding:5px 12px" onclick="bmAddAnother()">+ Add another metric</button>
-          </div>
-          <div id="bm-saved-list"></div>
-        </div>
-
-        <div class="bm-save-row">
-          <button class="btn-primary" id="bm-save-btn" onclick="bmSave()" style="opacity:.4;cursor:not-allowed" disabled>Save metric</button>
-          <span id="bm-save-hint" style="font-size:12px;color:var(--soft)">Complete steps 1 and 2 to save.</span>
         </div>
       </div><!-- end scaffolding panel -->
 
@@ -709,15 +696,15 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
           <div class="bm-panel-desc" style="margin-bottom:14px">Fill in all fields below to record your concern. Both <strong>Event name</strong> and <strong>Metric: Describe what you want to measure</strong> are required.</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
             <div>
-              <div class="bm-sub-label" style="margin-bottom:4px">Event name <span style="color:var(--red)">*</span></div>
+              <div class="bm-sub-label" style="margin-bottom:4px">1. Event name <span style="color:var(--red)">*</span></div>
               <input type="text" class="field" id="bm-own-name" placeholder="Give this a short name" oninput="bmUpdateOwnReady()">
             </div>
             <div>
-              <div class="bm-sub-label" style="margin-bottom:4px">What happened?</div>
+              <div class="bm-sub-label" style="margin-bottom:4px">2. What happened?</div>
               <input type="text" class="field" id="bm-own-what" placeholder="Briefly describe the issue" oninput="bmUpdateOwnReady()">
             </div>
             <div>
-              <div class="bm-sub-label" style="margin-bottom:4px">Concern type</div>
+              <div class="bm-sub-label" style="margin-bottom:4px">3. Concern type</div>
               <select class="field" id="bm-own-category" oninput="bmUpdateOwnReady()">
                 <option value="">Select a category</option>
                 <option value="social-stereotypes">Social stereotypes &amp; unfair discrimination</option>
@@ -732,7 +719,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
               </select>
             </div>
             <div>
-              <div class="bm-sub-label" style="margin-bottom:4px">Severity</div>
+              <div class="bm-sub-label" style="margin-bottom:4px">4. Severity</div>
               <select class="field" id="bm-own-severity" oninput="bmUpdateOwnReady()">
                 <option value="">Select severity</option>
                 <option value="Minor">Minor</option>
@@ -742,7 +729,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
               </select>
             </div>
             <div>
-              <div class="bm-sub-label" style="margin-bottom:4px">Likelihood</div>
+              <div class="bm-sub-label" style="margin-bottom:4px">5. Likelihood</div>
               <select class="field" id="bm-own-likelihood" oninput="bmUpdateOwnReady()">
                 <option value="">Select likelihood</option>
                 <option value="Unlikely">Unlikely</option>
@@ -752,11 +739,11 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
               </select>
             </div>
             <div>
-              <div class="bm-sub-label" style="margin-bottom:4px">Who is affected?</div>
+              <div class="bm-sub-label" style="margin-bottom:4px">6. Who is affected?</div>
               <input type="text" class="field" id="bm-own-who" placeholder="Person, group, community…" oninput="bmUpdateOwnReady()">
             </div>
           </div>
-          <div class="bm-sub-label" style="margin-bottom:4px">Metric: Describe what you want to measure <span style="color:var(--red)">*</span></div>
+          <div class="bm-sub-label" style="margin-bottom:4px">7. Metric: Describe what you want to measure <span style="color:var(--red)">*</span></div>
           <textarea class="field bm-own-textarea" id="bm-own-text" rows="4"
             placeholder="e.g. I want to check whether the AI is more likely to label one racial group as High Risk even when their prior record is similar to another group..."
             oninput="bmUpdateOwnReady()" style="margin-bottom:0"></textarea>
@@ -778,7 +765,16 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 
       <div class="nav-row" style="margin-top:20px">
         <button class="btn-outline" onclick="goStep('1b')">&#8592; Back</button>
-        <button class="btn-primary" onclick="goStep(4)">Next: Metrics summary &rarr;</button>
+        <button class="btn-primary" onclick="goStep(4)">Next</button>
+      </div>
+
+      <!-- Saved metrics (scaffolding) -->
+      <div id="bm-saved-section" style="display:none;margin-top:14px;margin-bottom:14px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+          <div class="bm-sub-label" style="margin-bottom:0">Saved metrics <span id="bm-saved-count" class="bm-count-badge">0</span></div>
+          <button class="btn-outline" style="font-size:11px;padding:5px 12px" onclick="bmAddAnother()">+ Add another metric</button>
+        </div>
+        <div id="bm-saved-list"></div>
       </div>
     </div>
 
@@ -1026,6 +1022,11 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px;flex-wrap:wrap">
         <div class="step-heading" style="margin-bottom:0">Metrics summary</div>
         <div style="font-size:13px;color:var(--mid)">All saved metrics, calculated and recorded, from this audit session.</div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div class="section-label" style="color:var(--text)">Instructions</div>
+        <div class="step-desc" style="max-width:980px;margin-bottom:0">In this step, you can check all the metrics and concerns that you added in the previous step. You can go back and add more if you want. If you are happy, please click <strong>Finish Auditing</strong> to be directed back to the questionnaire with the final few questions before the end of this study.</div>
       </div>
 
       <div id="ms-empty" style="padding:40px 24px;text-align:center;background:#fff;border:1.5px dashed var(--border);border-radius:10px;margin-bottom:16px">
@@ -1521,6 +1522,16 @@ let currentPageName = 'Landing';
 function getProlificIdInputValue(){
   return (document.getElementById('prolific-id-input')?.value||'').trim();
 }
+function getParticipantIdFromUrl(){
+  const params=new URLSearchParams(window.location.search);
+  return (params.get('participantID')||params.get('PROLIFIC_PID')||params.get('prolificId')||'').trim();
+}
+function loadParticipantIdFromUrl(){
+  const id=getParticipantIdFromUrl();
+  const input=document.getElementById('prolific-id-input');
+  if(id&&input&&!input.value) input.value=id;
+  updateProlificIdReady();
+}
 function updateProlificIdReady(){
   prolificId = getProlificIdInputValue();
   const err=document.getElementById('prolific-id-error');
@@ -1702,7 +1713,6 @@ function startAudit(){
     // Reset dashboard state
     dbActiveMetric=''; dbCheckedFeatures=new Set();
     dbSubgroupSel={}; dbOpenPanels=new Set(); dbTiles=[]; dbNextTileId=1;
-    dbOvActiveCard='';
     bmReset();
     initStep1(); goStep(1);
   }catch(error){
@@ -1966,7 +1976,6 @@ let dbSubgroupSel = {};
 let dbOpenPanels  = new Set();
 let dbTiles = [];
 let dbNextTileId = 1;
-let dbOvActiveCard = '';
 
 function dbGetFilterOptions(col){
   const vals=[...new Set(ROWS.map(r=>String(r[col]??'')).filter(Boolean))].sort((a,b)=>{
@@ -1995,52 +2004,11 @@ function dbComputeGroupStats(col, groups, metricId){
   });
 }
 
-// ── Overview: 3 metrics only ──
-function dbRenderOverview(){
-  const el=document.getElementById('db-overview-strip');if(!el)return;
-  const safeR=(n,d)=>d>0?n/d:null;
-  const tp=ROWS.filter(r=>r['AI Prediction']==='High Risk'&&r['Actual Outcome']==='Reoffended').length;
-  const tn=ROWS.filter(r=>r['AI Prediction']==='Low Risk'&&r['Actual Outcome']==='Did not reoffend').length;
-  const fp=ROWS.filter(r=>r['AI Prediction']==='High Risk'&&r['Actual Outcome']==='Did not reoffend').length;
-  const fn=ROWS.filter(r=>r['AI Prediction']==='Low Risk'&&r['Actual Outcome']==='Reoffended').length;
-  const n=ROWS.length,pp=tp+fp,ap=tp+fn,an=fp+tn,corr=tp+tn;
-  const acc=safeR(corr,n),tpr=safeR(tp,ap),fpr=safeR(fp,an);
-  const metrics=[
-    {id:'acc', name:'Accuracy', val:acc, better:'higher',
-     def:'The ratio of correct predictions to the total number of instances.',
-     detail:`Out of <strong>${n}</strong> people, the AI was correct for <strong>${corr}</strong>.<br><br>Formula: <em>(True Positives + True Negatives) ÷ All cases</em><br><br>True Positives: ${tp} &nbsp;·&nbsp; True Negatives: ${tn}<br>False Positives: ${fp} &nbsp;·&nbsp; False Negatives: ${fn}`},
-    {id:'tpr', name:'True Positive Rate', val:tpr, better:'higher',
-     def:'The probability that a subject who truly belongs to the positive class is correctly predicted as positive.',
-     detail:`Of <strong>${ap}</strong> people who actually reoffended, the AI correctly flagged <strong>${tp}</strong>.<br><br>Formula: <em>True Positives ÷ (True Positives + False Negatives)</em><br><br>A low rate means the AI is missing real risks.`},
-    {id:'fpr', name:'False Positive Rate', val:fpr, better:'lower',
-     def:'The probability that a subject who truly belongs to the negative class is incorrectly assigned a positive prediction.',
-     detail:`Of <strong>${an}</strong> people who did NOT reoffend, <strong>${fp}</strong> were wrongly labelled High Risk.<br><br>Formula: <em>False Positives ÷ (False Positives + True Negatives)</em><br><br>A high rate means people are being falsely flagged. Lower is better.`},
-  ];
-  el.innerHTML=metrics.map(m=>{
-    const pct=m.val!==null?`${(m.val*100).toFixed(1)}%`:'—';
-    const good=m.better==='higher'?m.val>=.65:m.val<=.30;
-    const bad=m.better==='higher'?m.val<.45:m.val>.55;
-    const cls=good?'good':bad?'bad':'warn';
-    const active=dbOvActiveCard===m.id;
-    return `<div class="db-ov-card${active?' active':''}" onclick="dbToggleOvCard('${m.id}')">
-      <div class="db-ov-metric-name">${m.name}</div>
-      <div class="db-ov-metric-val ${cls}">${pct}</div>
-      <div class="db-ov-toggle">${active?'click to collapse':'click for description'}</div>
-      <div class="db-ov-detail"><div class="db-ov-metric-plain">${m.def}</div>${m.detail}</div>
-    </div>`;
-  }).join('');
-}
-function dbToggleOvCard(id){
-  dbOvActiveCard=dbOvActiveCard===id?'':id;
-  logEvent('click','performance_overview_card_clicked',{cardId:id,activeCard:dbOvActiveCard});
-  dbRenderOverview();
-}
-
 function dbOnMetricChange(){
   dbActiveMetric=document.getElementById('db-metric-select')?.value||'';
   logEvent('metric_option_change','performance_metric_selected',{metricId:dbActiveMetric,metric:DB_METRICS[dbActiveMetric]||null});
   const def=document.getElementById('db-metric-desc');
-  if(def){if(dbActiveMetric&&DB_METRICS[dbActiveMetric]){def.textContent=DB_METRICS[dbActiveMetric].plain;def.style.color='';def.style.fontWeight='';}else{def.textContent='Select a metric to see what it measures.';def.style.color='#DC2626';def.style.fontWeight='700';}}
+  if(def){if(dbActiveMetric&&DB_METRICS[dbActiveMetric]){def.textContent=DB_METRICS[dbActiveMetric].plain;def.style.color='';def.style.fontWeight='';}else{def.textContent='Select a metric to see what it measures.';def.style.color='';def.style.fontWeight='';}}
   dbRenderTiles();
 }
 
@@ -2183,7 +2151,6 @@ function dbRenderTileHtml(tile){
 }
 
 function initStep1b(){
-  dbRenderOverview();
   dbRenderSidebar();
   dbRenderTiles();
   const msel=document.getElementById('db-metric-select');
@@ -2411,8 +2378,7 @@ function bmRenderCohorts(){
     }).join('');
     return `<div class="bm-cohort-card${validConds.length?' has-match':''}">
       <div class="bm-cohort-head">
-        <input class="bm-cohort-name-input" type="text" value="${escAttr(cohort.name)}"
-          onchange="bmRenameCohort(${cohort.id},this.value)" onclick="event.stopPropagation()">
+        <div class="bm-cohort-name-label">${escHtml(cohort.name)}</div>
         ${matchHtml}
         ${bmCohorts.length>2?`<button class="bm-cohort-remove" onclick="bmRemoveCohort(${cohort.id})">Remove</button>`:''}
       </div>
@@ -2747,17 +2713,12 @@ function bmUpdatePreview(){
 function bmUpdateSaveBtn(){
   // Only handles scaffolding save button; recorded concern uses bmUpdateOwnReady()
   const btn=document.getElementById('bm-save-btn');
-  const hint=document.getElementById('bm-save-hint');
-  if(!btn||!hint)return;
+  if(!btn)return;
   const readyCohorts=bmCohorts.filter(c=>c.conditions.some(x=>x.feat&&x.val));
   const ready=readyCohorts.length>=2&&!!bmMetricId;
-  const missing=[];
-  if(readyCohorts.length<2) missing.push(`${Math.max(0,2-readyCohorts.length)} more complete cohort${2-readyCohorts.length>1?'s':''}`);
-  if(!bmMetricId) missing.push('a metric in step 2');
   btn.disabled=!ready;
   btn.style.opacity=ready?'1':'.4';
   btn.style.cursor=ready?'pointer':'not-allowed';
-  hint.textContent=ready?'':(missing.length?`Still needed: ${missing.join(' and ')}.`:'');
 }
 
 // ── Save (scaffolding / lib metrics only) ──
@@ -3625,7 +3586,7 @@ function attachAuditInteractionLogging(){
 }
 
 attachAuditInteractionLogging();
-updateProlificIdReady();
+loadParticipantIdFromUrl();
 </script>
 </body>
 </html>
