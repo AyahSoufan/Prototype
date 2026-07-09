@@ -589,13 +589,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
         <div class="step-heading" style="margin-bottom:0">Observe the data</div>
       </div>
       <div class="card" style="margin-bottom:14px">
-        <div class="section-label" style="color:var(--text)">Instructions</div>
-        <ul class="step-desc" style="max-width:980px;margin:0 0 0 18px;line-height:1.6">
-          <li>Explore the artefact records used by the AI system. </li>
-          <li>Each record contains information about the artefact, such as materials, production date, culture, and place of origin, alongside the AI-generated description produced for that artefact.</li>
-          <li>Use the <strong>column filters</strong>  to narrow the records and explore specific groups or characteristics from different perspectives.</li>
-          <li>Once you have finished browsing and exploring the data, click Next to continue to the Performance &amp; metrics step.</li>
-        </ul>
+        <div class="step-desc" style="max-width:980px;margin-bottom:0">Explore the artefact records used by the AI system. Use the column filters to narrow the records and explore specific groups or characteristics from different perspectives. Once you have finished exploring the data, click Next to continue to the Performance &amp; metrics step.</div>
       </div>
       <!-- <div class="nav-row" style="justify-content:flex-end;padding-top:0;border-top:none;margin-top:0;margin-bottom:12px">
         <button class="btn-primary" onclick="goStep('1b')">Next</button>
@@ -617,32 +611,28 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       </div>
 
       <div class="card" style="margin-bottom:14px">
-        <div class="section-label" style="color:var(--text)">Instructions</div>
-        <ul class="step-desc" style="max-width:980px;margin:0 0 10px 18px;line-height:1.6">
-          <li>This step is to help you explore the AI system's performance and understand the types of information that can be measured before creating your own evaluation/auditing metrics.</li>
-          <li>Select a metric to learn what it measures (A).</li>
-          <li>Select an artefact feature to view visualisations showing how the AI system performs across different groups or characteristics (B).</li>
-          <li>Use the visualisations to identify patterns, differences, or behaviours that you think are important.</li>
-          <li>Once you have finished exploring, click Next to continue to Build your metric step.</li>
-        </ul>
-        <div class="step-desc" style="max-width:980px;margin-bottom:0">The AI system has generated descriptions for all artefacts in the dataset. Because we also have human-supervised descriptions for the same artefacts, we can calculate a range of evaluation metrics to compare the AI-generated descriptions with the human-supervised descriptions.</div>
+        <div class="step-desc" style="max-width:980px;margin-bottom:0">You can select 1. an example metric to learn what it measures and 2. a feature and/or sub-features to view visualisations showing how the AI system performs across different groups. Once you have finished exploring, click Next to continue to Build your metric step.</div>
       </div>
 
-      <div class="step-heading" style="font-size:16px;margin-bottom:8px">Select a metric to see what it measures (A). Then Select a feature and/or sub-features to see the visualisation (B). You can select more than one feature.</div>
-      <div class="db-metric-band" style="margin-top:0">
-        <div class="db-metric-band-title">A. Metric</div>
-        <select class="db-dist-select" id="db-count-metric" onchange="dbOnCountMetricChange()">
-          <option value="">Choose a metric</option>
-          <option value="count">Count</option>
-          <option value="entity_f1">Entity F1-Score</option>
-          <option value="sentiment_delta">Sentiment Polarity Delta</option>
-        </select>
-        <div class="db-metric-def" id="db-count-metric-def"></div>
+      <div class="db-ctrl-bar" style="margin-top:0">
+        <div class="db-ctrl-group">
+          <span class="db-ctrl-label" style="white-space:nowrap;font-weight:700;color:var(--text);font-size:14px;text-transform:none;letter-spacing:0">1. Example Metric</span>
+          <select class="db-select" id="db-count-metric" onchange="dbOnCountMetricChange()">
+            <option value="">Choose a metric</option>
+            <option value="count">Count</option>
+            <option value="entity_f1">Entity F1-Score</option>
+            <option value="sentiment_delta">Sentiment Polarity Delta</option>
+          </select>
+        </div>
+        <div class="db-ctrl-group" style="flex:1">
+          <span class="db-ctrl-label" style="white-space:nowrap;color:var(--text);font-size:14px;font-weight:700;text-transform:none;letter-spacing:0">Metric definition:</span>
+          <div class="db-metric-desc" id="db-count-metric-def" style="font-size:14px">Select a metric to see what it measures.</div>
+        </div>
       </div>
 
       <div class="db-feature-layout">
         <div class="db-feature-panel">
-          <div class="db-feature-panel-title">B. Features</div>
+          <div class="db-feature-panel-title">2. Feature</div>
           <div class="db-feature-list" id="db-feature-list"></div>
         </div>
         <div class="db-feature-canvas" id="db-feature-canvas"></div>
@@ -659,16 +649,9 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap">
         <div class="step-heading" style="margin-bottom:0">Build your metric</div>
       </div>
-
       <div class="card" style="margin-bottom:14px">
-        <div class="section-label" style="color:var(--text)">Instructions</div>
-        <div class="step-desc" style="max-width:980px;margin-bottom:8px">On this step, you will create AI evaluation/auditing measures (metrics) and record any concerns you identify of the AI system.</div>
-        <div class="step-desc" style="max-width:980px;margin-bottom:6px">There are <strong>two tabs</strong>:</div>
-        <ul class="step-desc" style="max-width:980px;margin:0 0 8px 18px;line-height:1.55">
-          <li><strong>Guided Metrics:</strong> Use this tab to create one or more AI evaluation\auditing metrics. The guided workflow will help you decide <strong>what should be measured</strong>, <strong>which artefact groups should be compared</strong>, and <strong>how the metric should be interpreted</strong>. You can also add a threshold.</li>
-          <li><strong>Recorded Concerns:</strong> Use this tab to record observations or concerns in your own words. These may relate to the AI system's behaviour, potential biases, fairness, risks, errors, the dataset, or any other issues that you believe deserve further investigation. There are no right or wrong answers; we are interested in your own observations and reasoning.</li>
-        </ul>
-        <div class="step-desc" style="max-width:980px;margin-bottom:0">After creating a metric, please click <strong>Save Metric</strong>. Your metric will not be saved automatically. You can create and save as many metrics as you wish. When you have finished creating metrics and recording your concerns, click <strong>Next</strong> to view a summary of your recorded metrics.</div>
+        <div class="step-desc" style="max-width:980px;margin-bottom:8px">This step has two tabs: <strong>1. Guided Metrics:</strong> Select AI metrics that you think are important for assessing the AI system. <strong>2. Recorded Concerns:</strong> Record any concerns or observations you have about the AI system, the data, or its behaviour.
+        <br><strong>Notice</strong>, the tool will use your selections to create a clear statement describing what should be measured below. <br> After creating a metric, click <strong>Save Metric</strong>. Your metric will not be saved automatically. You can create and save as many metrics and concerns as you wish. When you have finished, click <strong>Next</strong>.</div>
       </div>
 
       <!-- Top-level tabs: Guided metric vs Recorded concern -->
@@ -684,19 +667,27 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
           <div class="bm-panel">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
               <div class="bm-panel-num">1</div>
-              <div class="bm-panel-title" style="margin-bottom:0">What metric to compute</div>
+              <div class="bm-panel-title" style="margin-bottom:0">Choose an example metric</div>
             </div>
-            <div class="bm-panel-desc">Choose the audit question and metric together.</div>
-            <select class="db-select" id="bm-metric-dropdown-sel" onchange="bmOnMetricDropdownChange()" style="width:100%;margin-bottom:8px">
-              <option value="">Choose an audit metric</option>
-            </select>
-            <div id="bm-metric-def" class="bm-sub-hint"></div>
+            <div class="bm-panel-desc">Choose from the example metrics a metric that you think is important for checking whether the AI system is working appropriately. Select a metric that reflects something you believe should be measured or monitored.</div>
+            <div class="db-ctrl-bar" style="margin-bottom:0">
+              <div class="db-ctrl-group">
+                <span class="db-ctrl-label" style="white-space:nowrap;font-weight:700;color:var(--text);font-size:14px;text-transform:none;letter-spacing:0">Metric</span>
+                <select class="db-select" id="bm-metric-dropdown-sel" onchange="bmOnMetricDropdownChange()" style="width:100%;margin-bottom:0">
+                  <option value="">Choose an example metric</option>
+                </select>
+              </div>
+              <div class="db-ctrl-group" style="flex:1">
+                <span class="db-ctrl-label" style="white-space:nowrap;color:var(--text);font-size:14px;font-weight:700;text-transform:none;letter-spacing:0">Metric definition:</span>
+                <div class="db-metric-desc" id="bm-metric-def" style="font-size:14px">Select a metric to see what it measures.</div>
+              </div>
+            </div>
           </div>
 
           <div class="bm-panel">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
               <div class="bm-panel-num">2</div>
-              <div class="bm-panel-title" style="margin-bottom:0">Which artifact groups do you want to check?</div>
+              <div class="bm-panel-title" style="margin-bottom:0">Which artifact groups/feature should this metric be applied to?</div>
             </div>
             <div class="bm-panel-desc">Start with Artifact group A, then add more artifact groups if you want to compare sets of records. Each group is defined using feature/value filters from the Observe Data columns.</div>
             <div id="bm-cohort-list"></div>
@@ -707,11 +698,11 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
           <div class="bm-panel">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
               <div class="bm-panel-num">3</div>
-              <div class="bm-panel-title" style="margin-bottom:0">When should this be flagged? <span style="font-weight:500;color:var(--soft)">(threshold)</span></div>
+              <div class="bm-panel-title" style="margin-bottom:0">Decide what result would be acceptable for this metric.</div>
             </div>
-            <div class="bm-panel-desc">Set a threshold for the selected metric. Leave it blank if you only want to save the criterion without a threshold.</div>
+            
             <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px">
-              <span id="bm-threshold-label" style="font-size:13px;color:var(--mid)">Threshold</span>
+              <span id="bm-threshold-label" style="font-size:13px;color:var(--mid)">Acceptable threshold</span>
               <input type="number" id="bm-threshold" class="field" min="0" max="100" step="1" style="width:82px;text-align:center" placeholder="e.g. 80" oninput="bmUpdateCriterion()">
               <span id="bm-threshold-unit" style="font-size:13px;color:var(--mid)">%</span>
             </div>
@@ -1055,8 +1046,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       </div>
 
       <div class="card" style="margin-bottom:14px">
-        <div class="section-label" style="color:var(--text)">Instructions</div>
-        <div class="step-desc" style="max-width:980px;margin-bottom:0">In this step, you can check all the metrics and concerns that you added in the previous step. You can go back and add more if you want. If you are happy, please click <strong>Finish Auditing</strong> to be directed back to the questionnaire with the final few questions before the end of this study.</div>
+        <div class="step-desc" style="max-width:980px;margin-bottom:0">You can check all the metrics and concerns that you added before. If you are happy, please click <strong>Finish Auditing</strong> to be directed back to the questionnaire with the final few questions before the end of this study.</div>
       </div>
 
       <div id="ms-empty" style="padding:40px 24px;text-align:center;background:#fff;border:1.5px dashed var(--border);border-radius:10px;margin-bottom:16px">
@@ -2349,23 +2339,14 @@ function dbOnCountMetricChange(){
 }
 function dbRenderCountMetricDefinition(){
   const el=document.getElementById('db-count-metric-def'); if(!el) return;
-  if(dbCountMetric==='count'){
-    el.style.color='var(--mid)';
-    el.style.fontWeight='400';
-    el.innerHTML='<strong style="color:var(--text);text-transform:uppercase;letter-spacing:.5px;font-size:11px">Metric Definition:</strong> Count shows how many artifact records in the dataset contain the selected feature or sub-feature.';
-  } else if(dbCountMetric==='entity_f1'){
-    el.style.color='var(--mid)';
-    el.style.fontWeight='400';
-    el.innerHTML='<strong style="color:var(--text);text-transform:uppercase;letter-spacing:.5px;font-size:11px">Metric Definition:</strong> Entity F1-Score checks whether the AI description mentions selected objective facts from the structured metadata. Higher scores mean more selected facts were stated in the generated descriptions.';
-  } else if(dbCountMetric==='sentiment_delta'){
-    el.style.color='var(--mid)';
-    el.style.fontWeight='400';
-    el.innerHTML='<strong style="color:var(--text);text-transform:uppercase;letter-spacing:.5px;font-size:11px">Metric Definition:</strong> Sentiment Polarity Delta compares how positive or negative the AI descriptions are across selected sub-features. A larger delta means some groups receive noticeably more positive wording than others.';
-  } else {
-    el.style.color='var(--mid)';
-    el.style.fontWeight='400';
-    el.textContent='';
-  }
+  const defs={
+    count:'Count shows how many artifact records in the dataset contain the selected feature or sub-feature.',
+    entity_f1:'Entity F1-Score checks whether the AI description mentions selected objective facts from the structured metadata. Higher scores mean more selected facts were stated in the generated descriptions.',
+    sentiment_delta:'Sentiment Polarity Delta compares how positive or negative the AI descriptions are across selected sub-features. A larger delta means some groups receive noticeably more positive wording than others.'
+  };
+  el.style.color='var(--mid)';
+  el.style.fontWeight='400';
+  el.textContent=dbCountMetric&&defs[dbCountMetric]?defs[dbCountMetric]:'Select a metric to see what it measures.';
 }
 function initStep1b(){dbRenderCountMetricDefinition();dbRenderCountFeaturePanel();dbRenderCountCards();}
 
@@ -2619,7 +2600,7 @@ function renderTable(){
   }).join('');
   const fc=flaggedRows.size;
   const filteredText=allRows.length===ROWS.length?'':` filtered`;
-  document.getElementById('table-summary').innerHTML=`Showing <strong>${rows.length}</strong> of <strong>${allRows.length}</strong>${filteredText} artifact records <a onclick="openDatasetModal()" style="margin-left:12px;font-size:12px;color:var(--accent);cursor:pointer;font-weight:600">&#9707; View full dataset</a>`;
+  document.getElementById('table-summary').innerHTML=`Showing a sample of <strong>${rows.length}</strong> artifact records <a onclick="openDatasetModal()" style="margin-left:12px;font-size:12px;color:var(--accent);cursor:pointer;font-weight:600">&#9707; View full dataset</a>`;
 }
 function toggleFlag(idx,e){
   e.stopPropagation();
@@ -3365,7 +3346,7 @@ function initStep1c(){
   const msel=document.getElementById('bm-metric-dropdown-sel');
   if(msel){
     const sources=[...new Set(GM_BUILD_METRICS.map(m=>m.sourceLabel))];
-    msel.innerHTML='<option value="">Choose an audit metric</option>'+sources.map(source=>{
+    msel.innerHTML='<option value="">Choose an example metric</option>'+sources.map(source=>{
       const opts=GM_BUILD_METRICS.filter(m=>m.sourceLabel===source).map(m=>`<option value="${escAttr(m.id)}"${bmMetricId===m.id?' selected':''}>${escHtml(m.label)}</option>`).join('');
       return `<optgroup label="${escAttr(source)}">${opts}</optgroup>`;
     }).join('');
@@ -3382,17 +3363,13 @@ function initStep1c(){
 function bmRenderMetricDef(){
   const el=document.getElementById('bm-metric-def'); if(!el)return;
   const m=gmBuildMetric(bmMetricId);
-  if(!m){
-    el.textContent='Select a metric to see what it measures.';
-    return;
-  }
-  el.innerHTML=`<div style="padding:9px 11px;background:#FAFAF8;border:1px solid var(--border);border-radius:6px;color:var(--mid);line-height:1.55">${escHtml(gmMetricHelpText(m))}</div>`;
+  el.textContent=m?gmMetricHelpText(m):'Select a metric to see what it measures.';
 }
 function bmRenderThresholdLabels(){
   const m=gmBuildMetric(bmMetricId);
   const label=document.getElementById('bm-threshold-label');
   const unit=document.getElementById('bm-threshold-unit');
-  if(label) label.textContent=m?(m.thresholdLabel||'Threshold'):'Threshold';
+  if(label) label.textContent='Acceptable threshold';
   if(unit) unit.textContent=m?(m.thresholdUnit||'%'):'%';
 }
 function bmOnMetricDropdownChange(){
@@ -3543,7 +3520,7 @@ function gmBuildDatasetResult(cohorts, metric){
 function gmRenderDatasetResultHtml(result){
   if(!result) return '';
   const chips=result.stats.map(stat=>`<div class="bm-result-chip"><strong>${escHtml(stat.label)}</strong> (${escHtml(stat.group)}): ${escHtml(stat.value)} <span style="color:var(--soft)">· ${escHtml(stat.detail)}</span></div>`).join('');
-  return `<div class="bm-result-kicker">Applying this metric to the full dataset (${result.rowCount}) results:</div><div class="bm-result-values">${chips}</div>`;
+  return `<div class="bm-result-kicker">Applying this metric to the (${result.rowCount}) results:</div><div class="bm-result-values">${chips}</div>`;
 }
 function gmUpdateDatasetResult(cohorts, metric){
   const el=document.getElementById('bm-dataset-result');if(!el)return null;
