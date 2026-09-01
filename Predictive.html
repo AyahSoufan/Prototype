@@ -606,12 +606,12 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
           <div class="db-ctrl-label" style="white-space:nowrap;font-weight:700;color:var(--text);font-size:14px;text-transform:none;letter-spacing:0">1. Choose a Measure<span style="color:var(--red)">*</span></div>
           <select class="db-select" id="db-metric-select" onchange="dbOnMetricChange()" style="flex:0 0 420px;max-width:48%">
             <option value="">Choose a measure</option>
-            <option value="accuracy_difference">How often is the AI correct overall? (Accuracy)</option>
-            <option value="fpr_difference">How often does the AI incorrectly predict High Risk? (False Positive Rate)</option>
-            <option value="fnr_difference">How often does the AI incorrectly predict Low Risk? (False Negative Rate)</option>
-            <option value="precision_difference">When the AI predicts High Risk, how often is it correct? (Precision)</option>
-            <option value="recall_difference">How many people who were later charged did the AI identify as High Risk? (Recall)</option>
-            <option value="f1_difference">How well does the AI balance correct High Risk predictions and identifying High Risk cases? (F1 Score)</option>
+            <option value="accuracy_difference">How often is the AI correct overall?</option>
+            <option value="fpr_difference">How often does the AI incorrectly predict High Risk?</option>
+            <option value="fnr_difference">How often does the AI incorrectly predict Low Risk?</option>
+            <option value="precision_difference">When the AI predicts High Risk, how often is it correct?</option>
+            <option value="recall_difference">How many people who were later charged did the AI identify as High Risk?</option>
+            <option value="f1_difference">How well does the AI avoid both wrong High Risk labels and missed reoffending cases?</option>
           </select>
           <div class="db-metric-desc placeholder" id="db-metric-desc" style="font-size:13px;flex:1">Choose a measure to learn what it checks.</div>
         </div>
@@ -1072,54 +1072,54 @@ const METRIC_LIBRARY = [
   // FAMILY 1: FAIRNESS & BIAS
   {
     id: 'accuracy-difference',
-    name: 'Accuracy',
+    name: 'How often is the AI correct overall?',
     family: 'Fairness & Bias',
-    definition: 'The proportion of all predictions that are correct. Formula: (true positives + true negatives) / all cases.',
+    definition: 'How often the AI prediction matched what later happened.',
     source: 'Standard classification metric',
     computeId: 'accuracy_difference',
     isComputable: true
   },
   {
     id: 'recall-difference',
-    name: 'Recall / True Positive Rate',
+    name: 'How many people who reoffended did the AI identify as High Risk?',
     family: 'Fairness & Bias',
-    definition: 'Among people who actually reoffended, the proportion the AI correctly predicted as High Risk. Formula: true positives / (true positives + false negatives).',
+    definition: 'Of the people who later reoffended, how many the AI correctly identified as High Risk.',
     source: 'Standard classification metric',
     computeId: 'recall_difference',
     isComputable: true
   },
   {
     id: 'precision-difference',
-    name: 'Precision / Positive Predictive Value',
+    name: 'When the AI predicts High Risk, how often is it correct?',
     family: 'Fairness & Bias',
-    definition: 'Among people the AI predicted as High Risk, the proportion who actually reoffended. Formula: true positives / (true positives + false positives).',
+    definition: 'Of the people the AI predicted as High Risk, how many later reoffended.',
     source: 'Standard classification metric',
     computeId: 'precision_difference',
     isComputable: true
   },
   {
     id: 'fpr-difference',
-    name: 'False Positive Rate',
+    name: 'How often does the AI incorrectly predict High Risk?',
     family: 'Fairness & Bias',
-    definition: 'Among people who did not reoffend, the proportion the AI incorrectly predicted as High Risk. Formula: false positives / (false positives + true negatives).',
+    definition: 'Of the people who did not reoffend, how many the AI wrongly predicted as High Risk.',
     source: 'Chouldechova (2017); Hardt et al. (2016)',
     computeId: 'fpr_difference',
     isComputable: true
   },
   {
     id: 'fnr-difference',
-    name: 'False Negative Rate',
+    name: 'How often does the AI incorrectly predict Low Risk?',
     family: 'Fairness & Bias',
-    definition: 'Among people who actually reoffended, the proportion the AI incorrectly predicted as Low Risk. Formula: false negatives / (true positives + false negatives).',
+    definition: 'Of the people who later reoffended, how many the AI wrongly predicted as Low Risk.',
     source: 'Chouldechova (2017); Hardt et al. (2016)',
     computeId: 'fnr_difference',
     isComputable: true
   },
   {
     id: 'f1-difference',
-    name: 'F1 Score',
+    name: 'Combined error check',
     family: 'Fairness & Bias',
-    definition: 'A combined score balancing precision and recall. Formula: 2 * (precision * recall) / (precision + recall).',
+    definition: 'A combined measure that checks two things at once: whether High Risk labels are usually right, and whether people who later reoffended were usually identified by the AI.',
     source: 'Standard classification metric',
     computeId: 'f1_difference',
     isComputable: true
@@ -1260,7 +1260,7 @@ function computeMetric(computeId, sensitiveAttrCol, groupA=null, groupB=null) {
     },
     accuracy_difference: {
       type: 'accuracy_difference',
-      label: 'Accuracy by group',
+    label: 'How often is the AI correct overall?',
       plain: 'Of everyone in this group, how many AI predictions were correct?',
       formula: '(TP + TN) / (TP + TN + FP + FN)',
       numerator: 'Correct predictions',
@@ -1270,7 +1270,7 @@ function computeMetric(computeId, sensitiveAttrCol, groupA=null, groupB=null) {
     },
     recall_difference: {
       type: 'recall_difference',
-      label: 'Recall / True Positive Rate by group',
+    label: 'How many people who reoffended did the AI identify as High Risk?',
       plain: 'Of people who actually reoffended, how many were correctly predicted High Risk?',
       formula: 'TP / (TP + FN)',
       numerator: 'True positives',
@@ -1280,7 +1280,7 @@ function computeMetric(computeId, sensitiveAttrCol, groupA=null, groupB=null) {
     },
     precision_difference: {
       type: 'precision_difference',
-      label: 'Precision / Positive Predictive Value by group',
+    label: 'When the AI predicts High Risk, how often is it correct?',
       plain: 'Of people predicted High Risk, how many actually reoffended?',
       formula: 'TP / (TP + FP)',
       numerator: 'True positives',
@@ -1290,7 +1290,7 @@ function computeMetric(computeId, sensitiveAttrCol, groupA=null, groupB=null) {
     },
     fpr_difference: {
       type: 'fpr_difference',
-      label: 'False Positive Rate by group',
+    label: 'How often does the AI incorrectly predict High Risk?',
       plain: 'Of people who did not reoffend, how many were wrongly predicted High Risk?',
       formula: 'FP / (FP + TN)',
       numerator: 'False positives',
@@ -1300,7 +1300,7 @@ function computeMetric(computeId, sensitiveAttrCol, groupA=null, groupB=null) {
     },
     fnr_difference: {
       type: 'fnr_difference',
-      label: 'False Negative Rate by group',
+    label: 'How often does the AI incorrectly predict Low Risk?',
       plain: 'Of people who actually reoffended, how many were wrongly predicted Low Risk?',
       formula: 'FN / (TP + FN)',
       numerator: 'False negatives',
@@ -1310,13 +1310,13 @@ function computeMetric(computeId, sensitiveAttrCol, groupA=null, groupB=null) {
     },
     f1_difference: {
       type: 'f1_difference',
-      label: 'F1 Score by group',
-      plain: 'A single score balancing how reliable High Risk predictions are and how many actual reoffenders the AI catches.',
+    label: 'How well does the AI avoid both wrong High Risk labels and missed reoffending cases?',
+    plain: 'A single score that checks whether the AI avoids both wrongly flagging people as High Risk and missing people who later reoffend.',
       formula: '2 * (precision * recall) / (precision + recall)',
-      numerator: 'F1 score',
-      denominator: 'Precision and recall combined',
+    numerator: 'Combined score',
+    denominator: 'Two error checks combined',
       countKind: 'f1',
-      direction: 'A lower value means the AI has a weaker balance of precision and recall for that group.'
+    direction: 'A lower value means the AI does worse at avoiding both kinds of mistakes for that group.'
     }
   };
 
@@ -2131,12 +2131,12 @@ const DB_PALETTE = ['#2C2AB3','#D97706','#059669','#B91C1C','#7C3AED','#0891B2',
 
 // ── Metric definitions ──
 const DB_METRICS = {
-  accuracy_difference:  {label:'Accuracy',            participantLabel:'How often is the AI correct overall?',                                                       definitionLead:'How often the AI\'s prediction was correct overall.', definitionRest:'A higher value means more of the AI\'s High Risk and Low Risk predictions matched what later happened.', formula:'(TP+TN)/All',   better:'higher'},
-  precision_difference: {label:'Precision',           participantLabel:'When the AI predicts High Risk, how often is it correct?',                                   definitionLead:'Of the people the AI predicted as High Risk, how many were later charged with another crime.', definitionRest:'A higher value means more of the High Risk predictions were correct.', formula:'TP/(TP+FP)',    better:'higher'},
-  recall_difference:    {label:'Recall',              participantLabel:'How many people who were later charged did the AI identify as High Risk?',                    definitionLead:'Of the people who were later charged with another crime, how many had been predicted as High Risk by the AI.', definitionRest:'A higher value means the AI identified more of these cases.', formula:'TP/(TP+FN)',    better:'higher'},
-  fpr_difference:       {label:'False Positive Rate', participantLabel:'How often does the AI incorrectly predict High Risk?',                                       definitionLead:'How often the AI predicted High Risk for people who were not later charged with another crime.', definitionRest:'A higher value means more people were incorrectly predicted as High Risk.', formula:'FP/(FP+TN)',    better:'lower'},
-  fnr_difference:       {label:'False Negative Rate', participantLabel:'How often does the AI incorrectly predict Low Risk?',                                        definitionLead:'How often the AI predicted Low Risk for people who were later charged with another crime.', definitionRest:'A higher value means more cases were missed by the AI.', formula:'FN/(TP+FN)',    better:'lower'},
-  f1_difference:        {label:'F1 Score',            participantLabel:'How well does the AI balance correct High Risk predictions and identifying High Risk cases?', definitionLead:'A combined measure of Precision and Recall.', definitionRest:'A higher value means the AI does better at both making correct High Risk predictions and identifying people who were later charged.', formula:'2·P·R/(P+R)',   better:'higher'},
+  accuracy_difference:  {label:'How often is the AI correct overall?', participantLabel:'How often is the AI correct overall?',                                      definitionLead:'How often the AI\'s prediction was correct overall.', definitionRest:'A higher value means more of the AI\'s High Risk and Low Risk predictions matched what later happened.', formula:'(TP+TN)/All',   better:'higher'},
+  precision_difference: {label:'When the AI predicts High Risk, how often is it correct?', participantLabel:'When the AI predicts High Risk, how often is it correct?', definitionLead:'Of the people the AI predicted as High Risk, how many were later charged with another crime.', definitionRest:'A higher value means more of the High Risk predictions were correct.', formula:'TP/(TP+FP)',    better:'higher'},
+  recall_difference:    {label:'How many people who were later charged did the AI identify as High Risk?', participantLabel:'How many people who were later charged did the AI identify as High Risk?', definitionLead:'Of the people who were later charged with another crime, how many had been predicted as High Risk by the AI.', definitionRest:'A higher value means the AI identified more of these cases.', formula:'TP/(TP+FN)',    better:'higher'},
+  fpr_difference:       {label:'How often does the AI incorrectly predict High Risk?', participantLabel:'How often does the AI incorrectly predict High Risk?',          definitionLead:'How often the AI predicted High Risk for people who were not later charged with another crime.', definitionRest:'A higher value means more people were incorrectly predicted as High Risk.', formula:'FP/(FP+TN)',    better:'lower'},
+  fnr_difference:       {label:'How often does the AI incorrectly predict Low Risk?', participantLabel:'How often does the AI incorrectly predict Low Risk?',            definitionLead:'How often the AI predicted Low Risk for people who were later charged with another crime.', definitionRest:'A higher value means more cases were missed by the AI.', formula:'FN/(TP+FN)',    better:'lower'},
+  f1_difference:        {label:'Combined error check', participantLabel:'How well does the AI avoid both wrong High Risk labels and missed reoffending cases?', definitionLead:'A combined measure that checks two things at once: whether High Risk labels are usually right, and whether people who were later charged were usually identified by the AI.', definitionRest:'A higher value means the AI does better at avoiding both kinds of mistakes.', formula:'Combined score',   better:'higher'},
   demographic_parity:   {label:'Prediction Rate',     plain:'Measures how often people in a group are predicted High Risk.',                                                 formula:'(TP+FP)/All',   better:'neutral'},
 };
 
@@ -2145,7 +2145,7 @@ function metricDefinitionHtml(m){
 }
 
 function metricChoiceLabel(m){
-  return m.participantLabel?`${m.participantLabel} (${m.label||m.name})`:(m.label||m.name);
+  return m.participantLabel||m.plain||m.label||m.name;
 }
 
 const DB_FEATURE_GROUPS = [
@@ -2309,18 +2309,18 @@ function dbRenderTileHtml(tile){
         plain=`${s.tp+s.tn} out of ${s.n} predictions were correct`;
       } else if(metricId==='recall_difference'){
         const ap=s.tp+s.fn;
-        plain=ap>0?`Correctly flagged ${s.tp} of the ${ap} people who reoffended`:`No actual positives in this group`;
+        plain=ap>0?`Correctly flagged ${s.tp} of the ${ap} people who reoffended`:`No one in this group reoffended`;
       } else if(metricId==='fpr_difference'){
         const an=s.fp+s.tn;
-        plain=an>0?`${s.fp} of the ${an} people who did NOT reoffend were wrongly flagged`:`No actual negatives in this group`;
+        plain=an>0?`${s.fp} of the ${an} people who did NOT reoffend were wrongly flagged`:`Everyone in this group reoffended`;
       } else if(metricId==='precision_difference'){
         const pp=s.tp+s.fp;
         plain=pp>0?`${s.tp} of the ${pp} High Risk predictions were correct`:`No High Risk predictions for this group`;
       } else if(metricId==='fnr_difference'){
         const ap=s.tp+s.fn;
-        plain=ap>0?`Missed ${s.fn} of the ${ap} people who reoffended (wrongly cleared)`:`No actual positives in this group`;
+        plain=ap>0?`Missed ${s.fn} of the ${ap} people who reoffended (wrongly cleared)`:`No one in this group reoffended`;
       } else if(metricId==='f1_difference'){
-        plain=`Balanced score across ${s.n} people (TP ${s.tp} · FP ${s.fp} · FN ${s.fn})`;
+        plain=`Checks whether the AI avoids both wrong High Risk labels and missed reoffending cases across ${s.n} people`;
       } else if(metricId==='demographic_parity'){
         const pp=s.tp+s.fp;
         plain=`${pp} of ${s.n} people in this group were predicted High Risk`;
@@ -2362,13 +2362,13 @@ function initStep1b(){
 const BM_PALETTE = ['#2C2AB3','#D97706','#059669','#B91C1C','#7C3AED','#0891B2','#BE185D','#854D0E'];
 
 const BM_METRICS = [
-  {id:'demographic_parity',   name:'Prediction Rate',       plain:'Measures how often people in a group are predicted High Risk.',                                          useful:'Useful when you are worried that one group receives High Risk labels more often than another group.', formula:'High Risk/All', better:'neutral'},
-  {id:'accuracy_difference',  name:'Accuracy',              participantLabel:'How often is the AI correct overall?',                                                       definitionLead:'How often the AI\'s prediction was correct overall.', definitionRest:'A higher value means more of the AI\'s High Risk and Low Risk predictions matched what later happened.', plain:'How often the AI\'s prediction was correct overall.', useful:'Useful when you want an overall measure of AI performance.', formula:'(TP+TN)/All', better:'higher'},
-  {id:'recall_difference',    name:'Recall',                participantLabel:'How many people who were later charged did the AI identify as High Risk?',                    definitionLead:'Of the people who were later charged with another crime, how many had been predicted as High Risk by the AI.', definitionRest:'A higher value means the AI identified more of these cases.', plain:'Of the people who were later charged with another crime, how many had been predicted as High Risk by the AI.', useful:'Useful when missing true cases is costly.', formula:'TP/(TP+FN)', better:'higher'},
-  {id:'fpr_difference',       name:'False Positive Rate',   participantLabel:'How often does the AI incorrectly predict High Risk?',                                       definitionLead:'How often the AI predicted High Risk for people who were not later charged with another crime.', definitionRest:'A higher value means more people were incorrectly predicted as High Risk.', plain:'How often the AI predicted High Risk for people who were not later charged with another crime.', useful:'Useful when unnecessary interventions or wrongful flags are a concern.', formula:'FP/(FP+TN)', better:'lower'},
-  {id:'precision_difference', name:'Precision',             participantLabel:'When the AI predicts High Risk, how often is it correct?',                                   definitionLead:'Of the people the AI predicted as High Risk, how many were later charged with another crime.', definitionRest:'A higher value means more of the High Risk predictions were correct.', plain:'Of the people the AI predicted as High Risk, how many were later charged with another crime.', useful:'Useful when you want to know whether a High Risk label is reliable.', formula:'TP/(TP+FP)', better:'higher'},
-  {id:'fnr_difference',       name:'False Negative Rate',   participantLabel:'How often does the AI incorrectly predict Low Risk?',                                        definitionLead:'How often the AI predicted Low Risk for people who were later charged with another crime.', definitionRest:'A higher value means more cases were missed by the AI.', plain:'How often the AI predicted Low Risk for people who were later charged with another crime.', useful:'Useful when missed true cases may create safety risks.', formula:'FN/(TP+FN)', better:'lower'},
-  {id:'f1_difference',        name:'F1 Score',              participantLabel:'How well does the AI balance correct High Risk predictions and identifying High Risk cases?', definitionLead:'A combined measure of Precision and Recall.', definitionRest:'A higher value means the AI does better at both making correct High Risk predictions and identifying people who were later charged.', plain:'A combined measure of Precision and Recall.', useful:'Useful when both types of errors matter.', formula:'2*P*R/(P+R)', better:'higher'},
+  {id:'demographic_parity',   name:'How often does the AI predict High Risk?', plain:'Measures how often people are predicted High Risk.',                                 useful:'Useful when you are worried that some people receive High Risk labels more often than others.', formula:'High Risk/All', better:'neutral'},
+  {id:'accuracy_difference',  name:'How often is the AI correct overall?', participantLabel:'How often is the AI correct overall?',                                         definitionLead:'How often the AI\'s prediction was correct overall.', definitionRest:'A higher value means more of the AI\'s High Risk and Low Risk predictions matched what later happened.', plain:'How often the AI\'s prediction was correct overall.', useful:'Useful when you want an overall measure of AI performance.', formula:'(TP+TN)/All', better:'higher'},
+  {id:'recall_difference',    name:'How many people who were later charged did the AI identify as High Risk?', participantLabel:'How many people who were later charged did the AI identify as High Risk?', definitionLead:'Of the people who were later charged with another crime, how many had been predicted as High Risk by the AI.', definitionRest:'A higher value means the AI identified more of these cases.', plain:'Of the people who were later charged with another crime, how many had been predicted as High Risk by the AI.', useful:'Useful when missing true cases is costly.', formula:'TP/(TP+FN)', better:'higher'},
+  {id:'fpr_difference',       name:'How often does the AI incorrectly predict High Risk?', participantLabel:'How often does the AI incorrectly predict High Risk?',             definitionLead:'How often the AI predicted High Risk for people who were not later charged with another crime.', definitionRest:'A higher value means more people were incorrectly predicted as High Risk.', plain:'How often the AI predicted High Risk for people who were not later charged with another crime.', useful:'Useful when unnecessary interventions or wrongful flags are a concern.', formula:'FP/(FP+TN)', better:'lower'},
+  {id:'precision_difference', name:'When the AI predicts High Risk, how often is it correct?', participantLabel:'When the AI predicts High Risk, how often is it correct?',     definitionLead:'Of the people the AI predicted as High Risk, how many were later charged with another crime.', definitionRest:'A higher value means more of the High Risk predictions were correct.', plain:'Of the people the AI predicted as High Risk, how many were later charged with another crime.', useful:'Useful when you want to know whether a High Risk label is reliable.', formula:'TP/(TP+FP)', better:'higher'},
+  {id:'fnr_difference',       name:'How often does the AI incorrectly predict Low Risk?', participantLabel:'How often does the AI incorrectly predict Low Risk?',               definitionLead:'How often the AI predicted Low Risk for people who were later charged with another crime.', definitionRest:'A higher value means more cases were missed by the AI.', plain:'How often the AI predicted Low Risk for people who were later charged with another crime.', useful:'Useful when missed true cases may create safety risks.', formula:'FN/(TP+FN)', better:'lower'},
+  {id:'f1_difference',        name:'Combined error check',  participantLabel:'How well does the AI avoid both wrong High Risk labels and missed reoffending cases?',       definitionLead:'A combined measure that checks two things at once: whether High Risk labels are usually right, and whether people who were later charged were usually identified by the AI.', definitionRest:'A higher value means the AI does better at avoiding both kinds of mistakes.', plain:'A combined measure that checks whether the AI avoids both wrongly flagging people as High Risk and missing people who were later charged.', useful:'Useful when both types of errors matter.', formula:'Combined score', better:'higher'},
   {id:'other_measure',        name:'Create my own measure', plain:'',                                                                                                      useful:'Useful when the listed metrics do not capture what you want to check.', formula:'Custom', better:'neutral'},
 ];
 
@@ -2388,9 +2388,9 @@ function bmMeasureTechnicalName(m){
 
 function bmMeasureDescriptionWithTechnical(m){
   if(!m) return '';
-  if(m.id==='other_measure') return 'Use this if the listed measures do not check what you want to check. (Custom measure)';
+  if(m.id==='other_measure') return 'Use this if the listed measures do not check what you want to check.';
   const desc=[m.definitionLead||m.plain||'',m.definitionRest||''].filter(Boolean).join(' ');
-  return `${desc} (${bmMeasureTechnicalName(m)})`;
+  return desc;
 }
 
 const BM_FEATURES = [
@@ -3452,13 +3452,13 @@ function getCurrentEvent(){return events.find(e=>e.id===currentEventId)||null;}
 // METRIC SCAFFOLDING — guidance data for lay users
 // ════════════════════════════════════════════════════════════════
 const METRIC_SCAFFOLDING = {
-  demographic_parity:{icon:'📊',tagline:'Does the AI predict High Risk equally across groups?',when:'Use this first. It shows whether one group receives more High Risk labels, regardless of accuracy.',watchOut:'A different prediction rate is not automatically unfair. If one group genuinely reoffends more, higher rates may be expected. Compare with FPR and FNR for the full picture.'},
+  demographic_parity:{icon:'📊',tagline:'Does the AI predict High Risk equally across groups?',when:'Use this first. It shows whether one group receives more High Risk labels, regardless of whether those labels are correct.',watchOut:'A different prediction rate is not automatically unfair. If one group genuinely reoffends more, higher rates may be expected. Compare with measures about wrong High Risk labels and missed reoffending cases for the full picture.'},
   accuracy_difference:{icon:'🎯',tagline:'How often is the AI correct for each group?',when:'Use for a simple overall picture of whether the AI performs equally well across groups.',watchOut:''},
-  recall_difference:{icon:'🔍',tagline:'Of people who did reoffend, how many did the AI catch?',when:'Use to check whether the AI misses actual risk in some groups (under-flagging). Low recall means many real risks are labelled Low Risk.',watchOut:'Low recall in one group may indicate under-surveillance for that group. But it may also reflect genuine differences in risk distribution.'},
-  precision_difference:{icon:'✅',tagline:'Of people labelled High Risk, how many actually reoffended?',when:'Use to check how reliable the High Risk label is. Low precision means many people are wrongly flagged.',watchOut:'Precision and recall are in tension: improving one usually worsens the other. Always use both together.'},
-  fpr_difference:{icon:'⚠️',tagline:'Of people who did NOT reoffend, how many were wrongly flagged High Risk?',when:'Use to detect false accusations. A higher FPR in one group means that group faces more wrongful High Risk labels.',watchOut:'The ProPublica investigation found Black defendants had nearly double the FPR of White defendants in COMPAS. This is the key error-rate metric for this dataset.'},
-  fnr_difference:{icon:'🚨',tagline:'Of people who DID reoffend, how many were cleared as Low Risk?',when:'Use to detect under-flagging. The AI misses actual risk cases more often for one group.',watchOut:'It is mathematically impossible to equalise FPR and FNR simultaneously when base rates differ across groups. A lower FNR for one group tends to come at the cost of a higher FPR for another.'},
-  f1_difference:{icon:'⚖️',tagline:'A single score balancing how many risks are caught and how reliable predictions are.',when:'Use for an overall summary of the AI\'s balance between recall and precision. Useful for a quick group comparison.',watchOut:'F1 hides the direction of errors. Low F1 could mean too many false positives, too many false negatives, or both. Always check FPR and FNR separately.'}
+  recall_difference:{icon:'🔍',tagline:'Of people who did reoffend, how many did the AI catch?',when:'Use to check whether the AI misses actual risk in some groups. A low score means many people who reoffended were labelled Low Risk.',watchOut:'A low score in one group may indicate under-surveillance for that group. But it may also reflect genuine differences in risk distribution.'},
+  precision_difference:{icon:'✅',tagline:'Of people labelled High Risk, how many actually reoffended?',when:'Use to check how reliable the High Risk label is. A low score means many people are wrongly flagged.',watchOut:'Different measures can move in opposite directions: improving one kind of mistake can sometimes worsen another.'},
+  fpr_difference:{icon:'⚠️',tagline:'Of people who did NOT reoffend, how many were wrongly flagged High Risk?',when:'Use to detect wrongful High Risk labels. A higher score in one group means that group faces more wrong High Risk labels.',watchOut:'The ProPublica investigation found Black defendants were wrongly flagged High Risk much more often than White defendants in COMPAS. This is an important error check for this dataset.'},
+  fnr_difference:{icon:'🚨',tagline:'Of people who DID reoffend, how many were cleared as Low Risk?',when:'Use to detect missed reoffending cases. A higher score means the AI misses actual risk cases more often for one group.',watchOut:'When groups have different reoffending rates, reducing one kind of mistake can sometimes increase another kind of mistake.'},
+  f1_difference:{icon:'⚖️',tagline:'A single score checking whether the AI avoids two kinds of mistakes.',when:'Use for an overall summary of whether the AI avoids both wrong High Risk labels and missed reoffending cases. Useful for a quick group comparison.',watchOut:'This score hides which kind of mistake is happening. A low score could mean too many people are wrongly flagged, too many reoffending cases are missed, or both.'}
 };
 
 const ATTR_SUGGESTIONS = {
@@ -3521,7 +3521,7 @@ function updateGroupCounts(attr){
 }
 
 function getFormulaFromComputeId(cid){
-  const map={demographic_parity:'High Risk predictions / all in group',accuracy_difference:'(TP+TN) / (TP+TN+FP+FN)',recall_difference:'TP / (TP+FN)',precision_difference:'TP / (TP+FP)',fpr_difference:'FP / (FP+TN)',fnr_difference:'FN / (TP+FN)',f1_difference:'2×Precision×Recall / (Precision+Recall)'};
+  const map={demographic_parity:'High Risk predictions / all in group',accuracy_difference:'(TP+TN) / (TP+TN+FP+FN)',recall_difference:'TP / (TP+FN)',precision_difference:'TP / (TP+FP)',fpr_difference:'FP / (FP+TN)',fnr_difference:'FN / (TP+FN)',f1_difference:'Combined score from two error checks'};
   return map[cid]||'-';
 }
 
@@ -3567,13 +3567,13 @@ function updateS3Banner(){
 
 function populateMetricDropdown(){
   const sel=document.getElementById('s3-metric-dropdown'); if(!sel) return;
-  let html='<option value="">Select a metric</option>';
+  let html='<option value="">Select a measure</option>';
   METRIC_FAMILIES.forEach(family=>{
     const metrics=METRIC_LIBRARY.filter(m=>m.family===family);
     html+=`<optgroup label="${escAttr(family)}">`;
     metrics.forEach(m=>{
-      const tag=m.isComputable?' (Computable)':'';
-      html+=`<option value="${m.id}">${escHtml(m.name)}${tag}</option>`;
+      const label=m.computeId&&DB_METRICS[m.computeId]?.participantLabel?DB_METRICS[m.computeId].participantLabel:m.name;
+      html+=`<option value="${m.id}">${escHtml(label)}</option>`;
     });
     html+='</optgroup>';
   });
