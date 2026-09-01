@@ -503,7 +503,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       </div>
       
       <div class="entry-info-section">
-        <div class="entry-info-label">About the AI system</div>
+        <div class="entry-info-label">AI Criminal Charge Prediction System</div>
         <div class="entry-info-text">The AI system is designed to predict whether a person is likely to be charged with another crime within the next <strong>two years</strong>.
         For each person, the AI gives one of two predictions:
           <ul style="margin:3px 0 0 18px;line-height:1.35">
@@ -568,7 +568,11 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       </div>
       <div class="card" style="margin-bottom:14px">
         <div class="step-desc" style="max-width:980px;margin-bottom:0">
-          Explore the records used by the AI system. Use the filters at the top of each column to look at different groups, such as by age, sex, race, or criminal history. When you have finished, click Next to continue to Performance &amp; Metrics.
+         Explore the records used by the AI system. 
+         <br>Each record shows a person's information and the AI prediction (High Risk or Low Risk). 
+          <br>The actual outcome, whether the person committed a crime within the following two years, is used to calculate the AI's performance but is not shown in this step.
+          <br>
+        Use the column filters to explore different groups. When finished, click Next to continue to Performance & Metrics.
         </div>
       </div>
       <div id="filter-bar" style="display:none;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px;font-size:12px"></div>
@@ -649,9 +653,10 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
           Turn a problem you noticed about the AI system into an audit measure.
           <ul style="margin:6px 0 0 18px;">
             <li>First, describe something that seemed wrong, unfair, harmful, or concerning about the AI system.</li>
-            <li>Next, choose a characteristic, such as race, age, or sex, and select the groups you want to check or compare.</li>
+            <li>Next, optionally choose a characteristic, such as race, age, or sex, if you want to narrow the result or compare groups.</li>
             <li>Then, choose how you want to measure the problem. You can also decide how large a difference between groups would concern you.</li>
-            <li>Finally, review the generated audit measure and save it. If the measure can be applied to the full dataset, the tool will show the results.</li>
+            <li>You must click <strong>Save Audit Measure</strong> to save your measure.</li>
+            <li>As you complete the fields, the tool will generate a <strong>summary of your audit measure</strong>. Where possible, it will also show the <strong>results of applying your measure to the full dataset</strong>.</li>
           </ul>
         </div>
       </div>
@@ -673,8 +678,10 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
           <div class="audit-flow-head">
             <div class="audit-flow-num">2</div>
             <div>
-              <div class="audit-flow-title">Who would you like to check or compare?<span class="bm-required">*</span></div>
-              <div class="audit-flow-desc">Choose a characteristic, then select the groups you want to check or compare.</div>
+              <div class="audit-flow-title">Who would you like to check or compare?</div>
+              <div class="audit-flow-desc">
+               Optional: Select a characteristic if you want to narrow or compare the results by group. Then select the group(s) you want to check. Leave the groups blank to check everyone, select one group to narrow the results, or select multiple groups to compare them.
+              </div>
             </div>
           </div>
           <div id="bm-group-builder-wrap">
@@ -683,10 +690,10 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
                 <div class="bm-sub-label" style="margin-bottom:4px">Characteristic</div>
                 <select class="field" id="bm-characteristic-select" onchange="bmSetCharacteristic(this.value)" style="max-width:320px"></select>
               </div>
-              <div>
+              <div id="bm-groups-section" style="display:none">
                 <div class="bm-sub-label" style="margin-bottom:6px">Groups</div>
                 <div id="bm-simple-group-list" class="bm-group-list"></div>
-                <div id="bm-groups-hint" style="display:none;font-size:11px;color:var(--soft);line-height:1.4;margin-top:6px">Choose at least two groups to compare. Select all groups if the concern and measure affect all groups.</div>
+                <div id="bm-groups-hint" style="display:none;font-size:11px;color:var(--soft);line-height:1.4;margin-top:6px">Leave all groups unselected to calculate this measure for everyone. Select one group to narrow the result, or select two or more groups to compare.</div>
               </div>
             </div>
             <div id="bm-cohort-warn" style="display:none;margin-top:6px;font-size:11px;color:var(--amber)"></div>
@@ -699,7 +706,6 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
             <div class="audit-flow-num">3</div>
             <div>
               <div class="audit-flow-title">How would you like to check it?<span class="bm-required">*</span></div>
-              <div class="audit-flow-desc">Choose a measure. Each option is shown as a plain-language question, with the technical name underneath.</div>
             </div>
           </div>
           <div class="bm-sub-label" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -751,21 +757,10 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
             <span id="bm-criterion-threshold-tag" style="display:none"></span>
             <div id="bm-dataset-result" class="bm-result-compact" style="display:none"></div>
           </div>
-          <div id="bm-review-category-wrap" style="margin-top:12px;margin-bottom:12px">
-            <div class="bm-sub-label" style="margin-bottom:6px">Optional: How would you describe this concern?</div>
-            <select class="field" id="bm-concern-category" onchange="bmOnConcernCategoryChange()" style="display:none">
-              <option value="">Select a concern category</option>
-            </select>
-            <div id="bm-category-radio-list" style="display:flex;flex-direction:column;gap:3px;margin-bottom:8px"></div>
-            <div id="bm-other-concern-wrap" style="display:none;margin-top:8px">
-              <div class="bm-sub-label" style="margin-bottom:4px">Other concern type</div>
-              <input class="field" id="bm-other-concern-text" placeholder="Describe the concern type in your own words" oninput="bmUpdateCriterion();bmUpdateSaveBtn()">
-            </div>
-          </div>
           <div id="bm-criterion-placeholder" style="display:none"></div>
           <div class="bm-save-row">
             <button class="btn-primary" id="bm-save-btn" onclick="bmSave()" style="opacity:.4;cursor:not-allowed;background:var(--green)" disabled>Save Audit Measure</button>
-            <span id="bm-save-hint" style="font-size:12px;color:var(--soft)">Complete the concern, measure, and groups to save.</span>
+            <span id="bm-save-hint" style="font-size:12px;color:var(--soft)">Complete the concern and measure to save.</span>
           </div>
         </div>
       </div>
@@ -885,7 +880,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
     <!-- STEP 3 -->
     <div class="step-page" id="step3">
       <div class="step-heading">Create a metric</div>
-      <div class="step-desc">Select a metric, choose which groups to compare, run the analysis, then save it to your event.</div>
+      <div class="step-desc">Select a metric, optionally choose groups to narrow or compare, run the analysis, then save it to your event.</div>
 
       <div id="s3-flagged-panel" style="display:none" class="flagged-mini">
         <div class="flagged-mini-head" onclick="toggleS3Flagged()">
@@ -940,7 +935,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 
           <hr style="border:none;border-top:1px solid var(--border);margin:16px 0">
 
-          <div style="font-size:12px;color:var(--mid);margin-bottom:10px">Split the results by a demographic attribute, then pick two specific groups to compare side by side.</div>
+          <div style="font-size:12px;color:var(--mid);margin-bottom:10px">Optional. Leave groups blank to calculate the metric for everyone, choose one group to narrow the result, or choose two groups to compare side by side.</div>
           <div>
             <div class="grp-sel-label">Split by attribute</div>
             <select class="field" id="s3-demog-attr" onchange="onAttrChange()" style="max-width:300px">
@@ -966,7 +961,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
           <div style="display:grid;grid-template-columns:1fr;gap:16px;align-items:start">
             <div>
               <div class="grp-sel-label">Acceptable gap threshold <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--soft)">(optional)</span></div>
-              <div style="font-size:11px;color:var(--soft);margin-bottom:6px">Max acceptable gap in percentage points.</div>
+              <div style="font-size:11px;color:var(--soft);margin-bottom:6px">Only used when two or more groups are compared.</div>
               <div style="display:flex;align-items:center;gap:6px">
                 <input type="number" id="s3-threshold" class="field" min="0" max="100" step="0.1" style="max-width:100px" placeholder="e.g. 10">
                 <span style="font-size:12px;color:var(--soft)">pp</span>
@@ -1028,16 +1023,33 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       </div>
 
       <div class="card" style="margin-bottom:14px">
-        <div class="step-desc" style="max-width:980px;margin-bottom:0">You can check all the audit measures and concerns that you added before. You can measure the same concern in a different way, or add a new concern with a new measure; we encourage you to save as many relevant audit measures as you can. If you are happy, please click <strong>Finish Auditing</strong> to be directed back to the questionnaire with the final few questions before the end of this study.</div>
+        <div class="step-desc" style="max-width:980px;margin-bottom:0">Review the audit measures you saved. Before you finish, you also have one final opportunity to add an audit measure entirely <strong>in your own words</strong>, without using the fields from the previous step. You can describe anything else that concerns you and explain how you would measure it. When you are finished, click <strong>Finish Auditing</strong> to save your work and return to the questionnaire.</div>
       </div>
 
       <div id="ms-empty" style="padding:40px 24px;text-align:center;background:#fff;border:1.5px dashed var(--border);border-radius:10px;margin-bottom:16px">
         <div style="font-size:28px;opacity:.25;margin-bottom:8px">&#9783;</div>
         <div style="font-size:14px;font-weight:600;color:var(--mid);margin-bottom:4px">No audit measures saved yet</div>
-        <div style="font-size:12px;color:var(--soft);max-width:360px;margin:0 auto">Go back to <strong>Build an AI Audit Measure</strong> and save at least one audit measure to see it here.</div>
+        <div style="font-size:12px;color:var(--soft);max-width:420px;margin:0 auto">Go back to <strong>Build an AI Audit Measure</strong>, or use the final own-words box below, to save an audit measure.</div>
       </div>
 
       <div id="ms-list"></div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div class="section-label">Final own-words audit measure</div>
+        <div class="step-desc" style="margin-bottom:12px">Optional. Add anything else that concerns you about the AI system or dataset, and describe how you would measure it. Add as much detail as you can, including whether it relates to a specific group or groups.</div>
+        <div style="margin-bottom:12px">
+          <div class="q-text" style="margin-bottom:4px">What else concerns you?</div>
+          <textarea class="field" id="ms-own-concern" rows="3" placeholder="Describe any other concern in your own words." oninput="msUpdateOwnReady()" style="resize:vertical"></textarea>
+        </div>
+        <div style="margin-bottom:12px">
+          <div class="q-text" style="margin-bottom:4px">How would you measure it?</div>
+          <textarea class="field" id="ms-own-measure" rows="3" placeholder="Explain what you would count, compare, or look for." oninput="msUpdateOwnReady()" style="resize:vertical"></textarea>
+        </div>
+        <div class="bm-save-row">
+          <button class="btn-primary" id="ms-own-save-btn" onclick="msSaveOwnMeasure()" style="opacity:.4;cursor:not-allowed;background:var(--green)" disabled>Save Own-Words Measure</button>
+          <span id="ms-own-save-hint" style="font-size:12px;color:var(--soft)">Complete both boxes to save.</span>
+        </div>
+      </div>
 
       <div class="nav-row">
         <button class="btn-outline" onclick="goStep('1c')">Back</button>
@@ -1232,8 +1244,8 @@ const DEMOGRAPHIC_ATTR_OPTIONS = ['Race','Age Group','Sex','Prior Offense Count'
 // Computation logic
 function computeMetric(computeId, sensitiveAttrCol, groupA=null, groupB=null) {
   const rows = METRIC_ROWS;
-  const allGroups = [...new Set(rows.map(r => String(r[sensitiveAttrCol] ?? '')).filter(Boolean))].sort();
-  const selectedGroups = (groupA && groupB) ? [groupA, groupB] : allGroups;
+  const allGroups = sensitiveAttrCol ? [...new Set(rows.map(r => String(r[sensitiveAttrCol] ?? '')).filter(Boolean))].sort() : ['Everyone'];
+  const selectedGroups = (groupA && groupB) ? [groupA, groupB] : groupA ? [groupA] : allGroups;
 
   const metricInfo = {
     demographic_parity: {
@@ -1313,7 +1325,7 @@ function computeMetric(computeId, sensitiveAttrCol, groupA=null, groupB=null) {
 
   const safeRate = (num, den) => den > 0 ? num / den : null;
   const groupStats = selectedGroups.map(g => {
-    const subset = rows.filter(r => String(r[sensitiveAttrCol]) === String(g));
+    const subset = sensitiveAttrCol && g !== 'Everyone' ? rows.filter(r => String(r[sensitiveAttrCol]) === String(g)) : rows;
     const tp = subset.filter(r => r['AI Prediction'] === 'High Risk' && r['Actual Outcome'] === 'Reoffended').length;
     const tn = subset.filter(r => r['AI Prediction'] === 'Low Risk' && r['Actual Outcome'] === 'Did not reoffend').length;
     const fp = subset.filter(r => r['AI Prediction'] === 'High Risk' && r['Actual Outcome'] === 'Did not reoffend').length;
@@ -1367,7 +1379,7 @@ function computeMetric(computeId, sensitiveAttrCol, groupA=null, groupB=null) {
   const rates = groupStats.map(r => r.rate).filter(r => r !== null && !isNaN(r));
   const gap = rates.length ? Math.max(...rates) - Math.min(...rates) : 0;
   const namedGap = groupStats.length === 2 && groupStats[0].rate !== null && groupStats[1].rate !== null ? groupStats[0].rate - groupStats[1].rate : null;
-  const comparisonText = groupStats.length === 2 ? `${groupStats[0].group} compared with ${groupStats[1].group}` : 'all available groups';
+  const comparisonText = groupStats.length === 1 ? groupStats[0].group : groupStats.length === 2 ? `${groupStats[0].group} compared with ${groupStats[1].group}` : 'all available groups';
 
   return {
     type: info.type,
@@ -1381,7 +1393,9 @@ function computeMetric(computeId, sensitiveAttrCol, groupA=null, groupB=null) {
     denominatorLabel: info.denominator,
     direction: info.direction,
     comparisonText,
-    interpretation: `This compares ${comparisonText}. The absolute gap is ${(gap * 100).toFixed(1)} percentage points. ${info.direction}`
+    interpretation: groupStats.length === 1
+      ? `This calculates the measure for ${comparisonText}. ${info.direction}`
+      : `This compares ${comparisonText}. The absolute gap is ${(gap * 100).toFixed(1)} percentage points. ${info.direction}`
   };
 }
 
@@ -1395,20 +1409,22 @@ function renderMetricResult(result, threshold, computeId) {
   const bars = groups.map((g,i)=>{
     const pct = g.rate===null||isNaN(g.rate) ? 'N/A' : (g.rate*100).toFixed(1)+'%';
     const w = maxRate>0&&g.rate!==null ? (g.rate/maxRate*100) : 0;
-    const badge = i===0 ? '<span class="grp-a-badge"></span>' : '<span class="grp-b-badge"></span>';
-    const frac = g.denominator ? ` (${g.count}/${g.denominator})` : '';
+    const badge = groups.length>1 ? (i===0 ? '<span class="grp-a-badge"></span>' : '<span class="grp-b-badge"></span>') : '';
     const emptyWarn = (g.n===0) ? ' <span style="color:var(--amber);font-size:10px">⚠ no data</span>' : '';
     return `<div class="rbar-row">
-      <div class="rbar-lbl-row"><span class="rbar-name">${badge}${escHtml(g.group)}</span><span class="rbar-val">${pct}${frac}${emptyWarn}</span></div>
+      <div class="rbar-lbl-row"><span class="rbar-name">${badge}${escHtml(g.group)}</span><span class="rbar-val">${pct}${emptyWarn}</span></div>
       <div class="rbar-track"><div class="${colors[i%colors.length]}" style="width:${w}%;height:100%;border-radius:5px"></div></div>
-      <div style="font-size:10px;color:var(--soft);margin-top:2px">TP ${g.tp} · TN ${g.tn} · FP ${g.fp} · FN ${g.fn} · n=${g.n}</div>
     </div>`;
   }).join('');
   const gapPct=(gap*100).toFixed(1);
   const gapClass=gap>0.15?'gap-high':gap>0.05?'gap-zero':'gap-low';
   const namedGapHtml = result.namedGap!==null ? `<div style="font-size:12px;color:var(--mid);margin-top:4px">Gap (A minus B): <strong>${(result.namedGap*100).toFixed(1)} pp</strong></div>` : '';
+  const gapHtml = groups.length>1 ? `<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px">
+      <div class="gap-pill ${gapClass}">${gapPct} pp absolute gap</div>
+      ${namedGapHtml}
+    </div>` : '';
   let threshHtml='';
-  if(threshold!==null&&threshold!==''&&!isNaN(parseFloat(threshold))){
+  if(groups.length>1&&threshold!==null&&threshold!==''&&!isNaN(parseFloat(threshold))){
     const tVal=parseFloat(threshold);
     const passes=(gap*100)<=tVal;
     threshHtml=`<div style="margin-top:10px;padding:8px 12px;border-radius:var(--r);background:${passes?'var(--glight)':'var(--rlight)'};border:1px solid ${passes?'#A0CCB8':'#FECACA'}">
@@ -1420,10 +1436,7 @@ function renderMetricResult(result, threshold, computeId) {
     <div class="mri-title">${escHtml(result.label)}</div>
     <div style="font-size:12px;color:var(--mid);margin-bottom:10px">${escHtml(result.plain)}</div>
     ${bars}
-    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px">
-      <div class="gap-pill ${gapClass}">${gapPct} pp absolute gap</div>
-      ${namedGapHtml}
-    </div>
+    ${gapHtml}
     <div class="metric-interp">${escHtml(result.interpretation)}</div>
     ${threshHtml}
   </div>`;
@@ -2011,6 +2024,51 @@ function bmSetMode(mode){
 // ── Metrics summary (step 4) ──
 function initMetricsSummary(){
   renderMetricsSummary();
+  msUpdateOwnReady();
+}
+
+function msUpdateOwnReady(){
+  const btn=document.getElementById('ms-own-save-btn');
+  const hint=document.getElementById('ms-own-save-hint');
+  if(!btn||!hint) return;
+  const concern=(document.getElementById('ms-own-concern')?.value||'').trim();
+  const measure=(document.getElementById('ms-own-measure')?.value||'').trim();
+  const ready=concern.length>0&&measure.length>0;
+  btn.disabled=!ready;
+  btn.style.opacity=ready?'1':'.4';
+  btn.style.cursor=ready?'pointer':'not-allowed';
+  hint.textContent=ready?'Ready to save.':'Complete both boxes to save.';
+}
+
+function msSaveOwnMeasure(){
+  const btn=document.getElementById('ms-own-save-btn');
+  if(btn?.disabled){
+    logEvent('validation_error','save_final_own_words_measure_blocked',{reason:'required_fields_missing'});
+    return;
+  }
+  const concernEl=document.getElementById('ms-own-concern');
+  const measureEl=document.getElementById('ms-own-measure');
+  const concern=(concernEl?.value||'').trim();
+  const measure=(measureEl?.value||'').trim();
+  if(!concern||!measure) return;
+  const savedMeasure={
+    id:bmNextId++, type:'own', mode:'final_own_words',
+    prolificId,
+    feature:null, groups:[],
+    metricId:null, metricName:'Own-words audit measure',
+    threshold:null, thresholdNotes:null,
+    result:null, criterionText:null,
+    ownText:measure, ownName:'Own-words audit measure',
+    ownWhat:concern, ownCategory:null,
+    ownSeverity:null, ownLikelihood:null, ownWho:null,
+    cohorts:null
+  };
+  bmSavedMetrics.push(savedMeasure);
+  logEvent('save','save_final_own_words_measure',{savedMeasure});
+  if(concernEl) concernEl.value='';
+  if(measureEl) measureEl.value='';
+  msUpdateOwnReady();
+  renderMetricsSummary();
 }
 
 function renderMetricsSummary(){
@@ -2032,7 +2090,9 @@ function renderMetricsSummary(){
     const isLib=m.type==='lib';
     const badge=isLib
       ?`<span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:var(--alight);color:var(--accent);border:1px solid #C4C2F0">Audit measure</span>`
-      :`<span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:#FEF9C3;color:#854D0E;border:1px solid #E8CFA0">Recorded</span>`;
+      :m.mode==='final_own_words'
+        ?`<span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:#FEF9C3;color:#854D0E;border:1px solid #E8CFA0">Own words</span>`
+        :`<span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:#FEF9C3;color:#854D0E;border:1px solid #E8CFA0">Recorded</span>`;
 
     let details='';
     if(isLib&&m.criterionText){
@@ -2445,14 +2505,13 @@ function bmUpdateScopeUi(){
 }
 
 function bmSelectedSimpleGroups(){
+  if(!bmCharacteristic) return [];
   return bmGetGroupOptions(bmCharacteristic).filter(g=>bmSimpleGroups.has(g));
 }
 
 function bmEffectiveScope(){
   const selected=bmSelectedSimpleGroups();
-  const all=bmGetGroupOptions(bmCharacteristic);
-  if(selected.length===0) return 'none';
-  if(all.length>0&&selected.length===all.length) return 'everyone';
+  if(selected.length===0) return 'everyone';
   if(selected.length===1) return 'single';
   return 'compare';
 }
@@ -2488,8 +2547,10 @@ function bmToggleSimpleGroup(group, checked){
 
 function bmRenderSimpleGroupPicker(){
   const sel=document.getElementById('bm-characteristic-select');
+  const groupsSection=document.getElementById('bm-groups-section');
   const list=document.getElementById('bm-simple-group-list');
   const hint=document.getElementById('bm-groups-hint');
+  if(groupsSection) groupsSection.style.display=bmCharacteristic?'block':'none';
   if(hint) hint.style.display=bmCharacteristic?'block':'none';
   if(sel){
     sel.innerHTML=`<option value=""${!bmCharacteristic?' selected':''}>Select</option>`+
@@ -2498,7 +2559,7 @@ function bmRenderSimpleGroupPicker(){
   if(list){
     const options=bmGetGroupOptions(bmCharacteristic);
     if(!bmCharacteristic){
-      list.innerHTML='<div style="font-size:12px;color:var(--soft)">Select a characteristic to see groups.</div>';
+      list.innerHTML='';
       bmUpdateSimpleGroupWarn();
       return;
     }
@@ -2599,7 +2660,7 @@ function bmSetMode(mode){
   const desc=document.getElementById('bm-p1-desc');
   if(title) title.textContent=mode==='single'?'Choose a category and groups':'Build groups to compare';
   if(desc) desc.textContent=mode==='single'
-    ?'Select one category, then pick at least two groups to compare side by side.'
+    ?'Optionally select one category, then choose zero, one, or multiple groups.'
     :'Build two or more groups, each defined by one or more categories. e.g. Race = African-American and Age Group = 25 to 45.';
   if(mode==='intersect'&&bmCohorts.length===0){
     bmAddCohort(); bmAddCohort(); // start with 2 blank cohorts
@@ -2750,6 +2811,7 @@ function bmBuildDatasetResult(cohorts, metric, thresholdValue, scope='compare'){
     metricName:metric.name,
     metricQuestion:metric.participantLabel||metric.plain||metric.name,
     better:metric.better||'neutral',
+    scope,
     rowCount:METRIC_ROWS.length,
     stats,
     gap:null,
@@ -2774,12 +2836,9 @@ function bmRenderDatasetResultHtml(result){
   const fmtCount=n=>Number(n).toLocaleString('en-US');
   const fmtRate=r=>r===null||isNaN(r)?'N/A':`${(r*100).toFixed(1)}%`;
   const values=result.stats.map((s,i)=>{
-    const frac=bmGuidedMetricFraction(s,result.metricId);
-    const fracText=frac.denominator?` (${fmtCount(frac.count)} of ${fmtCount(frac.denominator)})`:'';
-    return `<div class="bm-result-line"><strong>${escHtml(s.group)}</strong> &mdash; ${fmtRate(s.rate)}${fracText}</div>`;
+    return `<div class="bm-result-line"><span>Group(s): </span><strong>${escHtml(s.group)}</strong> &mdash; ${fmtRate(s.rate)}</div>`;
   }).join('');
-  return `<div class="bm-result-kicker">RESULTS FROM THE FULL DATASET (${fmtCount(result.rowCount)} RECORDS)</div>
-    <div class="bm-result-summary">These results show what happens when your selected measure is applied to the groups you chose.</div>
+  return `<div class="bm-result-kicker">Results from Applying Your Measure to the Full Dataset (${fmtCount(result.rowCount)} RECORDS)</div>
     <div class="bm-result-summary"><strong>Measure:</strong> ${escHtml(result.metricQuestion||result.metricName)}</div>
     <div class="bm-result-values">${values}</div>`;
 }
@@ -2900,6 +2959,15 @@ function bmGroupNameForSentence(group, characteristic){
   return group;
 }
 
+function bmSingleGroupScopePhrase(group, characteristic){
+  switch(characteristic){
+    case 'Race':      return `people identified as ${group}`;
+    case 'Sex':       return group==='Male'?'people who are male':'people who are female';
+    case 'Age Group': return `people aged ${group.toLowerCase()}`;
+    default:          return `people where ${characteristic} = ${group}`;
+  }
+}
+
 function bmUpdateCriterion(){
   const boxEl=document.getElementById('bm-criterion-box');
   const textEl=document.getElementById('bm-criterion-text');
@@ -2925,14 +2993,16 @@ function bmUpdateCriterion(){
     summaryHtml=missing('Describe what you noticed in Step 1.');
   } else if(!m){
     summaryHtml=missing('Choose how you would like to check it in Step 3.');
-  } else if(effectiveScope==='none'){
-    summaryHtml=missing('Choose a characteristic and at least two groups in Step 2.');
-  } else if(effectiveScope==='single'){
-    summaryHtml=missing('Choose at least two groups to compare, or select all groups if the concern and measure affect all groups.');
   } else if(effectiveScope==='everyone'){
     summaryHtml=bmIsOtherMeasure()
-      ?`I want to check this custom measure for everyone: ${escHtml(measurePhrase)}.`
-      :`Check how often people ${escHtml(measurePhrase)}.`;
+      ?`Check this custom measure for everyone in the dataset: ${escHtml(measurePhrase)}.`
+      :`Check how often people ${escHtml(measurePhrase)} across everyone in the dataset.`;
+  } else if(effectiveScope==='single'){
+    const group=comparisonGroups[0];
+    const groupPhrase=bmSingleGroupScopePhrase(group,bmCharacteristic);
+    summaryHtml=bmIsOtherMeasure()
+      ?`Check ${escHtml(groupPhrase)} using this custom measure: ${escHtml(measurePhrase)}.`
+      :`Check how often ${escHtml(groupPhrase)} ${escHtml(measurePhrase)}.`;
   } else {
     const groupNames=comparisonGroups.map(g=>escHtml(bmGroupNameForSentence(g,bmCharacteristic)));
     const groupText=groupNames.length===2
@@ -2984,13 +3054,18 @@ function bmUpdatePreview(){
     return;
   }
   const m=BM_METRICS.find(x=>x.id===bmMetricId);
-  const readyCohorts=bmCohorts.filter(c=>c.conditions.some(x=>x.feat&&x.val));
-  if(!readyCohorts.length&&!m){el.innerHTML='Your metric will appear here as you make selections below.';return;}
-  const cohortLabels=readyCohorts.map(c=>`<strong>${escHtml(c.name)}</strong> (${escHtml(bmGetCohortLabel(c))})`).join(' vs ');
-  const metricPart=m?` · measuring <strong>${m.name}</strong>`:'';
+  const effectiveScope=bmEffectiveScope();
+  const selectedGroups=bmSelectedSimpleGroups();
+  if(!m){el.innerHTML='Your metric will appear here as you make selections below.';return;}
+  const scopePart=effectiveScope==='everyone'
+    ?'<strong>Everyone</strong>'
+    :effectiveScope==='single'
+      ?`<strong>${escHtml(selectedGroups[0])}</strong>`
+      :selectedGroups.map(g=>`<strong>${escHtml(g)}</strong>`).join(' vs ');
+  const metricPart=` · measuring <strong>${escHtml(m.name)}</strong>`;
   const t=parseFloat(bmThreshold);
-  const threshPart=!isNaN(t)&&bmThreshold!==''?` · flagging gaps above <strong>${t} pp</strong>`:'';
-  el.innerHTML=(cohortLabels||'Define cohorts above')+metricPart+threshPart+'.';
+  const threshPart=effectiveScope==='compare'&&!isNaN(t)&&bmThreshold!==''?` · flagging gaps above <strong>${t} pp</strong>`:'';
+  el.innerHTML=scopePart+metricPart+threshPart+'.';
 }
 
 // ── Save button state ──
@@ -3003,9 +3078,6 @@ function bmUpdateSaveBtn(){
   if(!bmMetricId) missing.push('measure');
   if(bmIsOtherMeasure()&&!bmGetOtherMeasureName()) missing.push('custom measure name');
   if(bmIsOtherMeasure()&&!bmGetOtherMeasureText()) missing.push('custom measure description');
-  const effectiveScope=bmEffectiveScope();
-  if(effectiveScope==='none') missing.push('a characteristic and at least two groups');
-  if(effectiveScope==='single') missing.push('at least two groups');
   const ready=missing.length===0;
   btn.disabled=!ready;
   btn.style.opacity=ready?'1':'.4';
@@ -3078,7 +3150,7 @@ function bmSave(){
     result:datasetResult,
     criterionText, generatedStatement, ownText:null,
     characteristic:effectiveScope==='everyone'?(bmCharacteristic||'Everyone'):bmCharacteristic,
-    comparedGroups:effectiveScope==='everyone'?(bmCharacteristic?bmGetGroupOptions(bmCharacteristic):['Everyone']):saveGroups,
+    comparedGroups:saveGroups,
     cohorts:analysisCohorts.map(c=>({...c,conditions:[...c.conditions]}))
   };
   bmSavedMetrics.push(savedMetric);
@@ -3439,10 +3511,13 @@ function onGroupChange(){
 function updateGroupCounts(attr){
   const ga=document.getElementById('s3-group-a')?.value,gb=document.getElementById('s3-group-b')?.value;
   const el=document.getElementById('s3-group-counts');if(!el)return;
-  if(!attr||!ga||!gb){el.textContent='';return;}
+  if(!attr||(!ga&&!gb)){el.textContent='';return;}
   const ca=METRIC_ROWS.filter(r=>String(r[attr]??'')===ga).length;
   const cb=METRIC_ROWS.filter(r=>String(r[attr]??'')===gb).length;
-  el.innerHTML=`<span class="grp-a-badge"></span><strong>${escHtml(ga)}</strong>: ${ca} rows &nbsp;&nbsp;<span class="grp-b-badge"></span><strong>${escHtml(gb)}</strong>: ${cb} rows`;
+  const parts=[];
+  if(ga) parts.push(`<span class="grp-a-badge"></span><strong>${escHtml(ga)}</strong>: ${ca} rows`);
+  if(gb) parts.push(`<span class="grp-b-badge"></span><strong>${escHtml(gb)}</strong>: ${cb} rows`);
+  el.innerHTML=parts.join(' &nbsp;&nbsp;');
 }
 
 function getFormulaFromComputeId(cid){
@@ -3545,11 +3620,13 @@ function runMetricOnly(){
     if(rr){rr.style.display='block';rr.innerHTML=`<div class="info-box">This metric (${escHtml(metric.name)}) is qualitative and cannot be computed automatically. Use <strong>Save metric</strong> to record it as a criterion.</div>`;}
     return;
   }
-  if(!demogAttr){showErr('Please select an attribute in Step 2.');return;}
-  if(!ga||!gb){showErr('Please select both Group A and Group B in Step 2.');return;}
-  if(ga===gb){showErr('Group A and Group B must be different.');return;}
-  const result=computeMetric(metric.computeId, demogAttr, ga, gb);
-  logEvent('metric_option_change','legacy_run_metric_analysis',{metricId,metricName:metric.name,demographicAttr:demogAttr,groupA:ga,groupB:gb,threshold,result});
+  const selectedGroup=demogAttr?(ga||gb||null):null;
+  const analysisAttr=selectedGroup?demogAttr:null;
+  const groupA=selectedGroup;
+  const groupB=selectedGroup&&ga&&gb?gb:null;
+  if(ga&&gb&&ga===gb){showErr('Group A and Group B must be different.');return;}
+  const result=computeMetric(metric.computeId, analysisAttr, groupA, groupB);
+  logEvent('metric_option_change','legacy_run_metric_analysis',{metricId,metricName:metric.name,demographicAttr:analysisAttr,groupA,groupB,threshold,result});
   if(rr){rr.style.display='block';rr.innerHTML=renderMetricResult(result, threshold, metric.computeId);}
 }
 
@@ -3565,11 +3642,15 @@ function saveMetric(){
   const threshold=document.getElementById('s3-threshold')?.value||'';
   const notes=document.getElementById('s3-notes')?.value.trim()||'';
   let computedResult=null;
-  if(metric.isComputable&&demogAttr&&ga&&gb&&ga!==gb) computedResult=computeMetric(metric.computeId,demogAttr,ga,gb);
+  const selectedGroup=demogAttr?(ga||gb||null):null;
+  const analysisAttr=selectedGroup?demogAttr:null;
+  const groupA=selectedGroup;
+  const groupB=selectedGroup&&ga&&gb&&ga!==gb?gb:null;
+  if(metric.isComputable) computedResult=computeMetric(metric.computeId,analysisAttr,groupA,groupB);
   const savedMetric={id:nextMetricId++,prolificId,type:metric.isComputable?'library_computable':'library_conceptual',
     metricLibId:metric.id,metricName:metric.name,metricFamily:metric.family,metricDef:metric.definition,
-    metricSource:metric.source,computeId:metric.computeId,demographicAttr:demogAttr||null,
-    groupA:ga||null,groupB:gb||null,threshold:threshold||null,notes:notes||null,computedResult};
+    metricSource:metric.source,computeId:metric.computeId,demographicAttr:analysisAttr||null,
+    groupA:groupA||null,groupB:groupB||null,threshold:threshold||null,notes:notes||null,computedResult};
   ev.metrics.push(savedMetric);
   logEvent('save','legacy_save_metric',{eventId:ev.id,savedMetric});
   // Reset form
@@ -3798,6 +3879,8 @@ function attachAuditInteractionLogging(){
   bindChange('s3-threshold','legacy_metric_threshold_changed',el=>({threshold:el.value}));
   bindChange('s3-notes','legacy_metric_notes_changed',el=>({notes:el.value}));
   bindChange('s3-custom-text','legacy_custom_observation_changed',el=>({text:el.value}));
+  bindChange('ms-own-concern','final_own_words_concern_changed',el=>({text:el.value}));
+  bindChange('ms-own-measure','final_own_words_measure_changed',el=>({text:el.value}));
 }
 
 attachAuditInteractionLogging();
