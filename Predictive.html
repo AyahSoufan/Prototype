@@ -680,7 +680,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
             <div>
               <div class="audit-flow-title">Who would you like to check or compare?</div>
               <div class="audit-flow-desc">
-               Optional: Select a characteristic if you want to narrow or compare the results by group. Then select the group(s) you want to check. Leave the groups blank to check everyone, select one group to narrow the results, or select multiple groups to compare them.
+               The default is all dataset. Choose a characteristic only if you want to narrow or compare the results by group. Then select one group to narrow the results, or select multiple groups to compare them.
               </div>
             </div>
           </div>
@@ -1555,6 +1555,129 @@ function logEvent(eventType, action, details={}){
   }catch(e){}
   return event;
 }
+
+function compactText(text, max=120){
+  return String(text||'').replace(/\s+/g,' ').trim().slice(0,max);
+}
+
+function getClickableElement(target){
+  if(!target||!target.closest) return null;
+  return target.closest('button,a,label,input,select,textarea,[onclick],.step-item,.filter-clear,.cfp-item,.db-feat-expand-btn,.db-feat-name,.flagged-mini-head,.cfx-head,.s3-tab,.scale-btn,.bm-group-cb,.radio-row');
+}
+
+function getElementLogDetails(el){
+  if(!el) return null;
+  const details={
+    tag:el.tagName?el.tagName.toLowerCase():null,
+    id:el.id||null,
+    className:typeof el.className==='string'?el.className:null,
+    text:compactText(el.innerText||el.textContent||el.value||'',160),
+    name:el.name||null,
+    type:el.type||null,
+    value:(el.tagName==='SELECT'||el.type==='checkbox'||el.type==='radio')?el.value:null,
+    checked:(el.type==='checkbox'||el.type==='radio')?!!el.checked:null,
+    disabled:!!el.disabled,
+    onclick:el.getAttribute?el.getAttribute('onclick'):null,
+    href:el.getAttribute?el.getAttribute('href'):null
+  };
+  Object.keys(details).forEach(k=>details[k]===null&&delete details[k]);
+  return details;
+}
+
+function attachGlobalClickLogging(){
+  if(window.__traceGlobalClickLoggingAttached) return;
+  window.__traceGlobalClickLoggingAttached=true;
+  document.addEventListener('click',e=>{
+    const target=e.target&&e.target.nodeType===1?e.target:e.target?.parentElement;
+    const clickable=getClickableElement(target);
+    logEvent('click','ui_click',{
+      target:getElementLogDetails(target),
+      clickable:clickable&&clickable!==target?getElementLogDetails(clickable):null,
+      clientX:e.clientX,
+      clientY:e.clientY
+    });
+  },true);
+}
+
+function getAuditMeasureSource(m){
+  if(!m) return 'unknown';
+  if(m.source) return m.source;
+  if(m.mode==='final_own_words') return 'final_own_words';
+  if(m.type==='own') return 'own_words';
+  if(m.type==='lib'&&m.metricId==='other_measure') return 'filled_custom_measure';
+  if(m.type==='lib') return 'selected_measure';
+  if(m.type==='library_computable'||m.type==='library_conceptual') return 'legacy_selected_measure';
+  if(m.type==='custom') return 'legacy_custom_observation';
+  return m.type||'unknown';
+}
+
+function summarizeDatasetResult(result){
+  if(!result) return null;
+  const pct=v=>v===null||isNaN(v)?null:Number((v*100).toFixed(1));
+  return {
+    scope:result.scope||null,
+    rowCount:result.rowCount||null,
+    metricId:result.metricId||null,
+    metricName:result.metricName||null,
+    metricQuestion:result.metricQuestion||null,
+    groups:(result.stats||result.groups||[]).map(s=>({
+      group:s.group,
+      n:s.n,
+      ratePercent:pct(s.rate),
+      tp:s.tp,
+      tn:s.tn,
+      fp:s.fp,
+      fn:s.fn
+    })),
+    gapPercentagePoints:result.gap===null||result.gap===undefined?null:Number((result.gap*100).toFixed(1)),
+    threshold:result.threshold||null,
+    thresholdStatus:result.thresholdStatus||null
+  };
+}
+
+function getAuditMeasureCounts(measures=bmSavedMetrics||[]){
+  const counts={
+    total:measures.length,
+    selectedMeasures:0,
+    filledCustomMeasures:0,
+    finalOwnWordsMeasures:0,
+    otherOwnWordsMeasures:0,
+    legacyMeasures:0
+  };
+  measures.forEach(m=>{
+    const source=getAuditMeasureSource(m);
+    if(source==='selected_measure') counts.selectedMeasures++;
+    else if(source==='filled_custom_measure') counts.filledCustomMeasures++;
+    else if(source==='final_own_words') counts.finalOwnWordsMeasures++;
+    else if(source==='own_words') counts.otherOwnWordsMeasures++;
+    else if(source.startsWith('legacy_')) counts.legacyMeasures++;
+  });
+  counts.filledByUserMeasures=counts.filledCustomMeasures+counts.finalOwnWordsMeasures+counts.otherOwnWordsMeasures;
+  return counts;
+}
+
+function buildAssessmentRecord(m, index){
+  const source=getAuditMeasureSource(m);
+  return {
+    index:index+1,
+    id:m.id,
+    source,
+    savedAt:m.savedAt||null,
+    selectedOrFilled:source==='selected_measure'||source==='legacy_selected_measure'?'selected':'filled_by_user',
+    concern:m.concern||m.ownWhat||m.narrative||null,
+    generatedSummary:m.generatedSummary||m.generatedStatement||null,
+    generatedSummaryHtml:m.generatedSummaryHtml||m.criterionText||null,
+    fullDatasetResult:summarizeDatasetResult(m.fullDatasetResult||m.result||m.computedResult),
+    selectedMeasureId:m.metricId||m.metricLibId||null,
+    selectedMeasureName:m.metricName||null,
+    characteristic:m.characteristic||m.demographicAttr||m.feature||null,
+    groups:m.comparedGroups||m.groups||[],
+    customMeasureName:m.customMeasureName||null,
+    customMeasureText:m.customMeasureText||m.ownText||m.narrative||null,
+    finalOwnWordsConcern:m.mode==='final_own_words'?m.ownWhat:null,
+    finalOwnWordsMeasure:m.mode==='final_own_words'?m.ownText:null
+  };
+}
 function getStepName(n){
   const map={1:'Step 1: Observe the data','1b':'Step 2: Explore performance and metrics','1c':'Step 3: Build an AI Audit Measure',4:'Step 4: Audit measures summary'};
   return map[n]||`Step ${n}`;
@@ -1568,6 +1691,9 @@ const QUALTRICS_REDIRECT_URL = 'https://strathsci.qualtrics.com/jfe/form/SV_86qo
 
 function buildAuditExportPayload(exportReason='manual'){
   const allLegacyMetrics=events.flatMap(ev=>(ev.metrics||[]).map(metric=>({eventId:ev.id,eventName:ev.name,...metric})));
+  const savedMeasures=bmSavedMetrics||[];
+  const auditMeasureCounts=getAuditMeasureCounts(savedMeasures);
+  const auditMeasuresForAssessment=savedMeasures.map((m,index)=>buildAssessmentRecord(m,index));
   return {
     exportReason,
     prolificId,
@@ -1575,8 +1701,10 @@ function buildAuditExportPayload(exportReason='manual'){
     sessionStartedAt:sessionStartTime?new Date(sessionStartTime).toISOString():null,
     sessionDurationSeconds:sessionStartTime?Math.round((Date.now()-sessionStartTime)/1000):0,
     page:currentPageName,
-    savedMetrics:bmSavedMetrics||[],
-    savedConcerns:(bmSavedMetrics||[]).filter(m=>m.type==='own'),
+    auditMeasureCounts,
+    auditMeasuresForAssessment,
+    savedMetrics:savedMeasures,
+    savedConcerns:savedMeasures.filter(m=>m.type==='own'),
     legacyEvents:events,
     legacyMetrics:allLegacyMetrics,
     flaggedRowIndexes:Array.from(flaggedRows||[]),
@@ -1696,7 +1824,7 @@ function startAudit(){
       showProlificIdError();
       return;
     }
-    auditLogs=[];
+    auditLogs=auditLogs.filter(log=>log.eventType==='click'||log.action==='start_without_prolific_id');
     sessionStartTime=Date.now();
     logEvent('start','start_task',{prolificId});
     document.getElementById('entry').style.display='none';
@@ -1951,6 +2079,8 @@ function bmSaveOwn(){
 
   const savedConcern={
     id:bmNextId++, type:'own', mode:'recorded',
+    source:'own_words',
+    savedAt:new Date().toISOString(),
     prolificId,
     feature:null, groups:[],
     metricId:null, metricName:'Recorded concern',
@@ -1961,7 +2091,11 @@ function bmSaveOwn(){
     cohorts:null
   };
   bmSavedMetrics.push(savedConcern);
-  logEvent('save','save_recorded_concern',{savedConcern});
+  logEvent('save','save_recorded_concern',{
+    savedConcern,
+    assessmentRecord:buildAssessmentRecord(savedConcern,bmSavedMetrics.length-1),
+    auditMeasureCounts:getAuditMeasureCounts()
+  });
 
   // Clear own fields
   ['bm-own-name','bm-own-what','bm-own-category','bm-own-severity','bm-own-likelihood','bm-own-who','bm-own-text'].forEach(id=>{
@@ -2053,18 +2187,28 @@ function msSaveOwnMeasure(){
   if(!concern||!measure) return;
   const savedMeasure={
     id:bmNextId++, type:'own', mode:'final_own_words',
+    source:'final_own_words',
+    savedAt:new Date().toISOString(),
     prolificId,
     feature:null, groups:[],
     metricId:null, metricName:'Own-words audit measure',
     threshold:null, thresholdNotes:null,
     result:null, criterionText:null,
+    generatedSummary:null,
+    generatedSummaryHtml:null,
+    fullDatasetResult:null,
+    fullDatasetResultSummary:null,
     ownText:measure, ownName:'Own-words audit measure',
     ownWhat:concern, ownCategory:null,
     ownSeverity:null, ownLikelihood:null, ownWho:null,
     cohorts:null
   };
   bmSavedMetrics.push(savedMeasure);
-  logEvent('save','save_final_own_words_measure',{savedMeasure});
+  logEvent('save','save_final_own_words_measure',{
+    savedMeasure,
+    assessmentRecord:buildAssessmentRecord(savedMeasure,bmSavedMetrics.length-1),
+    auditMeasureCounts:getAuditMeasureCounts()
+  });
   if(concernEl) concernEl.value='';
   if(measureEl) measureEl.value='';
   msUpdateOwnReady();
@@ -2553,7 +2697,7 @@ function bmRenderSimpleGroupPicker(){
   if(groupsSection) groupsSection.style.display=bmCharacteristic?'block':'none';
   if(hint) hint.style.display=bmCharacteristic?'block':'none';
   if(sel){
-    sel.innerHTML=`<option value=""${!bmCharacteristic?' selected':''}>Select</option>`+
+    sel.innerHTML=`<option value=""${!bmCharacteristic?' selected':''}>All dataset</option>`+
       BM_FEATURES.map(f=>`<option value="${escAttr(f)}"${f===bmCharacteristic?' selected':''}>${escHtml(f)}</option>`).join('');
   }
   if(list){
@@ -2846,6 +2990,7 @@ function bmRenderDatasetResultHtml(result){
 function bmSavedMeasureSummaryHtml(m){
   const statement=m.generatedStatement?escHtml(m.generatedStatement):'Saved audit measure.';
   const parts=[`<div>${statement}</div>`];
+  if(m.concern) parts.push(`<div class="audit-mini-note" style="margin-top:6px">What you noticed: "${escHtml(m.concern)}"</div>`);
   if(m.concernCategoryLabel) parts.push(`<div style="margin-top:6px"><strong>Optional concern type:</strong> ${escHtml(m.concernCategoryLabel)}</div>`);
   return parts.join('');
 }
@@ -3136,6 +3281,8 @@ function bmSave(){
   const datasetResult=bmBuildDatasetResult(analysisCohorts,m,bmThreshold,effectiveScope);
   const savedMetric={
     id:bmNextId++, type:'lib', mode:effectiveScope,
+    source:bmIsOtherMeasure()?'filled_custom_measure':'selected_measure',
+    savedAt:new Date().toISOString(),
     prolificId,
     feature:effectiveScope==='everyone'?'Everyone':bmCharacteristic, groups:saveGroups,
     metricId:bmMetricId, metricName:customMeasureName||m.name,
@@ -3148,13 +3295,23 @@ function bmSave(){
     threshold:bmThreshold||null,
     thresholdNotes:thresholdNotes||null,
     result:datasetResult,
-    criterionText, generatedStatement, ownText:null,
+    fullDatasetResult:datasetResult,
+    fullDatasetResultSummary:summarizeDatasetResult(datasetResult),
+    criterionText,
+    generatedStatement,
+    generatedSummary:generatedStatement,
+    generatedSummaryHtml:criterionText,
+    ownText:null,
     characteristic:effectiveScope==='everyone'?(bmCharacteristic||'Everyone'):bmCharacteristic,
     comparedGroups:saveGroups,
     cohorts:analysisCohorts.map(c=>({...c,conditions:[...c.conditions]}))
   };
   bmSavedMetrics.push(savedMetric);
-  logEvent('save','save_audit_measure',{savedMetric});
+  logEvent('save','save_audit_measure',{
+    savedMetric,
+    assessmentRecord:buildAssessmentRecord(savedMetric,bmSavedMetrics.length-1),
+    auditMeasureCounts:getAuditMeasureCounts()
+  });
 
   bmRenderSaved();
   bmClearAuditMeasureForm(true);
@@ -3854,8 +4011,9 @@ async function finishSession(){
   const e=sessionStartTime?Math.round((Date.now()-sessionStartTime)/1000):0;
   const t=Math.floor(e/60)>0?`${Math.floor(e/60)} min ${e%60} sec`:`${e%60} sec`;
   const savedCount=(bmSavedMetrics||[]).length;
+  const auditMeasureCounts=getAuditMeasureCounts();
   const allLegacyMetrics=events.flatMap(ev=>ev.metrics);
-  logEvent('finish','finish_clicked',{duration:t,savedMetrics:savedCount,legacyEvents:events.length,legacyMetrics:allLegacyMetrics.length});
+  logEvent('finish','finish_clicked',{duration:t,savedMetrics:savedCount,auditMeasureCounts,legacyEvents:events.length,legacyMetrics:allLegacyMetrics.length});
   const finishButtons=document.querySelectorAll('button[onclick="finishSession()"]');
   finishButtons.forEach(btn=>{btn.disabled=true;btn.textContent='Saving...';});
   logEvent('redirect','qualtrics_redirect_started',{url:getQualtricsRedirectUrl(),urlConfigured:QUALTRICS_REDIRECT_URL!=='QUALTRICS_REDIRECT_URL_HERE'});
@@ -3883,6 +4041,7 @@ function attachAuditInteractionLogging(){
   bindChange('ms-own-measure','final_own_words_measure_changed',el=>({text:el.value}));
 }
 
+attachGlobalClickLogging();
 attachAuditInteractionLogging();
 loadParticipantIdFromUrl();
 </script>
