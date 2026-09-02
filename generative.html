@@ -9,28 +9,28 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#F5F4F0;--surface:#FFF;--text:#18170E;--mid:#6B6860;--soft:#A8A59C;--border:#DDDBD3;--accent:#2C2AB3;--alight:#EEEEFA;--red:#B91C1C;--rlight:#FEF2F2;--green:#166534;--glight:#F0FDF4;--amber:#92400E;--amlight:#FFFBEB;--r:6px;--rl:10px}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-height:100vh}
-#entry{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 24px}
+#entry{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 16px}
 .entry-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--soft);margin-bottom:8px;text-align:center}
-.entry-heading{font-size:24px;font-weight:600;margin-bottom:12px;text-align:center}
+.entry-heading{font-size:21px;font-weight:600;margin-bottom:6px;text-align:center}
 .entry-sub{font-size:13px;color:var(--mid);margin-bottom:32px;text-align:center;max-width:560px}
-.entry-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rl);padding:0;max-width:760px;width:100%;overflow:hidden}
+.entry-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rl);padding:0;max-width:980px;width:100%;overflow:hidden}
 .entry-card-header{padding:20px 24px 16px;border-bottom:1px solid var(--border)}
 .entry-type{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--soft);margin-bottom:6px}
 .entry-task-name{font-size:18px;font-weight:600;color:var(--text);margin-bottom:2px}
 .entry-pill{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;background:#EEF2FF;color:#3730A3;margin-top:6px}
-.entry-card-body{padding:16px 22px}
-.entry-info-section{margin-bottom:11px}
-.entry-info-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text);margin-bottom:4px}
-.entry-info-text{font-size:13px;color:var(--mid);line-height:1.45}
+.entry-card-body{padding:10px 16px}
+.entry-info-section{margin-bottom:6px}
+.entry-info-label{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text);margin-bottom:2px}
+.entry-info-text{font-size:12px;color:var(--mid);line-height:1.32}
 .entry-info-text strong{color:var(--text);font-weight:500}
 .entry-steps{margin:10px 0 0 18px;line-height:1.8}
 .entry-steps li{padding-left:2px;margin-bottom:6px}
-.entry-input-wrap{margin:10px 0}
-.entry-input-label{font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px}
+.entry-input-wrap{margin:6px 0 8px}
+.entry-input-label{font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px}
 .entry-input-helper{font-size:11px;color:var(--soft);margin-top:5px;line-height:1.5}
 .entry-error{display:none;margin-top:8px;padding:8px 10px;background:var(--rlight);border:1px solid #FECACA;border-radius:var(--r);font-size:12px;color:var(--red)}
-.entry-divider{border:none;border-top:1px solid var(--border);margin:10px 0}
-.btn-begin{width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer}
+.entry-divider{border:none;border-top:1px solid var(--border);margin:6px 0}
+.btn-begin{width:100%;padding:9px;background:var(--accent);color:#fff;border:none;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer}
 .btn-begin:hover{opacity:.88}
 #app{display:none;min-height:100vh;flex-direction:column}
 #app.show{display:flex}
@@ -273,7 +273,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 .bm-metric-radio{width:14px;height:14px;accent-color:var(--accent);flex-shrink:0;margin-top:2px}
 .bm-metric-name{font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px}
 .bm-metric-plain{font-size:11px;color:var(--mid);line-height:1.4}
-.bm-own-textarea{width:100%;resize:vertical;min-height:96px}
+.bm-own-textarea{width:100%;resize:vertical;min-height:48px;height:48px;overflow:hidden}
 /* Result chart */
 .bm-res-bar-row{margin-bottom:8px}
 .bm-res-lbl-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px}
@@ -290,6 +290,9 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 .bm-result-values{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .bm-result-chip{padding:6px 8px;background:#FAFAF8;border:1px solid var(--border);border-radius:6px;font-size:12px;color:var(--mid)}
 .bm-result-chip strong{color:var(--text)}
+.bm-result-summary{font-size:12px;color:var(--mid);line-height:1.55}
+.bm-result-line{font-size:12px;color:var(--mid);line-height:1.7}
+.bm-result-line strong{color:var(--text)}
 /* Save row */
 .bm-save-row{display:flex;align-items:center;gap:12px;margin-top:16px;padding-top:0;border-top:none}
 .bm-save-row .btn-primary{background:var(--green)}
@@ -399,14 +402,14 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 .db-count-dot{width:9px;height:9px;border-radius:50%;margin-top:4px;flex-shrink:0}
 .db-count-value{font-size:14px;font-weight:800;color:var(--text);white-space:nowrap}
 .db-count-track{height:11px;background:var(--border);border-radius:8px;overflow:hidden}
-.db-count-fill{height:100%;border-radius:8px;background:#4B5563;transition:width .25s ease}
+.db-count-fill{height:100%;border-radius:8px;background:var(--accent);transition:width .25s ease}
 .db-count-caption{font-size:11px;color:var(--soft);margin-top:4px;line-height:1.35}
 .db-coverage-title{font-size:14px;font-weight:800;color:var(--text);line-height:1.35;margin-bottom:4px}
 .db-coverage-tech{font-size:12px;color:var(--soft);margin-bottom:12px}
 .db-coverage-summary{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;margin-bottom:12px}
 .db-coverage-pct{font-size:18px;font-weight:800;color:var(--text);white-space:nowrap}
 .db-coverage-track{height:11px;background:var(--border);border-radius:8px;overflow:hidden;width:100%}
-.db-coverage-fill{height:100%;border-radius:8px;background:#4B5563;transition:width .25s ease}
+.db-coverage-fill{height:100%;border-radius:8px;background:var(--accent);transition:width .25s ease}
 .db-coverage-statement{background:#FAFAF8;border:1px solid var(--border);border-radius:8px;padding:9px 11px;margin:0 0 12px 0;font-size:12px;font-weight:600;line-height:1.45;color:var(--mid)}
 .db-coverage-examples{margin-top:9px}
 .db-coverage-examples-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px}
@@ -415,7 +418,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 .db-tone-group{font-size:13px;color:var(--mid);line-height:1.35;min-width:0}
 .db-tone-records{font-size:11px;color:var(--soft);white-space:nowrap}
 .db-tone-track{height:10px;background:var(--border);border-radius:8px;overflow:hidden}
-.db-tone-fill{height:100%;border-radius:8px;background:#4B5563;transition:width .25s ease}
+.db-tone-fill{height:100%;border-radius:8px;background:var(--accent);transition:width .25s ease}
 .db-tone-value{font-size:13px;font-weight:800;color:var(--text);white-space:nowrap;text-align:right}
 @media(max-width:620px){.db-tone-row{grid-template-columns:1fr auto}.db-tone-track{grid-column:1/-1;grid-row:2}.db-tone-value{grid-column:2;grid-row:1}}
 .db-count-empty{background:#fff;border:1.5px dashed var(--border);border-radius:10px;padding:42px 24px;text-align:center;color:var(--soft);font-size:13px;line-height:1.55;grid-column:1/-1}
@@ -423,15 +426,15 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 
 /* Control bar */
 .db-ctrl-bar{display:flex;align-items:center;gap:20px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 18px;margin-bottom:16px;flex-wrap:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.db-ctrl-bar.metric-picker{display:block}
-.db-metric-row{display:grid;grid-template-columns:minmax(260px,390px) 1fr;gap:12px;align-items:stretch;margin-top:8px}
+.db-ctrl-bar.metric-picker{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center}
+.db-metric-row{display:grid;grid-template-columns:minmax(220px,360px) minmax(0,1fr);gap:12px;align-items:stretch;margin-top:0}
 .db-ctrl-group{display:flex;align-items:center;gap:8px}
 .db-ctrl-group.metric-select{display:block}
 .db-ctrl-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--soft)}
 .db-select{padding:7px 28px 7px 10px;font-size:13px;font-family:'Inter',sans-serif;color:var(--text);border:1px solid var(--border);border-radius:var(--r);background:var(--surface);cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B6860' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;min-width:200px}
 .db-select:focus{outline:none;border-color:var(--accent)}
 .db-metric-desc{font-size:12px;color:var(--accent);line-height:1.45;background:var(--alight);border:1px solid #C4C2F0;border-radius:var(--r);padding:9px 12px;min-height:37px;display:flex;align-items:center}
-@media (max-width:760px){.db-metric-row{grid-template-columns:1fr}}
+@media (max-width:760px){.db-ctrl-bar.metric-picker{grid-template-columns:1fr}.db-metric-row{grid-template-columns:1fr}}
 /* db-chart-toggle removed */
 
 /* Body layout */
@@ -578,36 +581,50 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 
 <!-- ENTRY -->
 <div id="entry">
-  <div class="entry-heading">Welcome to the AI Auditing Task</div>
+  <div class="entry-heading">Welcome to the AI Artefact Description Evaluation Task</div>
   <div class="entry-card">
     <div class="entry-card-body">
-      <div class="entry-info-section">
-        <div class="entry-info-label">ABOUT THE AI SYSTEM</div>
-        <div class="entry-info-text">
-          The AI system creates written descriptions of ,<strong> cultural heritage</strong>  objects, such as museum artefacts.<br>
-          For each object, the AI uses an <strong>image</strong> and information about the object to create a description.<br><br>
-          Your task is to explore these descriptions and think about <strong>what should be checked or measured</strong> when evaluating them.<br>
-          </div>
-      </div>
-       <hr class="entry-divider">
-      <div class="entry-info-section">
-        <div class="entry-info-label">WHAT INFORMATION DOES THE AI USE?</div>
-          <ul style="margin:6px 0 0 18px;line-height:1.55">
-            <li>The data comes from the TimeTravel Cultural Heritage Collection. Each record contains: an image of the object; information about the object, such as its materials, date, culture, and place of origin; and
-        a description created by the AI.</li>
-            <li>You will explore a sample of these records during the task.</li>
-            <li>The data also includes human-reviewed reference descriptions. You will not see these directly, but the tool uses them to measure how well the AI-generated descriptions perform.</li>
-          </ul>
-      </div>
-       <hr class="entry-divider">
-      <div class="entry-info-section">
-        <div class="entry-info-text">Your Prolific ID has been transferred from the questionnaire and is shown below. If it is missing, please enter it manually.</div>
-      </div>
       <div class="entry-input-wrap">
         <label class="entry-input-label" for="prolific-id-input">Prolific ID <span style="color:var(--red)">*</span></label>
         <input type="text" id="prolific-id-input" class="field" required autocomplete="off" placeholder="Enter your Prolific ID" oninput="updateProlificIdReady()">
         <!-- <div class="entry-input-helper">This should match the Prolific ID used in the questionnaire.</div> -->
         <div class="entry-error" id="prolific-id-error">Please enter your Prolific ID before beginning the audit.</div>
+      </div>
+       <hr class="entry-divider">
+      <div class="entry-info-section">
+        <div class="entry-info-label">ABOUT THE AI SYSTEM</div>
+        <div class="entry-info-text">
+          The AI system is designed to create written descriptions of <strong>cultural heritage artefacts</strong>. For each artefact, the AI uses an image and information about the artefact to create a description.
+        </div>
+      </div>
+       <hr class="entry-divider">
+      <div class="entry-info-section">
+        <div class="entry-info-label">WHAT INFORMATION DOES THE AI USE?</div>
+        <div class="entry-info-text">
+          The data comes from a collection of cultural heritage artefacts. It includes an image of each artefact and information such as its culture, materials, date, and museum information.
+          <br>During the task, you will be able to explore a sample of these artefacts, the information about them, and the descriptions created by the AI.
+        </div>
+      </div>
+       <hr class="entry-divider">
+      <div class="entry-info-section">
+        <div class="entry-info-label">HOW CAN WE CHECK THE AI'S DESCRIPTIONS?</div>
+        <div class="entry-info-text">
+          The dataset also contains descriptions that were reviewed by cultural heritage experts. You will not see these descriptions directly, but the tool uses them to calculate measures of how well the AI-generated descriptions performed.
+          <br>For example, the tool can show how much expected information is included in the AI descriptions and whether this differs across different groups of artefacts.
+        </div>
+      </div>
+       <hr class="entry-divider">
+      <div class="entry-info-section">
+        <div class="entry-info-label">YOUR TASK</div>
+        <div class="entry-info-text">You will explore the AI system and think about <strong>what should be checked and how it could be measured</strong>.
+          <br>During the task, you will:
+          <ol style="margin:3px 0 0 18px;line-height:1.35">
+            <li>Explore the artefacts and their AI-generated descriptions.</li>
+            <li>Explore the AI's performance using different measures and visualisations.</li>
+            <li>Identify concerns (things you notice about the AI that you think should be checked) and create audit measures (ways of measuring or checking those concerns).</li>
+          </ol>
+          <br><strong>The same concern can be measured in different ways.</strong> Please create as many relevant audit measures as you can based on what you notice.
+        </div>
       </div>
        <hr class="entry-divider">
       <div class="entry-info-section">
@@ -622,7 +639,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 <div id="app">
   <div class="step-bar">
     <div class="step-item active" id="si1" onclick="goStep(1)"><div class="step-num" id="sn1">1</div> Observe</div>
-    <div class="step-item" id="si1b" onclick="goStep('1b')"><div class="step-num" id="sn1b">2</div> Explore performance &amp; metrics</div>
+    <div class="step-item" id="si1b" onclick="goStep('1b')"><div class="step-num" id="sn1b">2</div> Explore performance &amp; measures</div>
     <div class="step-item" id="si1c" onclick="goStep('1c')"><div class="step-num" id="sn1c">3</div> Build an AI Audit Measure</div>
     <div class="step-item" id="si4" onclick="goStep(4)"><div class="step-num" id="sn4">4</div> Audit measures summary</div>
   </div>
@@ -636,10 +653,10 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       </div>
       <div class="card" style="margin-bottom:14px">
         <div class="step-desc" style="max-width:980px;margin-bottom:0">
-          Explore the artefact records used by the AI system. Use the filters at the top of each column to look at different types of artefacts, 
-          for example by material, date, culture, or place of origin.
-
-          When you have finished exploring, click Next to continue to Performance  &amp; Metrics.
+          Explore the artefact records used by the AI system.
+          Each record shows information about an artefact and the AI-generated description.<br>
+          The dataset also contains descriptions that were reviewed by cultural heritage experts. These are used to calculate measures of how well the AI-generated descriptions performed but are not shown in this step.<br>
+          Use the column filters to explore different types of artefacts. When finished, click Next to continue to Performance & Measures.
         </div>
       </div>
       <!-- <div class="nav-row" style="justify-content:flex-end;padding-top:0;border-top:none;margin-top:0;margin-bottom:12px">
@@ -654,42 +671,43 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       </div>
     </div>
 
-    <!-- STEP 1b: EXPLORE PERFORMANCE & METRICS DASHBOARD -->
+    <!-- STEP 1b: EXPLORE PERFORMANCE & MEASURES DASHBOARD -->
     <div class="step-page" id="step1b">
 
       <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap">
-        <div class="step-heading" style="margin-bottom:0">Explore performance &amp; metrics</div>
+        <div class="step-heading" style="margin-bottom:0">Explore performance &amp; measures</div>
       </div>
 
       <div class="card" style="margin-bottom:14px">
         <div class="step-desc" style="max-width:980px;margin-bottom:0">
           Explore how the AI-generated descriptions perform.
           <ol style= "padding-left:22px;">
-            <li>Choose a <strong>metric</strong> to learn what it measures.</li>
-            <li>Choose a <strong>feature</strong>, such as culture, material, or production date, to see the results for different types of artefacts. Click the arrow next to a feature to view and select its sub-features.</li>
+            <li><strong>Choose a measure:</strong> Select a measure to learn what it checks and how the AI performed.</li>
+            <li><strong>Compare different groups:</strong> Select one or more ways to group artefacts, such as culture, material, or production date, to explore whether the AI performs differently across groups. Click the arrow next to a category to view and select specific groups.</li>
           </ol>
-          Explore the charts and look for any differences or patterns that stand out to you. When you have finished, click <strong>Next</strong> to continue to <strong>AI Audit Measure</strong>.
+          Explore the charts and look for any differences or patterns that stand out to you. When you have finished, click <strong>Next</strong> to continue to <strong>Build an AI Audit Measure</strong>.
         </div>
       </div>
 
       <div class="db-ctrl-bar metric-picker">
-        <div class="db-ctrl-label" style="white-space:nowrap;font-weight:700;color:var(--text);font-size:14px;text-transform:none;letter-spacing:0">1. Example Metric <span style="color:var(--red)">*</span></div>
+        <div class="db-ctrl-label" style="white-space:nowrap;font-weight:700;color:var(--text);font-size:14px;text-transform:none;letter-spacing:0">1. Choose a Measure <span style="color:var(--red)">*</span></div>
         <div class="db-metric-row">
           <div class="db-ctrl-group metric-select">
              <select class="db-select" id="db-count-metric" onchange="dbOnCountMetricChange()" style="width:100%">
-              <option value="">Choose a metric</option>
-              <option value="count">How many artefacts are in each group? (Count)</option>
-              <option value="entity_f1">How much of the expected information is included in the AI descriptions? (Entity/Metadata Coverage)</option>
-              <option value="sentiment_delta">How different is the tone of the AI descriptions from the human-reviewed reference descriptions? (Sentiment Polarity Delta)</option>
+              <option value="">Choose a measure</option>
+              <option value="count">How many artefacts are in each group?</option>
+              <option value="entity_f1">How much expected information is included in the AI descriptions?</option>
+              <option value="sentiment_delta">How different is the tone from the human-reviewed descriptions?</option>
+              <option value="similarity_semantic">How similar is the AI description to the human-reviewed description?</option>
             </select>
           </div>
-          <div class="db-metric-desc" id="db-count-metric-def">Select a metric to see what it measures.</div>
+          <div class="db-metric-desc" id="db-count-metric-def">Choose a measure to learn what it checks.</div>
         </div>
       </div>
 
       <div class="db-feature-layout">
         <div class="db-feature-panel">
-          <div class="db-feature-panel-title">2. Feature <span style="color:var(--red)">*</span></div>
+          <div class="db-feature-panel-title">2. Compare Different Groups <span style="color:var(--red)">*</span></div>
           <div class="db-feature-list" id="db-feature-list"></div>
         </div>
         <div class="db-feature-canvas" id="db-feature-canvas"></div>
@@ -708,12 +726,15 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       </div>
       <div class="card" style="margin-bottom:14px">
         <div class="step-desc" style="max-width:980px;margin-bottom:0">
-          Turn something you noticed about the AI system into something you can measure.
-            <ul style="margin:6px 0 0 18px;">
-            <li>A <strong>concern</strong> is something you think should be checked.</li>
-            <li>A <strong>metric</strong> is a way to measure it.</li>
+          Turn a problem you noticed about the AI system into an audit measure.
+          <ul style="margin:6px 0 0 18px;">
+            <li>First, describe something that seemed wrong, unfair, harmful, or concerning about the AI system.</li>
+            <li>Next, optionally choose a characteristic, such as culture, museum section, place, production date, or material, if you want to narrow the result or compare groups.</li>
+            <li>Then, choose how you want to measure the problem. You can also decide how large a difference between groups would concern you.</li>
+            <li>You must click <strong>Save Audit Measure</strong> to save your measure.</li>
+            <li>As you complete the fields, the tool will generate a <strong>summary of your audit measure</strong>. Where possible, it will also show the <strong>results of applying your measure to the full dataset</strong>.</li>
           </ul>
-         Follow the steps below to build your audit measure. As you make your choices, Step 6, “Generated AI Audit Measure,” will automatically update to show the audit measure you are creating. </div>
+        </div>
       </div>
 
       <div class="audit-flow">
@@ -722,46 +743,48 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
             <div class="audit-flow-num">1</div>
             <div>
               <div class="audit-flow-title">What did you notice?<span style="color:var(--red)">*</span></div>
-              <div class="audit-flow-desc">Describe anything that caught your attention while exploring the AI system. This could be something that seemed unfair, inaccurate, misleading, missing, inconsistent, or otherwise concerning. Do not worry about choosing the correct technical terms. Simply describe what you noticed.</div>
+              <div class="audit-flow-desc">Describe something that stood out to you (A concern).</div>
             </div>
           </div>
-          <textarea class="field bm-own-textarea" id="bm-concern-text" rows="4" placeholder="Example:
-&quot;The AI description invents information.&quot;" oninput="bmUpdateCriterion();bmUpdateSaveBtn()"></textarea>
+          <textarea class="field bm-own-textarea" id="bm-concern-text" rows="2" placeholder="Example:
+&quot;The AI description invents information.&quot;" oninput="bmAutoGrowTextarea(this);bmUpdateCriterion();bmUpdateSaveBtn()"></textarea>
         </div>
 
         <div class="audit-flow-panel">
           <div class="audit-flow-head">
             <div class="audit-flow-num">2</div>
             <div>
-              <div class="audit-flow-title">What type of concern is this?<span style="color:var(--red)">*</span></div>
-              <div class="audit-flow-desc">Choose the category that best matches your concern. This helps identify possible ways of measuring the issue.</div>
+              <div class="audit-flow-title">Who or what would you like to check or compare?</div>
+              <div class="audit-flow-desc">Optional. Leave this blank to apply the measure to the full dataset, choose one group to narrow the result, or choose two or more groups to compare.</div>
             </div>
           </div>
-          <select class="field" id="bm-concern-category" onchange="bmOnConcernCategoryChange()" style="display:none">
-            <option value="">Select a concern category</option>
-          </select>
-          <div id="bm-category-radio-list" style="display:flex;flex-direction:column;gap:3px;margin-bottom:8px"></div>
-          <div id="bm-category-desc" class="audit-category-desc">Select a concern type to see a little description.</div>
-          <div id="bm-other-concern-wrap" style="display:none;margin-top:8px">
-            <div class="bm-sub-label" style="margin-bottom:4px">Other concern type</div>
-            <input class="field" id="bm-other-concern-text" placeholder="Describe the concern type in your own words" oninput="bmUpdateCriterion();bmUpdateSaveBtn()">
+          <div id="bm-characteristic-controls">
+            <div style="margin-bottom:10px">
+              <div class="bm-sub-label" style="margin-bottom:4px">Characteristic</div>
+              <select class="field" id="bm-characteristic-select" onchange="bmSetCharacteristic(this.value)" style="max-width:320px"></select>
+            </div>
+            <div id="bm-groups-section" style="display:none">
+              <div class="bm-sub-label" style="margin-bottom:6px">Groups</div>
+              <div id="bm-simple-group-list" class="bm-group-list"></div>
+              <div id="bm-groups-hint" style="display:none;font-size:11px;color:var(--soft);line-height:1.4;margin-top:6px">Leave all groups unselected to apply this measure to the full dataset. Select one group to narrow the result, or select two or more groups to compare.</div>
+            </div>
           </div>
+          <div id="bm-cohort-warn" style="display:none;margin-top:6px;font-size:11px;color:var(--amber)"></div>
         </div>
 
         <div class="audit-flow-panel">
           <div class="audit-flow-head">
             <div class="audit-flow-num">3</div>
             <div>
-              <div class="audit-flow-title">How could this concern be measured?<span style="color:var(--red)">*</span></div>
-              <div class="audit-flow-desc">Based on the concern you selected, here are some measures that may help you investigate it. Choose the one that best matches what you noticed, or create your own.</div>
+              <div class="audit-flow-title">How would you like to check it?<span style="color:var(--red)">*</span></div>
             </div>
           </div>
           <div class="bm-sub-label-row">
-            <div class="bm-sub-label">Suggested measures for this concern</div>
-            <span id="bm-measure-guidance" class="bm-inline-guidance">First select a concern type to see possible ways to measure it.</span>
+            <div class="bm-sub-label">Choose a measure</div>
+            <span id="bm-measure-guidance" class="bm-inline-guidance"></span>
           </div>
           <select class="db-select" id="bm-metric-dropdown-sel" onchange="bmOnMetricDropdownChange()" style="display:none">
-            <option value="">Choose a metric</option>
+            <option value="">Choose a measure</option>
           </select>
           <div id="bm-measure-radio-list" style="display:flex;flex-direction:column;gap:3px;margin-bottom:8px"></div>
           <div id="bm-other-measure-wrap" style="display:none;margin-top:10px">
@@ -776,21 +799,8 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
           <div class="audit-flow-head">
             <div class="audit-flow-num">4</div>
             <div>
-              <div class="audit-flow-title">What should this measure be applied to?<span style="color:var(--red)">*</span></div>
-              <div class="audit-flow-desc">Choose the records or groups that should be evaluated. You can compare two or more groups, or create a single group if no comparison is needed.</div>
-            </div>
-          </div>
-          <div id="bm-cohort-list"></div>
-          <button class="bm-add-cohort-btn" onclick="bmAddCohort()">+ Add group</button>
-          <div id="bm-cohort-warn" style="display:none;margin-top:6px;font-size:11px;color:var(--amber)"></div>
-        </div>
-
-        <div class="audit-flow-panel">
-          <div class="audit-flow-head">
-            <div class="audit-flow-num">5</div>
-            <div>
-              <div class="audit-flow-title">When should this become a concern?</div>
-              <div class="audit-flow-desc">Decide what result would indicate that the AI description needs further investigation. Leave blank if you do not wish to specify a threshold.</div>
+              <div class="audit-flow-title">When would the result concern you?</div>
+              <div class="audit-flow-desc">Optional. Decide what result would indicate that the AI description needs further investigation.</div>
             </div>
           </div>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px">
@@ -798,19 +808,16 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
             <input type="number" id="bm-threshold" class="field" min="0" max="100" step="1" style="width:82px;text-align:center" placeholder="e.g. 80" oninput="bmUpdateCriterion();bmUpdateSaveBtn()">
             <span id="bm-threshold-unit" style="font-size:13px;color:var(--mid)">%</span>
           </div>
-          <div>
-            <div class="bm-sub-label" style="margin-bottom:4px">Notes <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--soft)">(optional)</span></div>
-            <textarea class="field" id="bm-threshold-notes" rows="2" placeholder="Any extra context about this threshold or concern..." oninput="bmUpdateCriterion()" style="resize:vertical"></textarea>
-          </div>
         </div>
 
         <div class="audit-flow-panel">
           <div class="audit-flow-head">
-            <div class="audit-flow-num">6</div>
-	            <div>
-	              <div class="audit-flow-title">Generated AI Audit Measure</div>
-	            </div>
+            <div class="audit-flow-num">5</div>
+            <div>
+              <div class="audit-flow-title">Review your audit measure</div>
+            </div>
           </div>
+          <div id="bm-save-loop-note" class="audit-category-desc" style="display:none;margin-bottom:10px">Saved. You can use the same concern and think about another way to measure it, or enter a new concern with a new measure.</div>
           <div id="bm-criterion-box" class="audit-measure-panel">
             <div id="bm-criterion-text"></div>
             <div id="bm-dataset-result" class="bm-result-compact" style="display:none"></div>
@@ -818,7 +825,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
           <div id="bm-criterion-placeholder" style="display:none"></div>
           <div class="bm-save-row">
             <button class="btn-primary" id="bm-save-btn" onclick="bmSave()" style="opacity:.4;cursor:not-allowed;background:var(--green)" disabled>Save Audit Measure</button>
-            <span id="bm-save-hint" style="font-size:12px;color:var(--soft)">Complete the concern, category, measure, and group to save.</span>
+            <span id="bm-save-hint" style="font-size:12px;color:var(--soft)">Complete the concern and measure to save.</span>
           </div>
         </div>
       </div>
@@ -832,6 +839,7 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
           <div class="bm-sub-label" style="margin-bottom:0">Saved Audit Measures <span id="bm-saved-count" class="bm-count-badge">0</span></div>
         </div>
+        <div class="audit-category-desc" style="margin-bottom:10px">You can measure the same concern in a different way, or add a new concern with a new measure. We encourage you to save as many relevant audit measures as you can.</div>
         <div id="bm-saved-list"></div>
       </div>
     </div>
@@ -924,8 +932,8 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 
     <!-- STEP 3 -->
     <div class="step-page" id="step3">
-      <div class="step-heading">Create a metric</div>
-      <div class="step-desc">Select a metric, choose which groups to compare, run the analysis, then save it to your event.</div>
+      <div class="step-heading">Create a measure</div>
+      <div class="step-desc">Select a measure, choose which groups to compare, run the analysis, then save it to your event.</div>
 
       <div id="s3-flagged-panel" style="display:none" class="flagged-mini">
         <div class="flagged-mini-head" onclick="toggleS3Flagged()">
@@ -942,29 +950,29 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       <!-- Confusion matrix reference -->
       <div class="cfx-wrap">
         <div class="cfx-head" onclick="toggleCfx()">
-          <span class="cfx-head-lbl">&#9432;&nbsp; What are TP, TN, FP, FN? Reference table (click to expand)</span>
+          <span class="cfx-head-lbl">&#9432;&nbsp; Prediction outcomes reference table (click to expand)</span>
           <span id="cfx-toggle" style="font-size:11px;color:var(--accent)">Show ▾</span>
         </div>
         <div class="cfx-body" id="cfx-body">
-          <div style="font-size:12px;color:var(--mid);margin-bottom:10px;line-height:1.6">All six computable metrics are built from four counts. This table shows what each means for this dataset.</div>
+          <div style="font-size:12px;color:var(--mid);margin-bottom:10px;line-height:1.6">This table shows whether the AI prediction was correct or incorrect for this dataset.</div>
           <div class="cfx-grid">
             <div class="cfx-cell cfx-header"></div>
             <div class="cfx-cell cfx-header" style="text-align:center">Actual Outcome:<br>Reoffended</div>
             <div class="cfx-cell cfx-header" style="text-align:center">Actual Outcome:<br>Did Not Reoffend</div>
             <div class="cfx-cell cfx-ai-lbl">AI said:<br>High Risk</div>
-            <div class="cfx-cell cfx-tp"><strong>True Positive (TP)</strong><br>AI was right to flag.</div>
-            <div class="cfx-cell cfx-fp"><strong>False Positive (FP)</strong><br>AI flagged wrongly. Person did not reoffend.</div>
+            <div class="cfx-cell cfx-tp"><strong>Correct High Risk prediction</strong><br>AI was right to flag.</div>
+            <div class="cfx-cell cfx-fp"><strong>Wrong High Risk prediction</strong><br>AI flagged wrongly. Person did not reoffend.</div>
             <div class="cfx-cell cfx-ai-lbl cfx-row-last">AI said:<br>Low Risk</div>
-            <div class="cfx-cell cfx-fn cfx-row-last"><strong>False Negative (FN)</strong><br>AI missed a risk. Person reoffended.</div>
-            <div class="cfx-cell cfx-tn cfx-row-last"><strong>True Negative (TN)</strong><br>AI was right to clear.</div>
+            <div class="cfx-cell cfx-fn cfx-row-last"><strong>Wrong Low Risk prediction</strong><br>AI missed a risk. Person reoffended.</div>
+            <div class="cfx-cell cfx-tn cfx-row-last"><strong>Correct Low Risk prediction</strong><br>AI was right to clear.</div>
           </div>
-          <div style="margin-top:8px;font-size:11px;color:var(--soft)"><strong style="color:var(--green)">Green = correct.</strong> &nbsp;<strong style="color:var(--red)">Red = errors.</strong> Every metric is a ratio of these four numbers.</div>
+          <div style="margin-top:8px;font-size:11px;color:var(--soft)"><strong style="color:var(--green)">Green = correct.</strong> &nbsp;<strong style="color:var(--red)">Red = incorrect.</strong></div>
         </div>
       </div>
 
       <!-- Tabs -->
       <div class="s3-tabs">
-        <button class="s3-tab active" id="tab-library" onclick="setS3Tab('library')">Metric Library</button>
+        <button class="s3-tab active" id="tab-library" onclick="setS3Tab('library')">Measure Library</button>
         <button class="s3-tab" id="tab-custom" onclick="setS3Tab('custom')">Custom Observation</button>
       </div>
 
@@ -972,9 +980,9 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       <div id="s3-library-panel">
         <!-- Metric + Groups in one card -->
         <div class="card" style="margin-bottom:14px">
-          <div class="s3-section-lbl">Choose a metric</div>
+          <div class="s3-section-lbl">Choose a measure</div>
           <select class="metric-card-sel" id="s3-metric-dropdown" onchange="onMetricDropdownChange(this.value)">
-            <option value="">Select a metric to compute</option>
+            <option value="">Select a measure</option>
           </select>
           <div id="s3-metric-info" style="display:none"></div>
 
@@ -1005,8 +1013,8 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
 
           <div style="display:grid;grid-template-columns:1fr 2fr;gap:16px;align-items:start">
             <div>
-              <div class="grp-sel-label">Fairness threshold <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--soft)">(optional)</span></div>
-              <div style="font-size:11px;color:var(--soft);margin-bottom:6px">Max acceptable gap in percentage points.</div>
+              <div class="grp-sel-label">Acceptable gap <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--soft)">(optional)</span></div>
+              <div style="font-size:11px;color:var(--soft);margin-bottom:6px">Largest difference between groups that would still feel acceptable.</div>
               <div style="display:flex;align-items:center;gap:6px">
                 <input type="number" id="s3-threshold" class="field" min="0" max="100" step="0.1" style="max-width:100px" placeholder="e.g. 10">
                 <span style="font-size:12px;color:var(--soft)">pp</span>
@@ -1072,16 +1080,33 @@ th.has-filter .th-filter-icon{opacity:1;color:var(--accent)}
       </div>
 
       <div class="card" style="margin-bottom:14px">
-        <div class="step-desc" style="max-width:980px;margin-bottom:0">You can check all the audit measures and concerns that you added before. If you are happy, please click <strong>Finish Auditing</strong> to be directed back to the questionnaire with the final few questions before the end of this study.</div>
+        <div class="step-desc" style="max-width:980px;margin-bottom:0">Review the audit measures you saved. Before you finish, you also have one final opportunity to add an audit measure entirely <strong>in your own words</strong>, without using the fields from the previous step. You can describe anything else that concerns you and explain how you would measure it. When you are finished, click <strong>Finish Auditing</strong> to save your work and return to the questionnaire.</div>
       </div>
 
       <div id="ms-empty" style="padding:40px 24px;text-align:center;background:#fff;border:1.5px dashed var(--border);border-radius:10px;margin-bottom:16px">
         <div style="font-size:28px;opacity:.25;margin-bottom:8px">&#9783;</div>
         <div style="font-size:14px;font-weight:600;color:var(--mid);margin-bottom:4px">No audit measures saved yet</div>
-        <div style="font-size:12px;color:var(--soft);max-width:360px;margin:0 auto">Go back to <strong>Build an AI Audit Measure</strong> and save at least one audit measure to see it here.</div>
+        <div style="font-size:12px;color:var(--soft);max-width:420px;margin:0 auto">Go back to <strong>Build an AI Audit Measure</strong>, or use the final own-words box below, to save an audit measure.</div>
       </div>
 
       <div id="ms-list"></div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div class="section-label">Final own-words audit measure</div>
+        <div class="step-desc" style="margin-bottom:12px">Optional. Add anything else that concerns you about the AI system or dataset, and describe how you would measure it. Add as much detail as you can, including whether it relates to a specific group or groups.</div>
+        <div style="margin-bottom:12px">
+          <div class="q-text" style="margin-bottom:4px">What else concerns you?</div>
+          <textarea class="field" id="ms-own-concern" rows="3" placeholder="Describe any other concern in your own words." oninput="msUpdateOwnReady()" style="resize:vertical"></textarea>
+        </div>
+        <div style="margin-bottom:12px">
+          <div class="q-text" style="margin-bottom:4px">How would you measure it?</div>
+          <textarea class="field" id="ms-own-measure" rows="3" placeholder="Explain what you would measure, compare, or look for." oninput="msUpdateOwnReady()" style="resize:vertical"></textarea>
+        </div>
+        <div class="bm-save-row">
+          <button class="btn-primary" id="ms-own-save-btn" onclick="msSaveOwnMeasure()" style="opacity:.4;cursor:not-allowed;background:var(--green)" disabled>Save Own-Words Measure</button>
+          <span id="ms-own-save-hint" style="font-size:12px;color:var(--soft)">Complete both boxes to save.</span>
+        </div>
+      </div>
 
       <div class="nav-row">
         <button class="btn-outline" onclick="goStep('1c')">Back</button>
@@ -1111,55 +1136,55 @@ const METRIC_LIBRARY = [
   // FAMILY 1: FAIRNESS & BIAS
   {
     id: 'accuracy-difference',
-    name: 'Accuracy',
+    name: 'Overall correctness',
     family: 'Fairness & Bias',
-    definition: 'The proportion of all predictions that are correct. Formula: (true positives + true negatives) / all cases.',
-    source: 'Standard classification metric',
+    definition: 'How often the AI prediction is correct overall.',
+    source: 'Standard prediction check',
     computeId: 'accuracy_difference',
     isComputable: true
   },
   {
     id: 'recall-difference',
-    name: 'Recall / True Positive Rate',
+    name: 'Actual risks correctly flagged',
     family: 'Fairness & Bias',
-    definition: 'Among people who actually reoffended, the proportion the AI correctly predicted as High Risk. Formula: true positives / (true positives + false negatives).',
-    source: 'Standard classification metric',
+    definition: 'Among people who actually reoffended, how often the AI correctly predicted High Risk.',
+    source: 'Standard prediction check',
     computeId: 'recall_difference',
     isComputable: true
   },
   {
     id: 'precision-difference',
-    name: 'Precision / Positive Predictive Value',
+    name: 'High Risk labels that were correct',
     family: 'Fairness & Bias',
-    definition: 'Among people the AI predicted as High Risk, the proportion who actually reoffended. Formula: true positives / (true positives + false positives).',
-    source: 'Standard classification metric',
+    definition: 'Among people the AI predicted as High Risk, how often the prediction was correct.',
+    source: 'Standard prediction check',
     computeId: 'precision_difference',
     isComputable: true
   },
   {
     id: 'fpr-difference',
-    name: 'False Positive Rate',
+    name: 'People wrongly flagged High Risk',
     family: 'Fairness & Bias',
-    definition: 'Among people who did not reoffend, the proportion the AI incorrectly predicted as High Risk. Formula: false positives / (false positives + true negatives).',
+    definition: 'Among people who did not reoffend, how often the AI wrongly predicted High Risk.',
     source: 'Chouldechova (2017); Hardt et al. (2016)',
     computeId: 'fpr_difference',
     isComputable: true
   },
   {
     id: 'fnr-difference',
-    name: 'False Negative Rate',
+    name: 'Actual risks missed',
     family: 'Fairness & Bias',
-    definition: 'Among people who actually reoffended, the proportion the AI incorrectly predicted as Low Risk. Formula: false negatives / (true positives + false negatives).',
+    definition: 'Among people who actually reoffended, how often the AI wrongly predicted Low Risk.',
     source: 'Chouldechova (2017); Hardt et al. (2016)',
     computeId: 'fnr_difference',
     isComputable: true
   },
   {
     id: 'f1-difference',
-    name: 'F1 Score',
+    name: 'Overall High Risk balance',
     family: 'Fairness & Bias',
-    definition: 'A combined score balancing precision and recall. Formula: 2 * (precision * recall) / (precision + recall).',
-    source: 'Standard classification metric',
+    definition: 'A combined view of whether High Risk labels are reliable and whether actual risks are caught.',
+    source: 'Standard prediction check',
     computeId: 'f1_difference',
     isComputable: true
   },
@@ -1301,7 +1326,7 @@ function computeMetric(computeId, sensitiveAttrCol, groupA=null, groupB=null) {
       type: 'accuracy_difference',
       label: 'Accuracy by group',
       plain: 'Of everyone in this group, how many AI predictions were correct?',
-      formula: '(TP + TN) / (TP + TN + FP + FN)',
+      formula: 'Correct predictions among everyone in the group',
       numerator: 'Correct predictions',
       denominator: 'All people in the group',
       countKind: 'correct',
@@ -1309,53 +1334,53 @@ function computeMetric(computeId, sensitiveAttrCol, groupA=null, groupB=null) {
     },
     recall_difference: {
       type: 'recall_difference',
-      label: 'Recall / True Positive Rate by group',
+      label: 'Actual risks correctly flagged by group',
       plain: 'Of people who actually reoffended, how many were correctly predicted High Risk?',
-      formula: 'TP / (TP + FN)',
-      numerator: 'True positives',
+      formula: 'People correctly flagged High Risk among people who reoffended',
+      numerator: 'Correct High Risk predictions',
       denominator: 'Actual reoffenders',
       countKind: 'tp',
       direction: 'A lower value means the AI misses more actual reoffending cases in that group.'
     },
     precision_difference: {
       type: 'precision_difference',
-      label: 'Precision / Positive Predictive Value by group',
+      label: 'High Risk labels that were correct by group',
       plain: 'Of people predicted High Risk, how many actually reoffended?',
-      formula: 'TP / (TP + FP)',
-      numerator: 'True positives',
+      formula: 'Correct High Risk predictions among all High Risk predictions',
+      numerator: 'Correct High Risk predictions',
       denominator: 'High Risk predictions',
       countKind: 'tp',
       direction: 'A lower value means High Risk predictions are less reliable for that group.'
     },
     fpr_difference: {
       type: 'fpr_difference',
-      label: 'False Positive Rate by group',
+      label: 'People wrongly flagged High Risk by group',
       plain: 'Of people who did not reoffend, how many were wrongly predicted High Risk?',
-      formula: 'FP / (FP + TN)',
-      numerator: 'False positives',
+      formula: 'Wrong High Risk predictions among people who did not reoffend',
+      numerator: 'Wrong High Risk predictions',
       denominator: 'Actual non-reoffenders',
       countKind: 'fp',
       direction: 'A higher value means more people in that group are falsely flagged High Risk.'
     },
     fnr_difference: {
       type: 'fnr_difference',
-      label: 'False Negative Rate by group',
+      label: 'Actual risks missed by group',
       plain: 'Of people who actually reoffended, how many were wrongly predicted Low Risk?',
-      formula: 'FN / (TP + FN)',
-      numerator: 'False negatives',
+      formula: 'Wrong Low Risk predictions among people who reoffended',
+      numerator: 'Wrong Low Risk predictions',
       denominator: 'Actual reoffenders',
       countKind: 'fn',
       direction: 'A higher value means the AI misses more actual reoffending cases in that group.'
     },
     f1_difference: {
       type: 'f1_difference',
-      label: 'F1 Score by group',
+      label: 'Overall High Risk balance by group',
       plain: 'A single score balancing how reliable High Risk predictions are and how many actual reoffenders the AI catches.',
-      formula: '2 * (precision * recall) / (precision + recall)',
-      numerator: 'F1 score',
-      denominator: 'Precision and recall combined',
+      formula: 'Combined view of reliable High Risk labels and caught risks',
+      numerator: 'Combined balance',
+      denominator: 'High Risk reliability and caught risks',
       countKind: 'f1',
-      direction: 'A lower value means the AI has a weaker balance of precision and recall for that group.'
+      direction: 'A lower value means the AI has a weaker overall balance for that group.'
     }
   };
 
@@ -1432,7 +1457,7 @@ function computeMetric(computeId, sensitiveAttrCol, groupA=null, groupB=null) {
     denominatorLabel: info.denominator,
     direction: info.direction,
     comparisonText,
-    interpretation: `This compares ${comparisonText}. The absolute gap is ${(gap * 100).toFixed(1)} percentage points. ${info.direction}`
+    interpretation: `This compares ${comparisonText}. The difference is ${(gap * 100).toFixed(1)} points. ${info.direction}`
   };
 }
 
@@ -1447,12 +1472,11 @@ function renderMetricResult(result, threshold, computeId) {
     const pct = g.rate===null||isNaN(g.rate) ? 'N/A' : (g.rate*100).toFixed(1)+'%';
     const w = maxRate>0&&g.rate!==null ? (g.rate/maxRate*100) : 0;
     const badge = i===0 ? '<span class="grp-a-badge"></span>' : '<span class="grp-b-badge"></span>';
-    const frac = g.denominator ? ` (${g.count}/${g.denominator})` : '';
     const emptyWarn = (g.n===0) ? ' <span style="color:var(--amber);font-size:10px">! no data</span>' : '';
     return `<div class="rbar-row">
-      <div class="rbar-lbl-row"><span class="rbar-name">${badge}${escHtml(g.group)}</span><span class="rbar-val">${pct}${frac}${emptyWarn}</span></div>
+      <div class="rbar-lbl-row"><span class="rbar-name">${badge}${escHtml(g.group)}</span><span class="rbar-val">${pct}${emptyWarn}</span></div>
       <div class="rbar-track"><div class="${colors[i%colors.length]}" style="width:${w}%;height:100%;border-radius:5px"></div></div>
-      <div style="font-size:10px;color:var(--soft);margin-top:2px">TP ${g.tp} · TN ${g.tn} · FP ${g.fp} · FN ${g.fn} · n=${g.n}</div>
+      <div style="font-size:10px;color:var(--soft);margin-top:2px">${g.n} record${g.n!==1?'s':''} in this group</div>
     </div>`;
   }).join('');
   const gapPct=(gap*100).toFixed(1);
@@ -1586,8 +1610,81 @@ function logEvent(eventType, action, details={}){
   try{sessionStorage.setItem('generative_audit_logs_current', JSON.stringify(auditLogs));}catch(e){}
   return event;
 }
+
+function getAuditMeasureSource(m){
+  if(!m) return 'unknown';
+  if(m.source) return m.source;
+  if(m.mode==='final_own_words') return 'final_own_words';
+  if(m.type==='own') return 'own_words';
+  if(m.type==='lib'&&m.metricId==='other_custom') return 'filled_custom_measure';
+  if(m.type==='lib') return 'selected_measure';
+  if(m.type==='library_computable'||m.type==='library_conceptual') return 'legacy_selected_measure';
+  if(m.type==='custom') return 'legacy_custom_observation';
+  return m.type||'unknown';
+}
+
+function getAuditMeasureCounts(measures=bmSavedMetrics||[]){
+  const counts={
+    total:measures.length,
+    selectedMeasures:0,
+    filledCustomMeasures:0,
+    finalOwnWordsMeasures:0,
+    otherOwnWordsMeasures:0,
+    legacyMeasures:0
+  };
+  measures.forEach(m=>{
+    const source=getAuditMeasureSource(m);
+    if(source==='selected_measure') counts.selectedMeasures++;
+    else if(source==='filled_custom_measure') counts.filledCustomMeasures++;
+    else if(source==='final_own_words') counts.finalOwnWordsMeasures++;
+    else if(source==='own_words') counts.otherOwnWordsMeasures++;
+    else if(source.startsWith('legacy_')) counts.legacyMeasures++;
+  });
+  counts.filledByUserMeasures=counts.filledCustomMeasures+counts.finalOwnWordsMeasures+counts.otherOwnWordsMeasures;
+  return counts;
+}
+
+function summarizeGenerativeDatasetResult(result){
+  if(!result) return null;
+  return {
+    rowCount:result.rowCount||null,
+    metricId:result.metricId||null,
+    metricName:result.metricName||null,
+    metricQuestion:result.metricQuestion||null,
+    groups:(result.stats||[]).map(s=>({
+      group:s.group||s.label,
+      label:s.label||s.group,
+      rowCount:s.n,
+      value:s.value,
+      detail:s.detail||null
+    }))
+  };
+}
+
+function buildGenerativeAssessmentRecord(m,index){
+  const source=getAuditMeasureSource(m);
+  return {
+    index:index+1,
+    id:m.id,
+    source,
+    savedAt:m.savedAt||null,
+    selectedOrFilled:source==='selected_measure'||source==='legacy_selected_measure'?'selected':'filled_by_user',
+    concern:m.concern||m.ownWhat||m.narrative||null,
+    generatedSummary:m.generatedSummary||m.generatedStatement||null,
+    generatedSummaryHtml:m.generatedSummaryHtml||m.criterionText||null,
+    fullDatasetResult:summarizeGenerativeDatasetResult(m.fullDatasetResult||m.result||m.computedResult),
+    selectedMeasureId:m.metricId||m.metricLibId||null,
+    selectedMeasureName:m.metricName||null,
+    characteristic:m.characteristic||m.feature||null,
+    groups:m.comparedGroups||m.groups||[],
+    customMeasureName:m.customMeasureName||null,
+    customMeasureText:m.customMeasureCheck||m.customMeasure||m.ownText||m.narrative||null,
+    finalOwnWordsConcern:m.mode==='final_own_words'?m.ownWhat:null,
+    finalOwnWordsMeasure:m.mode==='final_own_words'?m.ownText:null
+  };
+}
 function getStepName(n){
-  const map={1:'Step 1: Observe the data','1b':'Step 2: Explore performance and metrics','1c':'Step 3: Build an AI Audit Measure',4:'Step 4: Audit measures summary'};
+  const map={1:'Step 1: Observe the data','1b':'Step 2: Explore performance and measures','1c':'Step 3: Build an AI Audit Measure',4:'Step 4: Audit measures summary'};
   return map[n]||`Step ${n}`;
 }
 
@@ -1597,6 +1694,9 @@ const QUALTRICS_REDIRECT_URL = 'https://strathsci.qualtrics.com/jfe/form/SV_bwtm
 
 function buildAuditExportPayload(exportReason='manual'){
   const allLegacyMetrics=events.flatMap(ev=>(ev.metrics||[]).map(metric=>({eventId:ev.id,eventName:ev.name,...metric})));
+  const savedMeasures=bmSavedMetrics||[];
+  const auditMeasureCounts=getAuditMeasureCounts(savedMeasures);
+  const auditMeasuresForAssessment=savedMeasures.map((m,index)=>buildGenerativeAssessmentRecord(m,index));
   return {
     taskType:'generative',
     exportReason,
@@ -1605,8 +1705,10 @@ function buildAuditExportPayload(exportReason='manual'){
     sessionStartedAt:sessionStartTime?new Date(sessionStartTime).toISOString():null,
     sessionDurationSeconds:sessionStartTime?Math.round((Date.now()-sessionStartTime)/1000):0,
     page:currentPageName,
-    savedMetrics:bmSavedMetrics||[],
-    savedConcerns:(bmSavedMetrics||[]).filter(m=>m.type==='own'),
+    auditMeasureCounts,
+    auditMeasuresForAssessment,
+    savedMetrics:savedMeasures,
+    savedConcerns:savedMeasures.filter(m=>m.type==='own'),
     legacyEvents:events,
     legacyMetrics:allLegacyMetrics,
     flaggedRowIndexes:Array.from(flaggedRows||[]),
@@ -1804,7 +1906,7 @@ function bmUpdateOwnReady(){
 function bmSaveOwn(){
   const btn=document.getElementById('bm-own-save-btn');
   if(btn?.disabled){
-    logEvent('validation_error','save_recorded_concern_incomplete',{requiredFields:['Event name','Metric description']});
+    logEvent('validation_error','save_recorded_concern_incomplete',{requiredFields:['Event name','Measure description']});
     return;
   }
   const ownName=(document.getElementById('bm-own-name')?.value||'').trim();
@@ -1821,17 +1923,24 @@ function bmSaveOwn(){
 
   const savedConcern={
     id:bmNextId++, type:'own', mode:'recorded',
+    source:'own_words',
     prolificId, savedAt:new Date().toISOString(),
     feature:null, groups:[],
     metricId:null, metricName:'Recorded concern',
     threshold:null, thresholdNotes:null,
     result:null, criterionText:null,
+    generatedSummary:null, generatedSummaryHtml:null,
+    fullDatasetResult:null, fullDatasetResultSummary:null,
     ownText:txt, ownName, ownWhat, ownCategory:ownCat,
     ownSeverity:ownSev, ownLikelihood:ownLik, ownWho,
     cohorts:null
   };
   bmSavedMetrics.push(savedConcern);
-  logEvent('save','save_recorded_concern',{savedConcern});
+  logEvent('save','save_recorded_concern',{
+    savedConcern,
+    assessmentRecord:buildGenerativeAssessmentRecord(savedConcern,bmSavedMetrics.length-1),
+    auditMeasureCounts:getAuditMeasureCounts()
+  });
 
   // Clear own fields
   ['bm-own-name','bm-own-what','bm-own-category','bm-own-severity','bm-own-likelihood','bm-own-who','bm-own-text'].forEach(id=>{
@@ -1848,7 +1957,7 @@ function bmSaveOwn(){
     bar.style.background='#F0FDF4'; bar.style.borderColor='#A0CCB8';
     pt.style.color='#166534';
     pt.innerHTML='<strong>&#10003; Recorded concern saved!</strong> Fields cleared. Add another or continue.';
-    setTimeout(()=>{bar.style.background='';bar.style.borderColor='';pt.style.color='';pt.innerHTML='Your metric will appear here as you make selections below.';},3500);
+    setTimeout(()=>{bar.style.background='';bar.style.borderColor='';pt.style.color='';pt.innerHTML='Your measure will appear here as you make selections below.';},3500);
   }
 }
 
@@ -1869,7 +1978,7 @@ function bmRenderRecordedSaved(){
     if(m.ownSeverity)   fields.push(`<strong>Severity:</strong> ${escHtml(m.ownSeverity)}`);
     if(m.ownLikelihood) fields.push(`<strong>Likelihood:</strong> ${escHtml(m.ownLikelihood)}`);
     if(m.ownWho)        fields.push(`<strong>Affected:</strong> ${escHtml(m.ownWho)}`);
-    if(m.ownText)       fields.push(`<strong>Metric:</strong> ${escHtml(m.ownText)}`);
+    if(m.ownText)       fields.push(`<strong>Measure:</strong> ${escHtml(m.ownText)}`);
     return `<div class="bm-saved-card">
       <div class="bm-saved-card-body">
         <div class="bm-saved-title"><span class="bm-saved-type-own">Recorded</span>${escHtml(m.ownName||'Concern')}</div>
@@ -1881,6 +1990,71 @@ function bmRenderRecordedSaved(){
 }
 // ── Metrics summary (step 4) ──
 function initMetricsSummary(){
+  renderMetricsSummary();
+  msUpdateOwnReady();
+}
+
+function msUpdateOwnReady(){
+  const btn=document.getElementById('ms-own-save-btn');
+  const hint=document.getElementById('ms-own-save-hint');
+  if(!btn||!hint) return;
+  const concern=(document.getElementById('ms-own-concern')?.value||'').trim();
+  const measure=(document.getElementById('ms-own-measure')?.value||'').trim();
+  const ready=concern.length>0&&measure.length>0;
+  btn.disabled=!ready;
+  btn.style.opacity=ready?'1':'.4';
+  btn.style.cursor=ready?'pointer':'not-allowed';
+  hint.textContent=ready?'Ready to save.':'Complete both boxes to save.';
+}
+
+function msSaveOwnMeasure(){
+  const btn=document.getElementById('ms-own-save-btn');
+  if(btn?.disabled){
+    logEvent('validation_error','save_final_own_words_measure_blocked',{reason:'required_fields_missing'});
+    return;
+  }
+  const concernEl=document.getElementById('ms-own-concern');
+  const measureEl=document.getElementById('ms-own-measure');
+  const concern=(concernEl?.value||'').trim();
+  const measure=(measureEl?.value||'').trim();
+  if(!concern||!measure) return;
+  const savedMeasure={
+    id:bmNextId++,
+    type:'own',
+    mode:'final_own_words',
+    source:'final_own_words',
+    prolificId,
+    savedAt:new Date().toISOString(),
+    feature:null,
+    groups:[],
+    metricId:null,
+    metricName:'Own-words audit measure',
+    threshold:null,
+    thresholdNotes:null,
+    result:null,
+    criterionText:null,
+    generatedSummary:null,
+    generatedSummaryHtml:null,
+    fullDatasetResult:null,
+    fullDatasetResultSummary:null,
+    ownText:measure,
+    ownName:'Own-words audit measure',
+    ownWhat:concern,
+    ownCategory:null,
+    ownSeverity:null,
+    ownLikelihood:null,
+    ownWho:null,
+    cohorts:null
+  };
+  bmSavedMetrics.push(savedMeasure);
+  logEvent('save','save_final_own_words_measure',{
+    savedMeasure,
+    assessmentRecord:buildGenerativeAssessmentRecord(savedMeasure,bmSavedMetrics.length-1),
+    auditMeasureCounts:getAuditMeasureCounts()
+  });
+  if(concernEl) concernEl.value='';
+  if(measureEl) measureEl.value='';
+  msUpdateOwnReady();
   renderMetricsSummary();
 }
 
@@ -1903,6 +2077,8 @@ function renderMetricsSummary(){
     const isLib=m.type==='lib';
     const badge=isLib
       ?`<span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:var(--alight);color:var(--accent);border:1px solid #C4C2F0">Audit measure</span>`
+      :m.mode==='final_own_words'
+        ?`<span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:#FEF9C3;color:#854D0E;border:1px solid #E8CFA0">Own words</span>`
       :`<span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:#FEF9C3;color:#854D0E;border:1px solid #E8CFA0">Recorded</span>`;
 
     let details='';
@@ -1921,7 +2097,7 @@ function renderMetricsSummary(){
       if(m.ownSeverity)   rows.push(`<strong>Severity:</strong> ${escHtml(m.ownSeverity)}`);
       if(m.ownLikelihood) rows.push(`<strong>Likelihood:</strong> ${escHtml(m.ownLikelihood)}`);
       if(m.ownWho)        rows.push(`<strong>Affected:</strong> ${escHtml(m.ownWho)}`);
-      if(m.ownText)       rows.push(`<strong>Metric:</strong> ${escHtml(m.ownText)}`);
+      if(m.ownText)       rows.push(`<strong>Measure:</strong> ${escHtml(m.ownText)}`);
       details=rows.length?`<div style="margin-top:10px;font-size:12px;color:var(--mid);line-height:1.9;padding:10px 12px;background:#FAFAF8;border:1px solid var(--border);border-radius:8px">${rows.join('<br>')}</div>`:'';
     }
 
@@ -1942,19 +2118,19 @@ const DB_PALETTE = ['#2C2AB3','#D97706','#059669','#B91C1C','#7C3AED','#0891B2',
 
 const TEXT_METRIC_INFO = {
   bleu: {
-    name: 'BLEU',
-    short: 'Lexical similarity between generated descriptions and human-supervised generated text.',
-    detail: 'BLEU measures how much the generated text overlaps with the human-supervised generated text using 1-gram, 2-gram, 3-gram, and 4-gram matches. It uses clipped n-gram precision, a brevity penalty for overly short generated text, and smoothing for higher-order n-grams so small samples do not collapse to zero.'
+    name: 'Shared wording',
+    short: 'How much wording is shared between the AI description and the human-reviewed description.',
+    detail: 'This compares wording in the AI description with wording in the human-reviewed description. A higher value means the two descriptions use more of the same words and phrases.'
   },
   rouge1: {
-    name: 'ROUGE-1',
-    short: 'Word-level content overlap.',
-    detail: 'ROUGE-1 compares individual word overlap between the generated description and the human-supervised generated text. The displayed value is the average F1 score across records, balancing how much of the human-supervised generated text is captured and how much of the generated text matches the human-supervised generated text.'
+    name: 'Shared words',
+    short: 'How many important words appear in both descriptions.',
+    detail: 'This compares individual words in the AI description with words in the human-reviewed description. A higher value means more of the same content appears in both descriptions.'
   },
   semantic: {
-    name: 'Semantic Similarity',
-    short: 'Meaning-level similarity between AI descriptions and human-supervised generated text.',
-    detail: 'BERTScore and Sentence-Transformer metrics compare whether two texts mean similar things, even when they use different wording. This self-contained page reports a semantic-similarity approximation using TF-IDF weighted cosine similarity across the artifact descriptions, comparing description with the human-supervised generated text.'
+    name: 'Meaning similarity',
+    short: 'How similar the AI description is to the human-reviewed description in meaning.',
+    detail: 'This compares whether the AI description and human-reviewed description express similar ideas, even when they do not use exactly the same wording.'
   }
 };
 
@@ -2065,17 +2241,27 @@ function dbToggleOvCard(id){
 }
 
 
-const DB_COUNT_FEATURES = [
-  {col:'culture', label:'Culture', mode:'value'},
-  {col:'section', label:'Museum section', mode:'value'},
-  {col:'place', label:'Place', mode:'value'},
-  {col:'production_date', label:'Production date', mode:'value'},
-  {col:'find_spot', label:'Find spot', mode:'value'},
-  {col:'materials', label:'Materials', mode:'list'},
-  {col:'technique', label:'Technique', mode:'list'},
-  {col:'subjects', label:'Subject', mode:'list'},
-  {col:'associated_name', label:'Associated name', mode:'value'}
-];
+const DB_GROUP_FEATURE_LABELS = {
+  culture:'Culture',
+  section:'Section',
+  place:'Place',
+  production_date:'Production date',
+  materials:'Materials'
+};
+const DB_GROUP_FEATURE_MODES = {
+  materials:'list'
+};
+function getObserveGroupFeatureColumns(){
+  return getActiveColumns().filter(col=>!['img_b64','description','generated_ai_description','ai_description'].includes(col));
+}
+function buildGroupFeatureOptions(){
+  return getObserveGroupFeatureColumns().map(col=>({
+    col,
+    label:DB_GROUP_FEATURE_LABELS[col]||bmFeatureDisplayName(col),
+    mode:DB_GROUP_FEATURE_MODES[col]||'value'
+  }));
+}
+const DB_COUNT_FEATURES = buildGroupFeatureOptions();
 let dbCountSelectedFeatures = new Set();
 let dbCountOpenFeatures = new Set();
 let dbCountSelectedValues = {};
@@ -2260,33 +2446,51 @@ function dbSentimentForFeature(feature,selectedValues){
   }).sort((a,b)=>b.score-a.score||b.count-a.count||a.value.localeCompare(b.value));
   return {rows};
 }
+function dbTextPairsForRows(rows){
+  return rows.map(r=>({
+    candidate:textMetricTokenize(r.description),
+    reference:textMetricTokenize(r.ai_description)
+  })).filter(p=>p.candidate.length&&p.reference.length);
+}
+function dbSimilarityForFeature(feature,selectedValues){
+  const groups=dbCountDistribution(feature).filter(item=>selectedValues.has(item.value)).map(item=>item.value);
+  const rows=groups.map(group=>{
+    const matching=ROWS.filter(row=>dbCountValuesForRow(row,feature).includes(group));
+    const similarity=computeSemanticSimilarity(dbTextPairsForRows(matching));
+    return {value:group, count:matching.length, score:similarity.score, pairs:similarity.pairs};
+  }).sort((a,b)=>(b.score??-1)-(a.score??-1)||b.count-a.count||a.value.localeCompare(b.value));
+  return {rows};
+}
+function dbFormatSimilarity(value){
+  return value===null||value===undefined||Number.isNaN(value)?'N/A':`${(value*100).toFixed(1)}%`;
+}
 function dbRenderCountCards(){
   const canvas=document.getElementById('db-feature-canvas'); if(!canvas) return;
   if(!dbCountMetric){
-    canvas.innerHTML='<div class="db-count-empty">Choose a metric to see visualisations for selected features.</div>';
+    canvas.innerHTML='<div class="db-count-empty"><strong>Nothing to show yet</strong><br>Select a measure and choose one or more groups to see the results.</div>';
     return;
   }
   const selected=[...dbCountSelectedFeatures].map(dbCountConfig).filter(Boolean);
   if(!selected.length){
-    canvas.innerHTML=`<div class="db-count-empty">Choose the ${dbCountMetric==='entity_f1'?'Entity/Metadata Coverage':(dbCountMetric==='sentiment_delta'?'Sentiment Polarity Delta':'Count')} metric and select one or more features on the left to see results.</div>`;
+    canvas.innerHTML=`<div class="db-count-empty"><strong>Nothing to show yet</strong><br>Select a measure and choose one or more groups to see the results.</div>`;
     return;
   }
   if(dbCountMetric==='entity_f1'){
-    canvas.innerHTML=selected.map(feature=>{
+    canvas.innerHTML=selected.map((feature,featureIndex)=>{
       const selectedValues=dbCountSelectedValues[feature.col]||new Set();
       const result=dbEntityF1ForFeature(feature,selectedValues);
       const pct=Math.round(result.f1*100);
+      const color=DB_PALETTE[featureIndex%DB_PALETTE.length];
       const featureInfo=feature.label.toLowerCase();
       const mentioned=result.matchedTop.length?escHtml(result.matchedTop.join(' · ')):'None found';
       const missing=result.missedExamples.length?escHtml(result.missedExamples.join(' · ')):'None among selected facts';
       return `<div class="db-count-card">
         <div class="db-coverage-title">How much of the expected ${escHtml(featureInfo)} information is included?</div>
-        <div class="db-coverage-tech">Technical measure: Entity/Metadata Coverage</div>
         <div class="db-coverage-summary">
           <div class="db-coverage-pct">${pct}%</div>
-          <div class="db-coverage-track"><div class="db-coverage-fill" style="width:${pct}%"></div></div>
+          <div class="db-coverage-track"><div class="db-coverage-fill" style="width:${pct}%;background:${color}"></div></div>
         </div>
-        <div class="db-coverage-statement">${result.matched} of ${result.expected} expected ${escHtml(featureInfo)} reference${result.expected!==1?'s':''} were included in the AI-generated descriptions.</div>
+        <div class="db-coverage-statement">${pct}% of the expected ${escHtml(featureInfo)} information was included in the AI-generated descriptions.</div>
 	        <div class="db-coverage-examples">
 	          <div class="db-coverage-examples-title">${escHtml(feature.label)} information mentioned by the AI description:</div>
 	          <div class="db-coverage-examples-text">${mentioned}</div>
@@ -2299,6 +2503,30 @@ function dbRenderCountCards(){
     }).join('');
     return;
   }
+  if(dbCountMetric==='similarity_semantic'){
+    canvas.innerHTML=selected.map(feature=>{
+      const selectedValues=dbCountSelectedValues[feature.col]||new Set();
+      const result=dbSimilarityForFeature(feature,selectedValues);
+      const shown=result.rows.slice(0,12);
+      return `<div class="db-count-card">
+        <div class="db-count-card-head">
+          <div class="db-count-card-title">Similarity to the human-reviewed description</div>
+          <div class="db-count-card-sub">${escHtml(dbCountSelectedGroupLabel(feature,shown.length))}</div>
+        </div>
+        <div class="db-count-caption" style="margin-bottom:12px">Higher percentages mean the AI description is closer in meaning to the human-reviewed description.</div>
+        ${shown.length?shown.map((item,itemIndex)=>{
+          const color=DB_PALETTE[itemIndex%DB_PALETTE.length];
+          const width=item.score===null||item.score===undefined||Number.isNaN(item.score)?0:Math.max(0,Math.min(100,item.score*100));
+          return `<div class="db-tone-row">
+            <div class="db-tone-group">${escHtml(item.value)} <span class="db-tone-records">(${item.count} artefact${item.count!==1?'s':''})</span></div>
+            <div class="db-tone-track"><div class="db-tone-fill" style="width:${width}%;background:${color}"></div></div>
+            <div class="db-tone-value">${dbFormatSimilarity(item.score)}</div>
+          </div>`;
+        }).join(''):`<div class="db-count-empty" style="padding:24px">No groups selected for ${escHtml(feature.label)}.</div>`}
+      </div>`;
+    }).join('');
+    return;
+  }
   if(dbCountMetric==='sentiment_delta'){
     canvas.innerHTML=selected.map(feature=>{
       const selectedValues=dbCountSelectedValues[feature.col]||new Set();
@@ -2306,15 +2534,18 @@ function dbRenderCountCards(){
       const shown=result.rows.slice(0,12);
       return `<div class="db-count-card">
         <div class="db-count-card-head">
-          <div class="db-count-card-title">Difference in tone from the reference description</div>
-          <div class="db-count-card-sub">Technical measure: Sentiment Polarity Delta</div>
+          <div class="db-count-card-title">Difference in tone from the human-reviewed description</div>
+          <div class="db-count-card-sub">${escHtml(dbCountSelectedGroupLabel(feature,shown.length))}</div>
         </div>
         <div class="db-count-caption" style="margin-bottom:12px">0 means the tone is very similar to the reference. Larger values mean a greater difference in tone.</div>
-        ${shown.length?shown.map(item=>`<div class="db-tone-row">
+        ${shown.length?shown.map((item,itemIndex)=>{
+          const color=DB_PALETTE[itemIndex%DB_PALETTE.length];
+          return `<div class="db-tone-row">
             <div class="db-tone-group">${escHtml(item.value)} <span class="db-tone-records">(${item.count} artefact${item.count!==1?'s':''})</span></div>
-            <div class="db-tone-track"><div class="db-tone-fill" style="width:${dbSentimentDeltaBarWidth(item.score)}%"></div></div>
+            <div class="db-tone-track"><div class="db-tone-fill" style="width:${dbSentimentDeltaBarWidth(item.score)}%;background:${color}"></div></div>
             <div class="db-tone-value">${dbFormatSentimentDelta(item.score)}</div>
-          </div>`).join(''):`<div class="db-count-empty" style="padding:24px">No sub-features selected for ${escHtml(feature.label)}.</div>`}
+          </div>`;
+        }).join(''):`<div class="db-count-empty" style="padding:24px">No groups selected for ${escHtml(feature.label)}.</div>`}
       </div>`;
     }).join('');
     return;
@@ -2328,19 +2559,20 @@ function dbRenderCountCards(){
 	        <div class="db-count-card-title">Artefacts by ${escHtml(dbCountTitleLabel(feature.label))}</div>
 	        <div class="db-count-card-sub">${escHtml(dbCountSelectedGroupLabel(feature,rows.length))}</div>
 	      </div>
-	      ${shown.length?shown.map(item=>{
+	      ${shown.length?shown.map((item,itemIndex)=>{
 	        const pct=Math.round((item.count/DB_COUNT_BAR_DENOMINATOR)*100);
 	        const width=Math.min(100,(item.count/DB_COUNT_BAR_DENOMINATOR)*100);
+	        const color=DB_PALETTE[itemIndex%DB_PALETTE.length];
 	        return `<div class="db-count-row">
 	          <div class="db-count-label-row">
-	            <div class="db-count-name"><span class="db-count-dot" style="background:#4B5563"></span><span>${escHtml(item.value)}</span></div>
+	            <div class="db-count-name"><span class="db-count-dot" style="background:${color}"></span><span>${escHtml(item.value)}</span></div>
 	            <div class="db-count-value">${item.count}</div>
 	          </div>
-	          <div class="db-count-track"><div class="db-count-fill" style="width:${width}%"></div></div>
+	          <div class="db-count-track"><div class="db-count-fill" style="width:${width}%;background:${color}"></div></div>
 	          <div class="db-count-caption">${item.count} of ${DB_COUNT_BAR_DENOMINATOR} (${pct}%)</div>
 	        </div>`;
-	      }).join(''):`<div class="db-count-empty" style="padding:24px">No sub-features selected for ${escHtml(feature.label)}.</div>`}
-      ${rows.length>shown.length?`<div class="db-dist-note">Showing the top ${shown.length} of ${rows.length} selected subgroups.</div>`:''}
+      }).join(''):`<div class="db-count-empty" style="padding:24px">No groups selected for ${escHtml(feature.label)}.</div>`}
+	      ${rows.length>shown.length?`<div class="db-dist-note">Showing the top ${shown.length} of ${rows.length} selected groups.</div>`:''}
     </div>`;
   }).join('');
 }
@@ -2356,9 +2588,10 @@ function dbRenderCountMetricDefinition(){
     const defs={
 	      count:'Shows how many artefacts in the full dataset belong to each selected group.',
       entity_f1:'Shows how much of the expected information appears in the AI-generated descriptions. A higher percentage means more of the expected information was included.',
-      sentiment_delta:'Compares the positive or negative tone of each AI-generated description with its human-reviewed reference descriptions. A larger value means the AI uses a more different tone.'
+      sentiment_delta:'Compares the tone of each AI-generated description with its human-reviewed reference description. A larger value means the AI uses a more different tone.',
+      similarity_semantic:'Compares the overall meaning of each AI-generated description with its human-reviewed reference description. A higher percentage means they are more similar.'
     };
-  el.textContent=dbCountMetric&&defs[dbCountMetric]?defs[dbCountMetric]:'Select a metric to see what it measures.';
+  el.textContent=dbCountMetric&&defs[dbCountMetric]?defs[dbCountMetric]:'Choose a measure to learn what it checks.';
 }
 function initStep1b(){dbRenderCountMetricDefinition();dbRenderCountFeaturePanel();dbRenderCountCards();}
 
@@ -2374,6 +2607,8 @@ let bmNextId = 1;
 let bmMode = "intersect";
 let bmCohorts = [];
 let bmNextCohortId = 1;
+let bmCharacteristic = "";
+let bmSimpleGroups = new Set();
 
 function bmReset(){
   bmMetricId="";
@@ -2382,6 +2617,8 @@ function bmReset(){
   bmMode="intersect";
   bmCohorts=[];
   bmNextCohortId=1;
+  bmCharacteristic="";
+  bmSimpleGroups=new Set();
   bmTopTab="scaff";
 }
 
@@ -2393,18 +2630,12 @@ function bmRemoveSaved(id){
 }
 
 function gmSavedMeasureSummaryHtml(m){
-  const concern=m.concern?`"${escHtml(m.concern)}"`:'this concern';
-  const type=m.concernCategoryLabel?` with the concern type <strong>${escHtml(m.concernCategoryLabel)}</strong>`:'';
-  const metric=m.customMeasure
-    ?`the custom measure: <strong>${escHtml(m.customMeasureName||m.metricName||'Custom measure')}</strong>${m.customMeasureCheck?` (${escHtml(m.customMeasureCheck)})`:''}`
-    :m.metricName?`<strong>${escHtml(m.metricName)}</strong>`:'the selected measure';
-  const groups=(m.groups||[]).filter(Boolean);
-  const groupText=groups.length?` for <strong>${groups.map(g=>escHtml(g)).join('</strong> and <strong>')}</strong>`:'';
-  let threshold='no threshold specified';
-  if(m.threshold){
-    threshold=`a concern will be raised when the result is ${m.thresholdLabel&&/above/i.test(m.thresholdLabel)?'above':'below'} <strong>${escHtml(m.threshold)}${m.thresholdUnit==='%'?'%':` ${escHtml(m.thresholdUnit||'')}`}</strong>`;
-  }
-  return `You observed ${concern}${type}. This can be evaluated using ${metric}${groupText}. ${threshold.charAt(0).toUpperCase()+threshold.slice(1)}.`;
+  const metric=gmBuildMetric(m.metricId)||m;
+  const statement=m.generatedStatement||gmBuildGeneratedSummary(metric,m.cohorts||[],m.threshold);
+  const parts=[`<div>${escHtml(statement||'Saved audit measure.')}</div>`];
+  if(m.concern) parts.push(`<div class="audit-mini-note" style="margin-top:6px">What you noticed: "${escHtml(m.concern)}"</div>`);
+  if(m.concernCategoryLabel) parts.push(`<div class="audit-mini-note" style="margin-top:6px"><strong>Optional concern type:</strong> ${escHtml(m.concernCategoryLabel)}</div>`);
+  return parts.join('');
 }
 
 function bmRenderSaved(){
@@ -2419,7 +2650,7 @@ function bmRenderSaved(){
   list.innerHTML=libMetrics.map(m=>{
     const badge=m.type==='lib'
       ?`<span class="bm-saved-type-lib">Audit measure</span>`
-      :`<span class="bm-saved-type-own">Recorded metric (own words)</span>`;
+      :`<span class="bm-saved-type-own">Recorded measure (own words)</span>`;
     const title=m.type==='lib'?'Saved audit measure':(m.ownName||'Recorded concern');
     let resultHtml='';
     if(m.type==='lib'){
@@ -2436,7 +2667,7 @@ function bmRenderSaved(){
       if(m.ownSeverity)   ownFields.push({label:'Severity',val:m.ownSeverity});
       if(m.ownLikelihood) ownFields.push({label:'Likelihood',val:m.ownLikelihood});
       if(m.ownWho)        ownFields.push({label:'Affected',val:m.ownWho});
-      if(m.ownText)       ownFields.push({label:'Metric',val:m.ownText});
+      if(m.ownText)       ownFields.push({label:'Measure',val:m.ownText});
       if(ownFields.length){
         resultHtml=`<div class="bm-saved-result" style="line-height:1.8">`+
           ownFields.map(f=>`<span style="font-size:12px"><strong>${escHtml(f.label)}:</strong> ${escHtml(f.val)}</span>`).join('<br>')+
@@ -2721,13 +2952,13 @@ function getCurrentEvent(){return events.find(e=>e.id===currentEventId)||null;}
 // METRIC SCAFFOLDING - guidance data for lay users
 // ════════════════════════════════════════════════════════════════
 const METRIC_SCAFFOLDING = {
-  demographic_parity:{icon:'',tagline:'Does the AI predict High Risk equally across groups?',when:'Use this first. It shows whether one group receives more High Risk labels, regardless of accuracy.',watchOut:'A different prediction rate is not automatically unfair. If one group genuinely reoffends more, higher rates may be expected. Compare with FPR and FNR for the full picture.'},
+  demographic_parity:{icon:'',tagline:'Does the AI predict High Risk equally across groups?',when:'Use this first. It shows whether one group receives more High Risk labels, regardless of overall correctness.',watchOut:'A different prediction rate is not automatically unfair. If one group genuinely reoffends more, higher rates may be expected. Compare with other error checks for the full picture.'},
   accuracy_difference:{icon:'🎯',tagline:'How often is the AI correct for each group?',when:'Use for a simple overall picture of whether the AI performs equally well across groups.',watchOut:''},
-  recall_difference:{icon:'',tagline:'Of people who did reoffend, how many did the AI catch?',when:'Use to check whether the AI misses actual risk in some groups (under-flagging). Low recall means many real risks are labelled Low Risk.',watchOut:'Low recall in one group may indicate under-surveillance for that group. But it may also reflect genuine differences in risk distribution.'},
-  precision_difference:{icon:'',tagline:'Of people labelled High Risk, how many actually reoffended?',when:'Use to check how reliable the High Risk label is. Low precision means many people are wrongly flagged.',watchOut:'Precision and recall are in tension: improving one usually worsens the other. Always use both together.'},
-  fpr_difference:{icon:'!',tagline:'Of people who did NOT reoffend, how many were wrongly flagged High Risk?',when:'Use to detect false accusations. A higher FPR in one group means that group faces more wrongful High Risk labels.',watchOut:'The ProPublica investigation found Black defendants had nearly double the FPR of White defendants in COMPAS. This is the key fairness metric for this dataset.'},
-  fnr_difference:{icon:'',tagline:'Of people who DID reoffend, how many were cleared as Low Risk?',when:'Use to detect under-flagging. The AI misses actual risk cases more often for one group.',watchOut:'It is mathematically impossible to equalise FPR and FNR simultaneously when base rates differ across groups. A lower FNR for one group tends to come at the cost of a higher FPR for another.'},
-  f1_difference:{icon:'',tagline:'A single score balancing how many risks are caught and how reliable predictions are.',when:'Use for an overall summary of the AI\'s balance between recall and precision. Useful for a quick group comparison.',watchOut:'F1 hides the direction of errors. Low F1 could mean too many false positives, too many false negatives, or both. Always check FPR and FNR separately.'}
+  recall_difference:{icon:'',tagline:'Of people who did reoffend, how many did the AI catch?',when:'Use to check whether the AI misses actual risk in some groups. A lower value means many real risks are labelled Low Risk.',watchOut:'A lower value in one group may indicate under-surveillance for that group. But it may also reflect genuine differences in risk distribution.'},
+  precision_difference:{icon:'',tagline:'Of people labelled High Risk, how many actually reoffended?',when:'Use to check how reliable the High Risk label is. A lower value means many people are wrongly flagged.',watchOut:'Looking at only one result can hide other kinds of mistakes, so compare this with the other checks.'},
+  fpr_difference:{icon:'!',tagline:'Of people who did NOT reoffend, how many were wrongly flagged High Risk?',when:'Use to detect wrongful High Risk labels. A higher value in one group means that group faces more wrongful High Risk labels.',watchOut:'A large difference between groups may need further investigation.'},
+  fnr_difference:{icon:'',tagline:'Of people who DID reoffend, how many were cleared as Low Risk?',when:'Use to detect missed actual risks. The AI misses actual risk cases more often for one group.',watchOut:'Reducing one kind of mistake can sometimes increase another, so compare this with the other checks.'},
+  f1_difference:{icon:'',tagline:'A single score balancing how many risks are caught and how reliable predictions are.',when:'Use for an overall summary of the AI\'s balance. Useful for a quick group comparison.',watchOut:'This can hide the direction of errors, so also check whether people are wrongly flagged or actual risks are missed.'}
 };
 
 const ATTR_SUGGESTIONS = {
@@ -2784,7 +3015,15 @@ function updateGroupCounts(attr){
 }
 
 function getFormulaFromComputeId(cid){
-  const map={demographic_parity:'High Risk predictions / all in group',accuracy_difference:'(TP+TN) / (TP+TN+FP+FN)',recall_difference:'TP / (TP+FN)',precision_difference:'TP / (TP+FP)',fpr_difference:'FP / (FP+TN)',fnr_difference:'FN / (TP+FN)',f1_difference:'2×Precision×Recall / (Precision+Recall)'};
+  const map={
+    demographic_parity:'High Risk predictions among everyone in the group',
+    accuracy_difference:'Correct predictions among everyone in the group',
+    recall_difference:'Correct High Risk predictions among people who reoffended',
+    precision_difference:'Correct High Risk predictions among all High Risk predictions',
+    fpr_difference:'Wrong High Risk predictions among people who did not reoffend',
+    fnr_difference:'Wrong Low Risk predictions among people who reoffended',
+    f1_difference:'Combined view of reliable High Risk labels and caught risks'
+  };
   return map[cid]||'-';
 }
 
@@ -2821,19 +3060,19 @@ function updateS3Banner(){
   const ev=getCurrentEvent();
   if(ev){
     el.style.display='flex';
-    el.innerHTML=`<span>Building metrics for: <strong>${escHtml(ev.name)}</strong> &middot; ${ev.metrics.length} metric${ev.metrics.length!==1?'s':''} saved</span>`+
+    el.innerHTML=`<span>Building measures for: <strong>${escHtml(ev.name)}</strong> &middot; ${ev.metrics.length} measure${ev.metrics.length!==1?'s':''} saved</span>`+
       `<span style="display:flex;gap:8px;align-items:center"><a href="#" onclick="goStep(4);return false;" style="font-size:11px;color:var(--accent);font-weight:600">View criteria &rarr;</a></span>`;
   } else el.style.display='none';
 }
 
 function populateMetricDropdown(){
   const sel=document.getElementById('s3-metric-dropdown'); if(!sel) return;
-  let html='<option value="">Select a metric</option>';
+  let html='<option value="">Select a measure</option>';
   METRIC_FAMILIES.forEach(family=>{
     const metrics=METRIC_LIBRARY.filter(m=>m.family===family);
     html+=`<optgroup label="${escAttr(family)}">`;
     metrics.forEach(m=>{
-      const tag=m.isComputable?' (Computable)':'';
+      const tag=m.isComputable?'':'';
       html+=`<option value="${m.id}">${escHtml(m.name)}${tag}</option>`;
     });
     html+='</optgroup>';
@@ -2853,7 +3092,7 @@ function onMetricDropdownChange(id){
   infoEl.innerHTML=`<div style="margin-top:10px;padding:10px 12px;background:var(--alight);border-radius:var(--r);border:1px solid #C4C2F0">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
       <div class="mib-section"><div class="mib-section-lbl">Plain meaning</div>${escHtml(metric.definition)}</div>
-      <div class="mib-section"><div class="mib-section-lbl">Formula</div><span class="mib-formula">${escHtml(metric.computeId?getFormulaFromComputeId(metric.computeId):'-')}</span></div>
+      <div class="mib-section"><div class="mib-section-lbl">How it is checked</div><span class="mib-formula">${escHtml(metric.computeId?getFormulaFromComputeId(metric.computeId):'-')}</span></div>
     </div>
   </div>`;
 }
@@ -2874,10 +3113,10 @@ function runMetricOnly(){
   const threshold=document.getElementById('s3-threshold')?.value||'';
   const rr=document.getElementById('s3-run-result');
   const showErr=msg=>{if(rr){rr.style.display='block';rr.innerHTML=`<div class="warn-box">${escHtml(msg)}</div>`;}};
-  if(!metricId){showErr('Please select a metric in Step 1.');return;}
+  if(!metricId){showErr('Please select a measure in Step 1.');return;}
   const metric=METRIC_LIBRARY.find(m=>m.id===metricId); if(!metric)return;
   if(!metric.isComputable){
-    if(rr){rr.style.display='block';rr.innerHTML=`<div class="info-box">This metric (${escHtml(metric.name)}) is qualitative and cannot be computed automatically. Use <strong>Save Audit Measure</strong> to record it as a criterion.</div>`;}
+    if(rr){rr.style.display='block';rr.innerHTML=`<div class="info-box">This measure (${escHtml(metric.name)}) cannot be checked automatically here. Use <strong>Save Audit Measure</strong> to record it as a criterion.</div>`;}
     return;
   }
   if(!demogAttr){showErr('Please select an attribute in Step 2.');return;}
@@ -3004,7 +3243,7 @@ const CAT_LABELS={
 function renderCriteriaList(){
   const el=document.getElementById('s4-list'); if(!el) return;
   if(!events.length){
-    el.innerHTML=`<div style="text-align:center;padding:32px;color:var(--soft);font-size:13px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:14px">No audit criteria yet. Go to Step 2 to articulate an event, then add metrics in Step 3.</div>`;
+    el.innerHTML=`<div style="text-align:center;padding:32px;color:var(--soft);font-size:13px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:14px">No audit criteria yet. Go to Step 2 to articulate an event, then add measures in Step 3.</div>`;
     return;
   }
   el.innerHTML=events.map(ev=>renderEventSection4(ev)).join('');
@@ -3012,7 +3251,7 @@ function renderCriteriaList(){
 
 function renderEventSection4(ev){
   const mHtml=ev.metrics.length>0?ev.metrics.map((m,i)=>renderMetricItem4(m,i)).join(''):
-    '<div class="no-metrics-note">No metrics added yet.</div>';
+    '<div class="no-metrics-note">No measures added yet.</div>';
   return `<div class="event-section">
     <div class="event-head">
       <div style="flex:1">
@@ -3021,7 +3260,7 @@ function renderEventSection4(ev){
           ${ev.category?`<span class="event-badge event-badge-cat">${escHtml(CAT_LABELS[ev.category]||ev.category)}</span>`:''}
           ${ev.severity?`<span class="event-badge event-badge-sev">${escHtml(ev.severity)}</span>`:''}
           ${ev.likelihood?`<span class="event-badge event-badge-lik">${escHtml(ev.likelihood)}</span>`:''}
-          <span style="font-size:11px;color:var(--soft)">${ev.metrics.length} metric${ev.metrics.length!==1?'s':''}</span>
+          <span style="font-size:11px;color:var(--soft)">${ev.metrics.length} measure${ev.metrics.length!==1?'s':''}</span>
         </div>
         ${ev.what?`<div style="font-size:12px;color:var(--mid);margin-top:5px">${escHtml(ev.what)}</div>`:''}
       </div>
@@ -3037,7 +3276,7 @@ function renderMetricItem4(m, i){
   if(m.type==='library_computable'){
     badgeHtml=`<span class="mbadge-lib">Library · Computed</span>`;
     const resultHtml=m.computedResult?renderMetricResult(m.computedResult, m.threshold):
-      `<div style="font-size:12px;color:var(--soft);font-style:italic;margin-top:6px">Not yet run. Return to Step 3 to compute this metric.</div>`;
+      `<div style="font-size:12px;color:var(--soft);font-style:italic;margin-top:6px">Not yet run. Return to Step 3 to check this measure.</div>`;
     const attrInfo=m.demographicAttr?`Split by: <strong>${escHtml(m.demographicAttr)}</strong>`:'';
     const threshInfo=m.threshold?` · Threshold: <strong>${escHtml(m.threshold)} pp</strong>`:'';
     bodyHtml=`<div class="metric-title">${escHtml(m.metricName)}</div>
@@ -3065,7 +3304,7 @@ function renderMetricItem4(m, i){
 
   return `<div class="metric-item">
     <div class="metric-item-head">
-      <div style="display:flex;align-items:center;gap:8px">${badgeHtml}<span class="metric-num">Metric ${i+1}</span></div>
+      <div style="display:flex;align-items:center;gap:8px">${badgeHtml}<span class="metric-num">Measure ${i+1}</span></div>
       <button class="metric-remove" onclick="removeMetric(${m.id})">Remove</button>
     </div>
     <div class="metric-item-body">${bodyHtml}</div>
@@ -3092,16 +3331,24 @@ function renderSummary(){
   document.getElementById('s4-summary-body').innerHTML=`
     <div class="summary-grid">
       <div class="summary-stat"><div class="ss-num">${events.length}</div><div class="ss-lbl">Event${events.length!==1?'s':''}</div></div>
-      <div class="summary-stat ss-comp"><div class="ss-num">${lib.length}</div><div class="ss-lbl">Library metric${lib.length!==1?'s':''}</div></div>
+      <div class="summary-stat ss-comp"><div class="ss-num">${lib.length}</div><div class="ss-lbl">Library measure${lib.length!==1?'s':''}</div></div>
       <div class="summary-stat ss-rec"><div class="ss-num">${custom.length}</div><div class="ss-lbl">Custom concern${custom.length!==1?'s':''}</div></div>
     </div>
-    ${ran.length?`<div style="margin-top:10px;font-size:12px;color:var(--mid)">${ran.length} metric${ran.length!==1?'s':''} computed from live data.</div>`:''}`;
+    ${ran.length?`<div style="margin-top:10px;font-size:12px;color:var(--mid)">${ran.length} measure${ran.length!==1?'s':''} checked using live data.</div>`:''}`;
 }
 async function finishSession(){
   const e=sessionStartTime?Math.round((Date.now()-sessionStartTime)/1000):0;
   const t=Math.floor(e/60)>0?`${Math.floor(e/60)} min ${e%60} sec`:`${e%60} sec`;
   const allM=events.flatMap(ev=>ev.metrics);
-  logEvent('finish','finish_clicked',{duration:t,legacyEvents:events.length,legacyMetrics:allM.length,savedItems:(bmSavedMetrics||[]).length});
+  const savedMeasures=bmSavedMetrics||[];
+  logEvent('finish','finish_clicked',{
+    duration:t,
+    legacyEvents:events.length,
+    legacyMetrics:allM.length,
+    savedItems:savedMeasures.length,
+    auditMeasureCounts:getAuditMeasureCounts(savedMeasures),
+    auditMeasuresForAssessment:savedMeasures.map((m,index)=>buildGenerativeAssessmentRecord(m,index))
+  });
   const finishButtons=document.querySelectorAll('button[onclick="finishSession()"]');
   finishButtons.forEach(btn=>{btn.disabled=true;btn.textContent='Saving...';});
   logEvent('redirect','qualtrics_redirect_started',{url:getQualtricsRedirectUrl(),urlConfigured:QUALTRICS_REDIRECT_URL!=='GENERATIVE_QUALTRICS_REDIRECT_URL_HERE'});
@@ -3114,41 +3361,41 @@ async function finishSession(){
 const GM_BUILD_METRICS = [
   {
     id:'representation_count',
-    label:'How many artefacts are in each group? (Count)',
-    name:'Count',
-    sourceLabel:'Dataset metadata only',
+    label:'How many artefacts are in each group?',
+    name:'Number of artefacts',
+    sourceLabel:'Artefact information only',
     focus:'number of artefacts in each group',
     question:'How many artefacts are in each group?',
     sourceDetail:'It uses only the structured dataset fields selected in Step 1, not the AI-generated description.',
-    calculation:'It counts the records that match each artifact group filter.',
+    calculation:'It shows the number of records that match each artefact group filter.',
     def:'Shows how many artefacts in the full dataset belong to each selected group.',
-    thresholdLabel:'Flag when count is below',
+    thresholdLabel:'Flag when the number is below',
     thresholdUnit:'records',
     thresholdDirection:'below'
   },
   {
     id:'factual_entity_f1',
-    label:'How much of the artefact information is included in the AI description? (Metadata Coverage)',
-    name:'Metadata Coverage',
-    sourceLabel:'AI description + selected metadata',
+    label:'How much expected information is included in the AI description?',
+    name:'Expected information included',
+    sourceLabel:'AI description + artefact information',
     focus:'important information included in AI descriptions',
-    question:'How much of the artefact information is included in the AI description?',
-    sourceDetail:'It compares the AI-generated description with the feature/value filters selected for the artifact group.',
+    question:'How much expected information is included in the AI description?',
+    sourceDetail:'It compares the AI-generated description with the filters selected for the artefact group.',
     calculation:'It reports the percentage of selected group facts that appear in the AI description.',
     def:'Checks how much of the available artefact information, such as culture, material, date, or place, is included in the AI-generated description.',
-    thresholdLabel:'Flag when Metadata Coverage is below',
+    thresholdLabel:'Flag when included information is below',
     thresholdUnit:'%',
     thresholdDirection:'below'
   },
   {
     id:'tone_sentiment_delta',
-    label:'How different is the tone of the AI descriptions from the reference descriptions? (Sentiment Polarity Delta)',
-    name:'Sentiment Polarity Delta',
-    sourceLabel:'AI description + reference description',
+    label:'How different is the tone from the human-reviewed descriptions?',
+    name:'Tone difference',
+    sourceLabel:'AI description + human-reviewed description',
     focus:'tone difference from reference descriptions',
-    question:'How different is the tone of the AI descriptions from the reference descriptions?',
-    sourceDetail:'It applies the same sentiment model to each AI-generated description and its reference description.',
-    calculation:'It calculates the mean absolute difference between AI sentiment and reference sentiment for records in the selected group.',
+    question:'How different is the tone from the human-reviewed descriptions?',
+    sourceDetail:'It compares the tone of each AI-generated description with its human-reviewed reference description.',
+    calculation:'It shows the average tone difference for records in the selected group.',
     def:'Compares the positive or negative tone of the AI-generated descriptions with the human-reviewed reference descriptions. A value closer to 0 means the tone is more similar. Larger values mean a greater difference in tone.',
     thresholdLabel:'Flag when average tone difference is above',
     thresholdUnit:'points',
@@ -3156,15 +3403,15 @@ const GM_BUILD_METRICS = [
   },
   {
     id:'similarity_semantic',
-    label:'How similar is the AI description to the reference description? (Semantic Similarity)',
-    name:'Semantic Similarity',
-    sourceLabel:'AI description + reference description',
+    label:'How similar is the AI description to the human-reviewed description?',
+    name:'Meaning similarity',
+    sourceLabel:'AI description + human-reviewed description',
     focus:'meaning-level similarity to the human-reviewed reference description',
-    question:'How similar is the AI description to the reference description?',
-    sourceDetail:'It compares the AI-generated description with the human-reviewed reference description for the same artifact record.',
-    calculation:'It reports a meaning-level similarity score for each artifact group.',
-    def:'Measures how similar the overall meaning of the AI-generated description is to the human-reviewed reference description. A higher score means the descriptions are more similar in meaning.',
-    thresholdLabel:'Flag when semantic similarity is below',
+    question:'How similar is the AI description to the human-reviewed description?',
+    sourceDetail:'It compares the AI-generated description with the human-reviewed description for the same artefact record.',
+    calculation:'It shows how close the AI description is to the human-reviewed description for each artefact group.',
+    def:'Checks how similar the overall meaning of the AI-generated description is to the human-reviewed description. A higher score means the descriptions are more similar in meaning.',
+    thresholdLabel:'Flag when meaning similarity is below',
     thresholdUnit:'%',
     thresholdDirection:'below'
   },
@@ -3230,6 +3477,11 @@ const GM_CONCERN_MEASURE_RULES = {
 };
 function gmBuildMetric(id){return GM_BUILD_METRICS.find(m=>m.id===id)||null;}
 function gmGetConcernText(){return (document.getElementById('bm-concern-text')?.value||'').trim();}
+function bmAutoGrowTextarea(el){
+  if(!el) return;
+  el.style.height='48px';
+  el.style.height=Math.max(48,el.scrollHeight)+'px';
+}
 function gmGetConcernCategory(){return document.getElementById('bm-concern-category')?.value||'';}
 function gmConcernCategoryObj(){return GM_CONCERN_CATEGORIES.find(c=>c.id===gmGetConcernCategory())||null;}
 function gmIsOtherConcernCategory(){return gmGetConcernCategory()==='other';}
@@ -3248,13 +3500,10 @@ function gmCustomMeasureText(){
 }
 function gmConcernMeasureRule(){return GM_CONCERN_MEASURE_RULES[gmGetConcernCategory()]||null;}
 function gmMetricEnabled(metric){
-  const rule=gmConcernMeasureRule();
-  if(!rule) return false;
-  return rule.enabled.includes(metric?.id);
+  return !!metric;
 }
 function gmMetricDisabledReason(metric){
-  if(gmMetricEnabled(metric)) return '';
-  return gmGetConcernCategory()?'Not suggested for the selected concern type.':'First select a concern type to see possible ways to measure it.';
+  return '';
 }
 function gmPopulateConcernCategories(){
   const sel=document.getElementById('bm-concern-category');if(!sel)return;
@@ -3282,14 +3531,8 @@ function gmSelectConcernCategory(id){
 function bmOnConcernCategoryChange(){
   const category=gmConcernCategoryObj();
   const desc=document.getElementById('bm-category-desc');
-  if(desc) desc.textContent=category?category.desc:'Select a concern type to see a little description.';
+  if(desc) desc.textContent=category?category.desc:'Optional. This helps with later analysis but does not change which measures are available.';
   gmUpdateOtherConcernVisibility();
-  const selectedMetric=gmBuildMetric(bmMetricId);
-  if(selectedMetric&&!gmMetricEnabled(selectedMetric)){
-    bmMetricId='';
-    const sel=document.getElementById('bm-metric-dropdown-sel');
-    if(sel) sel.value='';
-  }
   gmPopulateMetricChoices();gmUpdateOtherMeasureVisibility();bmRenderMeasureGuidance();bmRenderMetricDef();bmRenderThresholdLabels();bmUpdateCriterion();bmUpdateSaveBtn();
   logEvent('metric_option_change','audit_measure_category_selected',{category:category||null});
 }
@@ -3304,34 +3547,34 @@ function gmUpdateOtherConcernVisibility(){
 }
 function gmMetricTitle(metric){
   const map={
-    representation_count:'How many artefacts are in each group? (Count)',
-    factual_entity_f1:'How much of the artefact information is included in the AI description? (Metadata Coverage)',
-    tone_sentiment_delta:'How different is the tone of the AI descriptions from the reference descriptions? (Sentiment Polarity Delta)',
-    similarity_semantic:'How similar is the AI description to the reference description? (Semantic Similarity)',
+    representation_count:'How many artefacts are in each group?',
+    factual_entity_f1:'How much expected information is included in the AI description?',
+    tone_sentiment_delta:'How different is the tone from the human-reviewed descriptions?',
+    similarity_semantic:'How similar is the AI description to the human-reviewed description?',
     other_custom:'Create my own measure'
   };
-  return map[metric?.id]||metric?.label||'Metric';
+  return map[metric?.id]||metric?.label||'Measure';
 }
 function gmMeasureText(metric){
   if(gmIsOtherMeasure(metric)) return gmCustomMeasureCheck();
   const map={
     representation_count:'Shows how many artefacts in the full dataset belong to each selected group.',
     factual_entity_f1:'Checks how much of the available artefact information, such as culture, material, date, or place, is included in the AI-generated description.',
-    tone_sentiment_delta:'Compares the positive or negative tone of the AI-generated descriptions with the human-reviewed reference descriptions. A value closer to 0 means the tone is more similar. Larger values mean a greater difference in tone.',
-    similarity_semantic:'Measures how similar the overall meaning of the AI-generated description is to the human-reviewed reference description. A higher score means the descriptions are more similar in meaning.'
+    tone_sentiment_delta:'Compares the positive or negative tone of the AI-generated descriptions with the human-reviewed descriptions. A value closer to 0 means the tone is more similar. Larger values mean a greater difference in tone.',
+    similarity_semantic:'Checks how similar the overall meaning of the AI-generated description is to the human-reviewed description. A higher score means the descriptions are more similar in meaning.'
   };
-  return map[metric?.id]||metric?.def||'What this metric measures.';
+  return map[metric?.id]||metric?.def||'What this measure checks.';
 }
 function gmMetricHelpText(metric){
-  if(!metric) return 'Select a metric to see what it measures.';
+  if(!metric) return 'Choose a measure to learn what it checks.';
   if(gmIsOtherMeasure(metric)) return gmMeasureText(metric);
-  return `${gmMetricTitle(metric)} measures ${gmMeasureText(metric).charAt(0).toLowerCase()+gmMeasureText(metric).slice(1)}`;
+  return gmMeasureText(metric);
 }
 function gmPopulateMetricChoices(){
   const sel=document.getElementById('bm-metric-dropdown-sel');
   const radioList=document.getElementById('bm-measure-radio-list');
   if(sel){
-    sel.innerHTML='<option value="">Choose a metric</option>'+GM_BUILD_METRICS.map(m=>{
+    sel.innerHTML='<option value="">Choose a measure</option>'+GM_BUILD_METRICS.map(m=>{
       const disabled=!gmMetricEnabled(m);
       return `<option value="${escAttr(m.id)}"${bmMetricId===m.id?' selected':''}${disabled?' disabled':''}>${escHtml(gmMetricTitle(m))}</option>`;
     }).join('');
@@ -3341,7 +3584,7 @@ function gmPopulateMetricChoices(){
       const checked=bmMetricId===m.id;
       const disabled=!gmMetricEnabled(m);
       const label=m.isCustom?m.label:m.question;
-      const optionLabel=m.isCustom?label:`${label} (${m.name})`;
+      const optionLabel=label;
       const definition=gmMeasureText(m);
       return `<label class="radio-row${checked?' sel':''}${disabled?' disabled':''}" title="${escAttr(gmMetricDisabledReason(m))}">
         <input type="radio" name="bm-measure-radio" value="${escAttr(m.id)}" ${checked?'checked':''} ${disabled?'disabled':''} onchange="gmSelectAuditMeasure('${escAttr(m.id)}')">
@@ -3363,10 +3606,6 @@ function gmUpdateOtherMeasureVisibility(){
   wrap.style.display=gmIsOtherMeasure(gmBuildMetric(bmMetricId))?'block':'none';
 }
 function gmMeasureHelpText(){
-  const rule=gmConcernMeasureRule();
-  if(!rule) return 'First select a concern type to see possible ways to measure it.';
-  const enabledPredefined=rule.enabled.filter(id=>id!=='other_custom').length;
-  if(enabledPredefined===0) return 'The available performance metrics do not directly measure this concern. You can create your own measure.';
   return '';
 }
 function bmRenderMeasureGuidance(){
@@ -3380,6 +3619,7 @@ function gmTitleCase(text){
 }
 function gmScopeLine(cohort){
   const valid=cohort.conditions.filter(c=>c.feat&&c.val);
+  if(!valid.length) return 'All dataset';
   const parts=valid.length
     ?valid.map(c=>`${gmTitleCase(bmFeatureDisplayName(c.feat))}: ${c.val}`).join(' | ')
     :'All records';
@@ -3387,6 +3627,7 @@ function gmScopeLine(cohort){
 }
 function gmSentenceScope(cohort){
   const valid=cohort.conditions.filter(c=>c.feat&&c.val);
+  if(!valid.length) return 'All dataset';
   const parts=valid.length
     ?valid.map(c=>`${gmTitleCase(bmFeatureDisplayName(c.feat))}: ${c.val}`).join(', ')
     :'All records';
@@ -3395,48 +3636,84 @@ function gmSentenceScope(cohort){
 function gmThresholdText(metric, threshold){
   if(!threshold) return '';
   const unit=metric.thresholdUnit||'';
-  if(metric.id==='representation_count') return `Minimum count of ${threshold} ${unit}`.trim();
+  if(metric.id==='representation_count') return `At least ${threshold} ${unit}`.trim();
   if(metric.thresholdDirection==='below') return `Minimum score of ${threshold}${unit==='%'?'%':` ${unit}`}`;
   if(metric.thresholdDirection==='above') return `${threshold}${unit==='%'?'%':` ${unit}`}`;
   return `${threshold} ${unit}`.trim();
+}
+function gmReadableList(items){
+  const clean=items.filter(Boolean);
+  if(clean.length<=1) return clean[0]||'';
+  if(clean.length===2) return `${clean[0]} and ${clean[1]}`;
+  return `${clean.slice(0,-1).join(', ')}, and ${clean[clean.length-1]}`;
+}
+function gmPlainMeasurePhrase(metric){
+  if(gmIsOtherMeasure(metric)) return gmCustomMeasureCheck()||'your custom measure';
+  const map={
+    representation_count:'how many artefacts are in each group',
+    factual_entity_f1:'how much artefact information the AI descriptions include',
+    tone_sentiment_delta:'how different the tone of the AI descriptions is from the reference descriptions',
+    similarity_semantic:'how similar the AI descriptions are to the reference descriptions'
+  };
+  return map[metric?.id]||String(metric?.question||metric?.name||'the selected measure').replace(/\?$/,'').toLowerCase();
+}
+function gmThresholdDirectionText(metric){
+  return metric?.thresholdDirection==='above'?'above':'below';
+}
+function gmBuildGeneratedSummary(metric, cohorts, threshold){
+  if(!metric) return '';
+  const scopes=cohorts.map(gmSentenceScope);
+  const measure=gmPlainMeasurePhrase(metric);
+  let sentence='';
+  if(scopes.length>1){
+    sentence=`Compare ${gmReadableList(scopes)} to check ${measure}.`;
+  } else if(scopes.length===1){
+    sentence=`Check ${measure} for ${scopes[0]}.`;
+  } else {
+    sentence=`Check ${measure}.`;
+  }
+  if(threshold){
+    sentence+=` I would flag this for further investigation if the result is ${gmThresholdDirectionText(metric)} ${gmThresholdText(metric,threshold).replace(/^Minimum score of /,'').replace(/^At least /,'')}.`;
+  } else {
+    sentence+=' No threshold has been set.';
+  }
+  return sentence;
 }
 function gmCriterionSentence(metric, cohorts, threshold){
   const scope=cohorts.map(gmSentenceScope).join(' and ');
   const thresholdHtml=threshold?` <span style="color:var(--mid)">(Threshold: ${escHtml(gmThresholdText(metric,threshold))})</span>`:'';
   const templates={
-    representation_count:`Number of records in the full dataset (<strong>${escHtml(gmMetricTitle(metric))}</strong>) that match <strong>${escHtml(scope)}</strong> should be at least a certain number.${thresholdHtml}`,
-    factual_entity_f1:`<strong>${escHtml(gmMetricTitle(metric))}</strong>: The AI description should include information from the selected metadata for <strong>${escHtml(scope.replace('Artifact group','Artifact Group'))}</strong>. This metric measures the percentage of selected metadata information that is mentioned in the AI-generated descriptions.${threshold?` <span style=\"color:var(--mid)\">(Threshold: At least a certain percentage [${escHtml(gmThresholdText(metric,threshold).replace('Minimum score of ',''))}])</span>`:''}`,
-    tone_sentiment_delta:`The average tone difference between the AI descriptions and reference descriptions (<strong>${escHtml(gmMetricTitle(metric))}</strong>) for <strong>${escHtml(scope)}</strong> should not exceed a certain threshold.${thresholdHtml}`,
-    similarity_semantic:`How similar the overall meaning of the AI description is to the reference description (<strong>${escHtml(gmMetricTitle(metric))}</strong>) for <strong>${escHtml(scope)}</strong> should not be less than a certain threshold.${thresholdHtml}`
+    representation_count:`The number of artefacts in the full dataset that match <strong>${escHtml(scope)}</strong> should be at least a certain number.${thresholdHtml}`,
+    factual_entity_f1:`The AI description should include expected artefact information for <strong>${escHtml(scope.replace('Artifact group','Artifact Group'))}</strong>. This check shows the percentage of selected artefact information that is mentioned in the AI-generated descriptions.${threshold?` <span style=\"color:var(--mid)\">(Threshold: At least a certain percentage [${escHtml(gmThresholdText(metric,threshold).replace('Minimum score of ',''))}])</span>`:''}`,
+    tone_sentiment_delta:`The average tone difference between the AI descriptions and human-reviewed descriptions for <strong>${escHtml(scope)}</strong> should not exceed a certain threshold.${thresholdHtml}`,
+    similarity_semantic:`The overall meaning of the AI description should be similar to the human-reviewed description for <strong>${escHtml(scope)}</strong>.${thresholdHtml}`
   };
   return templates[metric.id]||`${escHtml(gmMetricTitle(metric))} for <strong>${escHtml(scope)}</strong>.${thresholdHtml}`;
 }
 function bmSafeArg(value){return encodeURIComponent(String(value));}
 function bmVisibleFeatureColumns(){
-  const first=ROWS[0]||{};
-  const hidden=new Set(['ai_description','img_b64','id','description']);
-  return Object.keys(first).filter(col=>!hidden.has(col));
+  return getObserveGroupFeatureColumns();
 }
 function bmFeatureDisplayName(col){return col.replace(/_/g,' ');}
 function bmGetGroupOptions(col){
-  return [...new Set(ROWS.map(r=>String(r[col]??'')).filter(v=>v!==''))].sort((a,b)=>{
+  const cfg=dbCountConfig(col);
+  return [...new Set(ROWS.flatMap(r=>dbCountValuesForRow(r,cfg)).filter(v=>v!==''))].sort((a,b)=>{
     const na=parseFloat(a),nb=parseFloat(b);
     return !isNaN(na)&&!isNaN(nb)?na-nb:a.localeCompare(b);
   });
 }
 function bmCohortMatchCount(conditions){
   const valid=conditions.filter(c=>c.feat&&c.val);
-  return ROWS.filter(row=>valid.every(c=>String(row[c.feat]??'')===String(c.val))).length;
+  return ROWS.filter(row=>valid.every(c=>dbCountValuesForRow(row,dbCountConfig(c.feat)).includes(String(c.val)))).length;
 }
 function initStep1c(){
   bmMode='intersect';
-  if(!bmCohorts||bmCohorts.length===0){bmCohorts=[{id:bmNextCohortId++,name:'Artifact group A',conditions:[{feat:'',val:''}]}];}
   gmPopulateConcernCategories();
   gmUpdateOtherConcernVisibility();
   gmPopulateMetricChoices();
   gmUpdateOtherMeasureVisibility();
   bmRenderMeasureGuidance();
-  bmRenderCohorts();
+  bmRenderSimpleGroupPicker();
   bmRenderMetricDef();
   bmRenderThresholdLabels();
   bmUpdateCriterion();
@@ -3466,6 +3743,66 @@ function bmOnMetricDropdownChange(){
   logEvent('metric_option_change','guided_metric_selected',{metricId:bmMetricId,metricName:m?.label||null});
   gmPopulateMetricChoices();gmUpdateOtherMeasureVisibility();bmRenderMeasureGuidance();bmRenderMetricDef();bmRenderThresholdLabels();bmUpdateCriterion();bmUpdateSaveBtn();
 }
+function bmSelectedSimpleGroups(){
+  if(!bmCharacteristic) return [];
+  return bmGetGroupOptions(bmCharacteristic).filter(group=>bmSimpleGroups.has(group));
+}
+function bmEffectiveScope(){
+  const selected=bmSelectedSimpleGroups();
+  if(selected.length===0) return 'all_dataset';
+  if(selected.length===1) return 'single_group';
+  return 'multiple_groups';
+}
+function bmGetSimpleCohorts(){
+  const selected=bmSelectedSimpleGroups();
+  if(selected.length===0) return [{id:0,name:'All dataset',conditions:[],scopeLabel:'All dataset'}];
+  return selected.map((group,i)=>({
+    id:i+1,
+    name:group,
+    conditions:[{feat:bmCharacteristic,val:group}],
+    scopeLabel:group
+  }));
+}
+function bmSetCharacteristic(characteristic){
+  bmCharacteristic=characteristic||'';
+  bmSimpleGroups=new Set();
+  logEvent('metric_option_change','guided_group_characteristic_selected',{characteristic:bmCharacteristic});
+  bmRenderSimpleGroupPicker();
+  bmUpdateCriterion();
+  bmUpdateSaveBtn();
+}
+function bmToggleSimpleGroup(group, checked){
+  if(checked) bmSimpleGroups.add(group); else bmSimpleGroups.delete(group);
+  logEvent('metric_option_change','guided_group_toggled',{characteristic:bmCharacteristic,group,checked,groups:Array.from(bmSimpleGroups)});
+  bmRenderSimpleGroupPicker();
+  bmUpdateCriterion();
+  bmUpdateSaveBtn();
+}
+function bmRenderSimpleGroupPicker(){
+  const sel=document.getElementById('bm-characteristic-select');
+  const groupsSection=document.getElementById('bm-groups-section');
+  const list=document.getElementById('bm-simple-group-list');
+  const hint=document.getElementById('bm-groups-hint');
+  const cols=bmVisibleFeatureColumns();
+  if(sel){
+    sel.innerHTML=`<option value=""${!bmCharacteristic?' selected':''}>All dataset</option>`+
+      cols.map(col=>`<option value="${escAttr(col)}"${col===bmCharacteristic?' selected':''}>${escHtml(bmFeatureDisplayName(col))}</option>`).join('');
+  }
+  if(groupsSection) groupsSection.style.display=bmCharacteristic?'block':'none';
+  if(hint) hint.style.display=bmCharacteristic?'block':'none';
+  if(list){
+    if(!bmCharacteristic){list.innerHTML='';return;}
+    const options=bmGetGroupOptions(bmCharacteristic);
+    list.innerHTML=options.map(group=>{
+      const checked=bmSimpleGroups.has(group);
+      const count=ROWS.filter(row=>dbCountValuesForRow(row,dbCountConfig(bmCharacteristic)).includes(group)).length;
+      return `<label class="bm-group-cb${checked?' sel':''}">
+        <input type="checkbox" ${checked?'checked':''} onchange="bmToggleSimpleGroup(decodeURIComponent('${bmSafeArg(group)}'),this.checked)">
+        ${escHtml(group)} <span style="font-size:10px;color:var(--soft)">(${count})</span>
+      </label>`;
+    }).join('');
+  }
+}
 function bmRenderCohorts(){
   const el=document.getElementById('bm-cohort-list');if(!el)return;
   const cols=bmVisibleFeatureColumns();
@@ -3478,7 +3815,7 @@ function bmRenderCohorts(){
       return `<div class="bm-condition-row">
         ${ci>0?'<span class="bm-and-badge">AND</span>':''}
         <select class="bm-cond-sel" onchange="bmSetCondFeat(${cohort.id},${ci},this.value)">
-          <option value="">Feature...</option>${colOptions}
+          <option value="">Characteristic...</option>${colOptions}
         </select>
         <span class="bm-cond-op">=</span>
         <select class="bm-cond-sel" onchange="bmSetCondVal(${cohort.id},${ci},this.value)" ${!c.feat?'disabled':''}>
@@ -3493,7 +3830,7 @@ function bmRenderCohorts(){
         ${bmCohorts.length>1?`<button class="bm-cohort-remove" onclick="bmRemoveCohort(${cohort.id})">Remove</button>`:''}
       </div>
       ${conds}
-      <button class="bm-add-cond-btn" onclick="bmAddCond(${cohort.id})">+ Add feature/value</button>
+      <button class="bm-add-cond-btn" onclick="bmAddCond(${cohort.id})">+ Add characteristic/value</button>
     </div>`;
   }).join('');
   bmUpdateCohortWarn();
@@ -3525,13 +3862,13 @@ function bmUpdateCohortWarn(){
 }
 function bmCohortLabel(cohort){
   const valid=cohort.conditions.filter(c=>c.feat&&c.val);
-  if(!valid.length)return 'all records';
+  if(!valid.length)return 'All dataset';
   return valid.map(c=>`${bmFeatureDisplayName(c.feat)} = ${c.val.length>60?c.val.slice(0,57)+'...':c.val}`).join(' AND ');
 }
-function bmReadyCohorts(){return bmCohorts.filter(c=>c.conditions.some(x=>x.feat&&x.val));}
+function bmReadyCohorts(){return bmGetSimpleCohorts();}
 function gmRowsForCohort(cohort){
   const valid=cohort.conditions.filter(c=>c.feat&&c.val);
-  return ROWS.filter(row=>valid.every(c=>String(row[c.feat]??'')===String(c.val)));
+  return ROWS.filter(row=>valid.every(c=>dbCountValuesForRow(row,dbCountConfig(c.feat)).includes(String(c.val))));
 }
 function gmTextPairsForRows(rows){
   return rows.map(r=>({
@@ -3558,7 +3895,7 @@ function gmEntityOverlapForRows(rows, cohorts, mode){
         cohort.conditions.filter(c=>c.feat&&c.val).forEach(c=>facts.push(c.val));
       });
     } else {
-      facts=gmMetadataFactsForRow(row,['culture','production_date','materials','technique','subjects','section','place']);
+      facts=gmMetadataFactsForRow(row,getObserveGroupFeatureColumns());
     }
     [...new Set(facts)].forEach(fact=>{
       expected++;
@@ -3582,25 +3919,27 @@ function gmBuildDatasetResult(cohorts, metric){
       value=String(rows.length);
       detail=`out of ${ROWS.length} records`;
     } else if(metric.id==='factual_entity_f1'){
-      const score=gmEntityOverlapForRows(rows,[cohort],'conditions');
+      const score=gmEntityOverlapForRows(rows,[cohort],cohort.conditions.some(c=>c.feat&&c.val)?'conditions':'all_metadata');
       value=gmFormatPercent(score.score);
       detail=score.expected?`${score.matched}/${score.expected} selected group facts mentioned`:'No selected facts to check';
     } else if(metric.id==='similarity_semantic'){
       const semantic=computeSemanticSimilarity(gmTextPairsForRows(rows));
       value=gmFormatPercent(semantic.score);
-      detail=`${semantic.pairs} text pair${semantic.pairs!==1?'s':''} compared`;
+      detail=`${semantic.pairs} artefact description${semantic.pairs!==1?'s':''} checked`;
     } else if(metric.id==='tone_sentiment_delta'){
       value=rows.length?dbFormatSentimentDelta(dbAverage(rows.map(dbSentimentDifference))):'N/A';
       detail='0 = very similar tone. Larger values = greater difference from the reference.';
     }
-    return {label, group:bmCohortLabel(cohort), n:rows.length, value, detail};
+    return {label, group:cohort.scopeLabel||bmCohortLabel(cohort), n:rows.length, value, detail};
   });
-  return {metricId:metric.id, metricName:metric.name, rowCount:ROWS.length, stats};
+  return {metricId:metric.id, metricName:metric.name, metricQuestion:metric.question||gmMetricTitle(metric), rowCount:ROWS.length, stats};
 }
 function gmRenderDatasetResultHtml(result){
   if(!result) return '';
-  const chips=result.stats.map(stat=>`<div class="bm-result-chip"><strong>${escHtml(stat.label)}</strong> (${escHtml(stat.group)}): ${escHtml(stat.value)} <span style="color:var(--soft)">· ${escHtml(stat.detail)}</span></div>`).join('');
-  return `<div class="bm-result-kicker">APPLYING THIS METRIC TO THE FULL DATASET RESULTS (${result.rowCount} records)</div><div class="bm-result-values">${chips}</div>`;
+  const lines=result.stats.map(stat=>`<div class="bm-result-line"><span>Group(s): </span><strong>${escHtml(stat.group||stat.label)}</strong> &mdash; ${escHtml(stat.value)}</div>`).join('');
+  return `<div class="bm-result-kicker">RESULTS FROM APPLYING YOUR MEASURE TO THE FULL DATASET</div>
+    <div class="bm-result-summary"><strong>Measure:</strong> ${escHtml(result.metricQuestion||result.metricName)}</div>
+    <div class="bm-result-values">${lines}</div>`;
 }
 function gmUpdateDatasetResult(cohorts, metric){
   const el=document.getElementById('bm-dataset-result');if(!el)return null;
@@ -3614,53 +3953,27 @@ function bmUpdateCriterion(){
   const box=document.getElementById('bm-criterion-box'), text=document.getElementById('bm-criterion-text'), placeholder=document.getElementById('bm-criterion-placeholder');
   if(!box||!text||!placeholder)return;
   const m=gmBuildMetric(bmMetricId);
-  const cohorts=bmReadyCohorts();
+  const cohorts=bmGetSimpleCohorts();
   const concern=gmGetConcernText();
-  const category=gmConcernCategoryObj();
-  const categoryLabel=gmConcernCategoryLabel(category);
   const threshold=(document.getElementById('bm-threshold')?.value||'').trim();
-  const notes=(document.getElementById('bm-threshold-notes')?.value||'').trim();
   box.style.display='block';placeholder.style.display='none';
   const missing=txt=>`<span class="audit-empty-piece">${escHtml(txt)}</span>`;
-  const concernHtml=concern
-    ?`You observed that:<br><strong>"${escHtml(concern)}"</strong>${category?`<div class="audit-mini-note">Concern type: ${escHtml(categoryLabel||category.label)}</div>`:''}`
-    :missing('Describe what you noticed in Section 1.');
-  let measurementHtml='';
-  if(m&&cohorts.length){
-    const groupText=cohorts.map(gmSentenceScope).map(escHtml).join(' and ');
-    const measureTitle=gmIsOtherMeasure(m)?(gmCustomMeasureName()||'your custom measure'):gmMetricTitle(m);
-    const measureDesc=gmMeasureText(m);
-    measurementHtml=`Evaluate this using <strong>${escHtml(measureTitle)}</strong>${groupText?` for <strong>${groupText}</strong>`:''}.${measureDesc?`<div class="audit-mini-note">${escHtml(measureDesc)}</div>`:''}`;
-  } else if(m){
-    const measureTitle=gmIsOtherMeasure(m)?(gmCustomMeasureName()||'your custom measure'):gmMetricTitle(m);
-    measurementHtml=`Evaluate this using <strong>${escHtml(measureTitle)}</strong>. ${missing('Define at least one group in Section 4 to apply the measure.')}`;
-  } else if(cohorts.length){
-    measurementHtml=missing('Choose a possible measure in Section 3 to complete the measurement.');
+  let summaryHtml='';
+  let generatedSummary='';
+  if(!concern){
+    summaryHtml=missing('Describe what you noticed in Step 1.');
+  } else if(!m){
+    summaryHtml=missing('Choose how you would like to check it in Step 3.');
   } else {
-    measurementHtml=missing('Choose a possible measure and define what records or groups it should be applied to.');
+    generatedSummary=gmBuildGeneratedSummary(m,cohorts,threshold);
+    summaryHtml=escHtml(generatedSummary);
+    summaryHtml+=`<div class="audit-mini-note">What you noticed: "${escHtml(concern)}"</div>`;
   }
-  let thresholdHtml='';
-  if(threshold&&m){
-    const measureTitle=gmIsOtherMeasure(m)?(gmCustomMeasureName()||'the custom measure'):gmMetricTitle(m);
-    thresholdHtml=`Flag descriptions with ${escHtml(measureTitle)} ${m.thresholdDirection==='above'?'above':'below'} <strong>${escHtml(threshold)}${m.thresholdUnit==='%'?'%':` ${escHtml(m.thresholdUnit||'')}`}</strong>.`;
-    if(notes) thresholdHtml+=`<div class="audit-mini-note">Notes: ${escHtml(notes)}</div>`;
-	  } else {
-	    thresholdHtml='No threshold set.';
-	    if(notes) thresholdHtml+=`<div class="audit-mini-note">Notes: ${escHtml(notes)}</div>`;
-	  }
-	  const thresholdStepHtml=`<div class="audit-measure-step" style="margin-bottom:0">
-	      <div class="audit-measure-label">Threshold</div>
-	      <div class="audit-measure-text">${thresholdHtml}</div>
-	    </div>`;
-	  text.innerHTML=`<div class="audit-measure-step">
-	      <div class="audit-measure-label">Concern</div>
-	      <div class="audit-measure-text">${concernHtml}</div>
-	    </div>
-	    <div class="audit-measure-step">
-	      <div class="audit-measure-label">Measurement</div>
-	      <div class="audit-measure-text">${measurementHtml}</div>
-	    </div>
-	    ${thresholdStepHtml}`;
+  text.dataset.generatedSummary=generatedSummary;
+  text.innerHTML=`<div class="audit-measure-step" style="margin-bottom:0">
+      <div class="audit-measure-label">Generated summary</div>
+      <div class="audit-measure-text">${summaryHtml}</div>
+    </div>`;
   gmUpdateDatasetResult(cohorts,m);
 }
 function bmUpdateSaveBtn(){
@@ -3669,11 +3982,9 @@ function bmUpdateSaveBtn(){
   const missing=[];
   const m=gmBuildMetric(bmMetricId);
   if(!gmGetConcernText()) missing.push('concern');
-  if(!gmGetConcernCategory()) missing.push('category');
   if(!m||!gmMetricEnabled(m)) missing.push('measure');
   if(gmIsOtherMeasure(m)&&!gmCustomMeasureName()) missing.push('custom measure name');
   if(gmIsOtherMeasure(m)&&!gmCustomMeasureCheck()) missing.push('custom measure description');
-  if(bmReadyCohorts().length<1) missing.push('group');
   const ready=missing.length===0;
   btn.disabled=!ready;btn.style.opacity=ready?'1':'.4';btn.style.cursor=ready?'pointer':'not-allowed';
   if(hint) hint.textContent=ready?'Ready to save.':'Complete: '+missing.join(', ')+'.';
@@ -3685,32 +3996,74 @@ function bmSave(){
     return;
   }
   const m=gmBuildMetric(bmMetricId);if(!m||!gmMetricEnabled(m)){logEvent('validation_error','save_guided_metric_missing_metric',{metricId:bmMetricId});return;}
-  const cohorts=bmReadyCohorts();
+  const cohorts=bmGetSimpleCohorts();
+  const effectiveScope=bmEffectiveScope();
+  const selectedGroups=bmSelectedSimpleGroups();
+  const saveGroups=selectedGroups.length?selectedGroups:['All dataset'];
   const criterionText=document.getElementById('bm-criterion-text')?.innerHTML||'';
-  const generatedStatement=document.getElementById('bm-criterion-text')?.textContent.replace(/\s+/g,' ').trim()||'';
+  const generatedStatement=document.getElementById('bm-criterion-text')?.dataset.generatedSummary||document.getElementById('bm-criterion-text')?.textContent.replace(/\s+/g,' ').trim()||'';
   const concern=gmGetConcernText();
   const category=gmConcernCategoryObj();
   const categoryLabel=gmConcernCategoryLabel(category);
   const threshold=(document.getElementById('bm-threshold')?.value||'').trim();
   const thresholdNotes=(document.getElementById('bm-threshold-notes')?.value||'').trim();
   const datasetResult=gmBuildDatasetResult(cohorts,m);
-  const savedMetric={id:bmNextId++,type:'lib',mode:'generative_group',prolificId,savedAt:new Date().toISOString(),feature:'Artifact groups',groups:cohorts.map(bmCohortLabel),metricId:bmMetricId,metricName:gmIsOtherMeasure(m)?(gmCustomMeasureName()||gmMetricTitle(m)):gmMetricTitle(m),metricDescription:gmMeasureText(m),customMeasure:gmIsOtherMeasure(m)?gmCustomMeasureText():null,customMeasureName:gmIsOtherMeasure(m)?gmCustomMeasureName():null,customMeasureCheck:gmIsOtherMeasure(m)?gmCustomMeasureCheck():null,concern,concernCategory:category?category.id:null,concernCategoryLabel:category?categoryLabel:null,customConcernCategory:gmIsOtherConcernCategory()?gmOtherConcernText()||null:null,threshold:threshold||null,thresholdUnit:m.thresholdUnit||'',thresholdLabel:m.thresholdLabel||'',thresholdNotes:thresholdNotes||null,result:datasetResult,criterionText,generatedStatement,ownText:null,cohorts:cohorts.map(c=>({...c,conditions:[...c.conditions]}))};
+  const savedMetric={
+    id:bmNextId++,
+    type:'lib',
+    mode:effectiveScope,
+    source:gmIsOtherMeasure(m)?'filled_custom_measure':'selected_measure',
+    prolificId,
+    savedAt:new Date().toISOString(),
+    feature:bmCharacteristic||'All dataset',
+    characteristic:bmCharacteristic||'All dataset',
+    groups:saveGroups,
+    comparedGroups:saveGroups,
+    metricId:bmMetricId,
+    metricName:gmIsOtherMeasure(m)?(gmCustomMeasureName()||gmMetricTitle(m)):gmMetricTitle(m),
+    metricDescription:gmMeasureText(m),
+    customMeasure:gmIsOtherMeasure(m)?gmCustomMeasureText():null,
+    customMeasureName:gmIsOtherMeasure(m)?gmCustomMeasureName():null,
+    customMeasureCheck:gmIsOtherMeasure(m)?gmCustomMeasureCheck():null,
+    concern,
+    concernCategory:category?category.id:null,
+    concernCategoryLabel:category?categoryLabel:null,
+    customConcernCategory:gmIsOtherConcernCategory()?gmOtherConcernText()||null:null,
+    threshold:threshold||null,
+    thresholdUnit:m.thresholdUnit||'',
+    thresholdLabel:m.thresholdLabel||'',
+    thresholdNotes:thresholdNotes||null,
+    result:datasetResult,
+    fullDatasetResult:datasetResult,
+    fullDatasetResultSummary:summarizeGenerativeDatasetResult(datasetResult),
+    criterionText,
+    generatedStatement,
+    generatedSummary:generatedStatement,
+    generatedSummaryHtml:criterionText,
+    ownText:null,
+    cohorts:cohorts.map(c=>({...c,conditions:[...c.conditions]}))
+  };
   bmSavedMetrics.push(savedMetric);
-  logEvent('save','save_audit_measure',{savedMetric});
-  bmMetricId='';bmCohorts=[];const sel=document.getElementById('bm-metric-dropdown-sel');if(sel)sel.value='';
-  const concernEl=document.getElementById('bm-concern-text');if(concernEl)concernEl.value='';
+  logEvent('save','save_audit_measure',{
+    savedMetric,
+    assessmentRecord:buildGenerativeAssessmentRecord(savedMetric,bmSavedMetrics.length-1),
+    auditMeasureCounts:getAuditMeasureCounts()
+  });
+  bmMetricId='';bmCohorts=[];bmCharacteristic='';bmSimpleGroups=new Set();const sel=document.getElementById('bm-metric-dropdown-sel');if(sel)sel.value='';
+  const concernEl=document.getElementById('bm-concern-text');if(concernEl){concernEl.value='';bmAutoGrowTextarea(concernEl);}
   const catEl=document.getElementById('bm-concern-category');if(catEl)catEl.value='';
   const otherConcernEl=document.getElementById('bm-other-concern-text');if(otherConcernEl)otherConcernEl.value='';
   const otherNameEl=document.getElementById('bm-other-measure-name');if(otherNameEl)otherNameEl.value='';
   const otherEl=document.getElementById('bm-other-measure');if(otherEl)otherEl.value='';
   document.querySelectorAll('input[name="bm-category-radio"]').forEach(r=>{r.checked=false;});
   document.querySelectorAll('input[name="bm-measure-radio"]').forEach(r=>{r.checked=false;});
-  const catDesc=document.getElementById('bm-category-desc');if(catDesc)catDesc.textContent='Select a concern type to see a little description.';
+  const catDesc=document.getElementById('bm-category-desc');if(catDesc)catDesc.textContent='Optional. This helps with later analysis but does not change which measures are available.';
   const thr=document.getElementById('bm-threshold');if(thr)thr.value='';
   const notes=document.getElementById('bm-threshold-notes');if(notes)notes.value='';
   initStep1c();bmRenderSaved();
+  const loopNote=document.getElementById('bm-save-loop-note');if(loopNote)loopNote.style.display='block';
 }
-function bmAddAnother(){logEvent('click','guided_metric_add_another_clicked',{});bmMetricId='';bmCohorts=[];const sel=document.getElementById('bm-metric-dropdown-sel');if(sel)sel.value='';const concernEl=document.getElementById('bm-concern-text');if(concernEl)concernEl.value='';const catEl=document.getElementById('bm-concern-category');if(catEl)catEl.value='';const otherConcernEl=document.getElementById('bm-other-concern-text');if(otherConcernEl)otherConcernEl.value='';const otherNameEl=document.getElementById('bm-other-measure-name');if(otherNameEl)otherNameEl.value='';const otherEl=document.getElementById('bm-other-measure');if(otherEl)otherEl.value='';document.querySelectorAll('input[name="bm-category-radio"]').forEach(r=>{r.checked=false;});document.querySelectorAll('input[name="bm-measure-radio"]').forEach(r=>{r.checked=false;});const catDesc=document.getElementById('bm-category-desc');if(catDesc)catDesc.textContent='Select a concern type to see a little description.';const thr=document.getElementById('bm-threshold');if(thr)thr.value='';const notes=document.getElementById('bm-threshold-notes');if(notes)notes.value='';initStep1c();}
+function bmAddAnother(){logEvent('click','guided_metric_add_another_clicked',{});bmMetricId='';bmCohorts=[];bmCharacteristic='';bmSimpleGroups=new Set();const sel=document.getElementById('bm-metric-dropdown-sel');if(sel)sel.value='';const concernEl=document.getElementById('bm-concern-text');if(concernEl){concernEl.value='';bmAutoGrowTextarea(concernEl);}const catEl=document.getElementById('bm-concern-category');if(catEl)catEl.value='';const otherConcernEl=document.getElementById('bm-other-concern-text');if(otherConcernEl)otherConcernEl.value='';const otherNameEl=document.getElementById('bm-other-measure-name');if(otherNameEl)otherNameEl.value='';const otherEl=document.getElementById('bm-other-measure');if(otherEl)otherEl.value='';document.querySelectorAll('input[name="bm-category-radio"]').forEach(r=>{r.checked=false;});document.querySelectorAll('input[name="bm-measure-radio"]').forEach(r=>{r.checked=false;});const catDesc=document.getElementById('bm-category-desc');if(catDesc)catDesc.textContent='Optional. This helps with later analysis but does not change which measures are available.';const thr=document.getElementById('bm-threshold');if(thr)thr.value='';const notes=document.getElementById('bm-threshold-notes');if(notes)notes.value='';initStep1c();}
 
 // Logging: lightweight field listeners capture important form changes that happen before save.
 function attachAuditInteractionLogging(){
@@ -3730,6 +4083,8 @@ function attachAuditInteractionLogging(){
   bindChange('s3-threshold','legacy_metric_threshold_changed',el=>({threshold:el.value}));
   bindChange('s3-notes','legacy_metric_notes_changed',el=>({notes:el.value}));
   bindChange('s3-custom-text','legacy_custom_observation_changed',el=>({text:el.value}));
+  bindChange('ms-own-concern','final_own_words_concern_changed',el=>({text:el.value}));
+  bindChange('ms-own-measure','final_own_words_measure_changed',el=>({text:el.value}));
 }
 attachAuditInteractionLogging();
 loadParticipantIdFromUrl();
